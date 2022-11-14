@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Resources\GamesCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +26,5 @@ Route::get('/teams/{team}', [App\Http\Controllers\API\TeamController::class, 'sh
 Route::get('/teams/{team}/schedule', [App\Http\Controllers\API\TeamController::class, 'schedule']);
 Route::post('/teams/become-team-manager', [App\Http\Controllers\API\TeamManagerController::class, 'store'])
     ->name('api.teams.manager.store');
+
+Route::get('/competitions', [\App\Http\Controllers\API\CompetitionController::class, 'index']);

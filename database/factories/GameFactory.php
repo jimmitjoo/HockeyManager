@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Competition;
 use App\Models\Team;
 use App\Statuses\GameStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -41,6 +42,7 @@ class GameFactory extends Factory
             'away_score' => $this->faker->numberBetween(0, 10),
             'home_team_id' => Team::factory()->create()->id,
             'away_team_id' => Team::factory()->create()->id,
+            'competition_id' => Competition::factory()->create()->id,
         ];
     }
 }

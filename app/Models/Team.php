@@ -5,12 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Team extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'city',
+        'state',
+        'country',
+    ];
 
     public function manager(): HasOneThrough
     {
@@ -40,5 +48,10 @@ class Team extends Model
         $awayGames = $this->awayGames();
 
         return $homeGames->union($awayGames)->latest();
+    }
+
+    public function competitions(): BelongsToMany
+    {
+        return $this->belongsToMany(Competition::class);
     }
 }

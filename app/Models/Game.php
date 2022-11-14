@@ -13,10 +13,15 @@ class Game extends Model
     use HasFactory;
 
     protected $fillable = [
+        'round',
         'status',
+        'starts_at',
         'away_score',
         'home_score',
         'current_time',
+        'home_team_id',
+        'away_team_id',
+        'competition_id',
     ];
 
     protected $casts = [

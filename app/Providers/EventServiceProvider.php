@@ -2,14 +2,23 @@
 
 namespace App\Providers;
 
+use App\Events\CompetitionCreated;
+use App\Events\CompetitionEnded;
+use App\Events\CompetitionStarted;
 use App\Events\EndPeriod;
 use App\Events\StartGame;
 use App\Events\StartPeriod;
 use App\Events\UserBecameManagerOfTeam;
+use App\Listeners\CreateCompetitionGames;
+use App\Listeners\SetCompetitionStatusToEnded;
+use App\Listeners\SetCompetitionStatusToInProgress;
+use App\Listeners\SetCompetitionTeams;
 use App\Listeners\SetGameStatusToStarted;
 use App\Listeners\SetPeriodAsEnded;
 use App\Listeners\SetPeriodAsStarted;
+use App\Listeners\TestListener;
 use App\Models\Game;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -38,6 +47,16 @@ class EventServiceProvider extends ServiceProvider
         UserBecameManagerOfTeam::class => [
             //
         ],
+        CompetitionCreated::class => [
+            SetCompetitionTeams::class,
+            CreateCompetitionGames::class,
+        ],
+        CompetitionStarted::class => [
+            SetCompetitionStatusToInProgress::class,
+        ],
+        CompetitionEnded::class => [
+            SetCompetitionStatusToEnded::class,
+        ]
     ];
 
     protected $observers = [

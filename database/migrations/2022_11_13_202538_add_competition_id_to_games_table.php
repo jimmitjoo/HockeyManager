@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->foreignId('home_team_id')->nullable()->constrained('teams');
-            $table->foreignId('away_team_id')->nullable()->constrained('teams');
+            $table->foreignIdFor(\App\Models\Competition::class)->constrained()->nullable();
         });
     }
 
@@ -27,8 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('home_team_id');
-            $table->dropColumn('away_team_id');
+            $table->dropColumn('competition_id');
         });
     }
 };
