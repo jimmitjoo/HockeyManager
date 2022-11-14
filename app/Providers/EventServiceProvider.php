@@ -8,8 +8,10 @@ use App\Events\CompetitionStarted;
 use App\Events\EndPeriod;
 use App\Events\StartGame;
 use App\Events\StartPeriod;
+use App\Events\TeamCreated;
 use App\Events\UserBecameManagerOfTeam;
 use App\Listeners\CreateCompetitionGames;
+use App\Listeners\CreateTeamPlayers;
 use App\Listeners\SetCompetitionStatusToEnded;
 use App\Listeners\SetCompetitionStatusToInProgress;
 use App\Listeners\SetCompetitionTeams;
@@ -56,7 +58,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         CompetitionEnded::class => [
             SetCompetitionStatusToEnded::class,
-        ]
+        ],
+        TeamCreated::class => [
+            CreateTeamPlayers::class,
+        ],
     ];
 
     protected $observers = [

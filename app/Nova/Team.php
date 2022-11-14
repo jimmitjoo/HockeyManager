@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Country;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -44,6 +46,11 @@ class Team extends Resource
         return [
             Text::make(__('Name'), 'name'),
             Country::make(__('Country'), 'country'),
+
+            HasMany::make(__('Home Games'), 'homeGames', Game::class),
+            HasMany::make(__('Away Games'), 'awayGames', Game::class),
+
+            BelongsToMany::make(__('Players'), 'players', Person::class),
         ];
     }
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('round')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->dateTime('starts_at');
-            $table->integer('current_time')->default(0);
+            $table->integer('current_time')->default(1200);
             $table->integer('home_score')->default(0);
             $table->integer('away_score')->default(0);
             $table->timestamps();

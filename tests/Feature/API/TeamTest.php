@@ -76,3 +76,11 @@ test('A guest user cannot become manager of a team', function () {
 
     $this->assertNull($team->manager);
 });
+
+
+test('A team should get 25 players when it is created', function () {
+
+        $team = \App\Models\Team::factory()->create();
+
+        $this->assertEquals(25, $team->players->count());
+});

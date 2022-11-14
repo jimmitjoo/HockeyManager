@@ -15,7 +15,17 @@ return new class extends Migration
     {
         Schema::create('people', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('city');
+            $table->string('country');
             $table->timestamps();
+        });
+
+        Schema::create('person_team', function(Blueprint $table) {
+            $table->foreignId('person_id')->constrained();
+            $table->foreignId('team_id')->constrained();
+            $table->dateTime('signed_at')->default(now());
+            $table->dateTime('resigned_at')->nullable();
         });
     }
 
@@ -26,6 +36,7 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('person_team');
         Schema::dropIfExists('people');
     }
 };

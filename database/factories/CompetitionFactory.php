@@ -21,7 +21,7 @@ class CompetitionFactory extends Factory
         return [
             'name' => $this->faker->company,
             'state' => $this->faker->state,
-            'country' => $this->faker->country,
+            'country' => $this->faker->countryCode,
             'status' => CompetitionStatus::NotStarted,
             'starts_at' => $startsAt,
             'ends_at' => $startsAt->modify('+2 months'),

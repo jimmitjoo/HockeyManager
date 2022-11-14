@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CompetitionCreated;
+use Faker\Factory;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -16,12 +17,18 @@ class SetCompetitionTeams
      */
     public function handle(CompetitionCreated $event)
     {
+        $countryCodeToLocale = config('manager.country_code_to_locale');
+
+        $locale = $countryCodeToLocale[$event->competition->country] ?? 'en_US';
+        $faker = Factory::create($locale);
+
         for ($i = 0; $i < $event->competition->max_teams; $i++) {
+            $city = $faker->city;
+
             $event->competition->teams()->create([
-                'name' => 'Team ' . ($i + 1),
-                'city' => 'City ' . ($i + 1),
-                'state' => 'State ' . ($i + 1),
-                'country' => 'Country ' . ($i + 1),
+                'name' => $city,
+                'city' => $city,
+                'country' => $event->competition->country,
             ]);
         }
     }

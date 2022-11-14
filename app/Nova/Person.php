@@ -2,32 +2,26 @@
 
 namespace App\Nova;
 
-use App\Nova\Filters\GameStatusFilter;
-use App\Statuses\CompetitionStatus;
-use App\Statuses\GameStatus;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Game extends Resource
+class Person extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Game>
+     * @var class-string<\App\Models\Person>
      */
-    public static $model = \App\Models\Game::class;
+    public static $model = \App\Models\Person::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,15 +41,8 @@ class Game extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Number::make(__('Round'), 'round'),
-            BelongsTo::make(__('Competition'), 'competition', Competition::class),
-            Text::make(__('Status'), fn() => $this->status->label()),
-            DateTime::make(__('Starts At'), 'starts_at')->sortable(),
-            BelongsTo::make(__('Home Team'), 'homeTeam', Team::class),
-            BelongsTo::make(__('Away Team'), 'awayTeam', Team::class),
-            Text::make(__('Current Time'), 'current_time')->readonly(),
-            Number::make(__('Home Score'), 'home_score'),
-            Number::make(__('Away Score'), 'away_score'),
+            Text::make(__('Name'), 'name'),
+            Text::make(__('City'), 'city'),
         ];
     }
 
@@ -78,9 +65,7 @@ class Game extends Resource
      */
     public function filters(NovaRequest $request)
     {
-        return [
-            new GameStatusFilter(),
-        ];
+        return [];
     }
 
     /**
