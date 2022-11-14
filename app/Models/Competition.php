@@ -21,8 +21,8 @@ class Competition extends Model
     protected $casts = [
         'type' => CompetitionType::class,
         'status' => CompetitionStatus::class,
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'starts_at' => 'datetime',
+        'ends_at' => 'datetime',
     ];
 
     public function teams(): BelongsToMany
