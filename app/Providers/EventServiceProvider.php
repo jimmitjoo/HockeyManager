@@ -6,6 +6,7 @@ use App\Events\CompetitionCreated;
 use App\Events\CompetitionEnded;
 use App\Events\CompetitionStarted;
 use App\Events\EndPeriod;
+use App\Events\PersonCreated;
 use App\Events\StartGame;
 use App\Events\StartPeriod;
 use App\Events\TeamCreated;
@@ -15,9 +16,11 @@ use App\Listeners\CreateTeamPlayers;
 use App\Listeners\SetCompetitionStatusToEnded;
 use App\Listeners\SetCompetitionStatusToInProgress;
 use App\Listeners\SetCompetitionTeams;
+use App\Listeners\SetDefaultTeamTactic;
 use App\Listeners\SetGameStatusToStarted;
 use App\Listeners\SetPeriodAsEnded;
 use App\Listeners\SetPeriodAsStarted;
+use App\Listeners\SetPersonSkills;
 use App\Listeners\TestListener;
 use App\Models\Game;
 use App\Models\User;
@@ -61,6 +64,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         TeamCreated::class => [
             CreateTeamPlayers::class,
+            SetDefaultTeamTactic::class,
+        ],
+        PersonCreated::class => [
+            SetPersonSkills::class,
         ],
     ];
 

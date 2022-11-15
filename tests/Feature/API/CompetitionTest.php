@@ -104,16 +104,16 @@ test('Create a league with 14 teams', function () {
     $this->assertEquals(182, $competition->games()->count());
 });
 
-test('Create a league with 24 teams', function () {
+test('Create a league with 5 teams', function () {
 
     $competition = \App\Models\Competition::factory()->create([
         'starts_at' => now()->subMonths(2),
         'ends_at' => now()->addMonths(2),
         'type' => \App\Types\CompetitionType::League,
-        'max_teams' => 24,
+        'max_teams' => 5,
     ]);
 
     $this->assertEquals(\App\Statuses\CompetitionStatus::NotStarted, $competition->status);
-    $this->assertEquals(24, $competition->teams()->count());
-    $this->assertEquals(552, $competition->games()->count());
+    $this->assertEquals(5, $competition->teams()->count());
+    $this->assertEquals(16, $competition->games()->count());
 });

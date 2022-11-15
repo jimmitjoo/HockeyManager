@@ -84,3 +84,12 @@ test('A team should get 25 players when it is created', function () {
 
         $this->assertEquals(25, $team->players->count());
 });
+
+
+test('A team should have a default tactic', function () {
+
+    $team = \App\Models\Team::factory()->create();
+
+    $this->assertNotNull($team->tactic);
+
+});

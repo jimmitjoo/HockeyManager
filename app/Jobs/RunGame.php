@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class RunGame implements ShouldQueue
 {
@@ -38,6 +39,9 @@ class RunGame implements ShouldQueue
         $time = ((int)$currentTime[0] * 60) + (int)$currentTime[1];
 
         $timeElapse = rand(30, 90);
+
+        $faceOff = new \App\GameEngine\FaceOff($this->game->homeTeam->tactic->line1Center->skills, $this->game->awayTeam->tactic->line1Center->skills);
+
 
         if ($time - $timeElapse < 0) {
             // End period

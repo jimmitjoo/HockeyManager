@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Events\PersonCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Person extends Model
 {
@@ -15,4 +17,13 @@ class Person extends Model
         'city',
         'country',
     ];
+
+    protected $dispatchesEvents = [
+        'created' => PersonCreated::class,
+    ];
+
+    public function skills(): HasOne
+    {
+        return $this->hasOne(Skills::class);
+    }
 }
