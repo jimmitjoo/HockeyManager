@@ -22,12 +22,10 @@ class Game extends Resource
      */
     public static $model = \App\Models\Game::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'id';
+    public function title()
+    {
+        return $this->homeTeam->name . ' - ' . $this->awayTeam->name;
+    }
 
     /**
      * The columns that should be searched.
@@ -35,7 +33,8 @@ class Game extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'homeTeam.name',
+        'awayTeam.name',
     ];
 
     /**
@@ -50,12 +49,12 @@ class Game extends Resource
             Number::make(__('Round'), 'round'),
             BelongsTo::make(__('Competition'), 'competition', Competition::class),
             Text::make(__('Status'), fn() => $this->status->label()),
-            DateTime::make(__('Starts At'), 'starts_at')->sortable(),
+            Text::make(__('Starts At'), fn() => $this->starts_at->format('d/m H:i')),
+            DateTime::make(__('Starts At'), 'starts_at')->onlyOnForms()->sortable(),
             BelongsTo::make(__('Home Team'), 'homeTeam', Team::class),
             BelongsTo::make(__('Away Team'), 'awayTeam', Team::class),
+            Text::make(__('Score'), fn() => $this->home_score . ' - ' . $this->away_score),
             Text::make(__('Current Time'), 'current_time')->readonly(),
-            Number::make(__('Home Score'), 'home_score'),
-            Number::make(__('Away Score'), 'away_score'),
         ];
     }
 

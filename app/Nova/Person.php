@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Country;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -23,7 +25,10 @@ class Person extends Resource
      *
      * @var string
      */
-    public static $title = 'name';
+    public function title()
+    {
+        return $this->name . ', ' . $this->age;
+    }
 
     /**
      * The columns that should be searched.
@@ -31,7 +36,7 @@ class Person extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name',
     ];
 
     /**
@@ -44,6 +49,13 @@ class Person extends Resource
     {
         return [
             Text::make(__('Name'), 'name')->readonly(),
+            BelongsToMany::make(__('Team'), 'team', Team::class)
+                ->fields(function () {
+                    return [
+                        DateTime::make(__('Signed At'), 'signed_at')->readonly(),
+                        DateTime::make(__('Resigned At'), 'resigned_at')->readonly(),
+                    ];
+                }),
             Text::make(__('City'), 'city')->readonly(),
             Number::make(__('Age'), 'age')->readonly(),
             Country::make(__('Country'), 'country')->readonly(),

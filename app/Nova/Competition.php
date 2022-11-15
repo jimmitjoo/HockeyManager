@@ -53,7 +53,7 @@ class Competition extends Resource
             Boolean::make(__('Status'), 'status'),
             DateTime::make(__('Starts At'), 'starts_at'),
             DateTime::make(__('Ends At'), 'ends_at'),
-            Number::make(__('Type'), 'type'),
+            Text::make(__('Type'), fn() => $this->type->label()),
             Number::make(__('Max Teams'), 'max_teams'),
             Number::make(__('Meetings'), 'meetings'),
 

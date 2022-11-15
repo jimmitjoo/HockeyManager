@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Game;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,18 @@ class GameEnded
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public Game $game;
+    public string $ending;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Game $game, string $ending)
     {
-        //
+        $this->game = $game;
+        $this->ending = $ending;
     }
 
     /**

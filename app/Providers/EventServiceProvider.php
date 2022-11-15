@@ -15,6 +15,7 @@ use App\Events\TeamCreated;
 use App\Events\UserBecameManagerOfTeam;
 use App\Listeners\CreateCompetitionGames;
 use App\Listeners\CreateTeamPlayers;
+use App\Listeners\SetCompetitionPoints;
 use App\Listeners\SetCompetitionStatusToEnded;
 use App\Listeners\SetCompetitionStatusToInProgress;
 use App\Listeners\SetCompetitionTeams;
@@ -47,7 +48,7 @@ class EventServiceProvider extends ServiceProvider
             SetGameStatusToStarted::class,
         ],
         GameEnded::class => [
-            //
+            SetCompetitionPoints::class,
         ],
         StartPeriod::class => [
             SetPeriodAsStarted::class,

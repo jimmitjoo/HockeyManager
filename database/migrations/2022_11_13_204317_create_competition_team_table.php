@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('competition_team', function (Blueprint $table) {
+            $table->bigIncrements('ct_id');
             $table->foreignIdFor(\App\Models\Competition::class);
             $table->foreignIdFor(\App\Models\Team::class);
             $table->integer('games_played')->default(0);
