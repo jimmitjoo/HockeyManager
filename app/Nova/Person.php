@@ -3,7 +3,9 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Country;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -41,8 +43,10 @@ class Person extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make(__('Name'), 'name'),
-            Text::make(__('City'), 'city'),
+            Text::make(__('Name'), 'name')->readonly(),
+            Text::make(__('City'), 'city')->readonly(),
+            Number::make(__('Age'), 'age')->readonly(),
+            Country::make(__('Country'), 'country')->readonly(),
         ];
     }
 

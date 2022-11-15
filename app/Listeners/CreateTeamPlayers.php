@@ -27,6 +27,7 @@ class CreateTeamPlayers
 
             $players[] = [
                 'name' => $person->firstName . ' ' . $person->lastName,
+                'age' => $person->numberBetween(16, 32),
                 'city' => $person->city,
                 'country' => $event->team->country,
             ];
