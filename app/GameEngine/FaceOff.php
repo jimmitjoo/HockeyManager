@@ -2,9 +2,9 @@
 
 namespace App\GameEngine;
 
-use App\Models\Person;
+use App\Models\Game;
 use App\Models\Skills;
-use Illuminate\Support\Facades\Log;
+use App\Models\Team;
 
 class FaceOff
 {
@@ -13,10 +13,13 @@ class FaceOff
 
     private $probability = [];
 
-    public Person $winner;
+    public Team $winner;
+    public Team $loser;
+    public Game $game;
 
-    public function __construct(Skills $player1, Skills $player2)
+    public function __construct(Game $game, Skills $player1, Skills $player2)
     {
+        $this->game = $game;
         $this->player1 = $player1;
         $this->player2 = $player2;
 
@@ -41,9 +44,11 @@ class FaceOff
         $randomize = rand(0, 100);
 
         if ($randomize <= $this->probability[0]) {
-            $this->winner = Person::find($this->player1->person_id);
+            $this->winner = $this->game->homeTeam;
+            $this->loser = $this->game->awayTeam;
         } else {
-            $this->winner = Person::find($this->player2->person_id);
+            $this->winner = $this->game->awayTeam;
+            $this->loser = $this->game->homeTeam;
         }
     }
 }

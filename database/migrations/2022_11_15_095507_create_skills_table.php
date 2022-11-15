@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('agility');
 
             $table->integer('defenseAwareness');
-            $table->integer('dicipline');
+            $table->integer('discipline');
             $table->integer('endurance');
             $table->integer('durability');
             $table->integer('bodyChecking');
@@ -32,6 +32,16 @@ return new class extends Migration
             $table->integer('passing');
             $table->integer('puckControl');
             $table->integer('speed');
+
+            $table->integer('shotBlocking');
+            $table->integer('stickChecking');
+            $table->integer('vision');
+
+            $table->integer('wristshotPower');
+            $table->integer('wristshotAccuracy');
+            $table->integer('slapshotPower');
+            $table->integer('slapshotAccuracy');
+            $table->integer('reflexes');
         });
     }
 

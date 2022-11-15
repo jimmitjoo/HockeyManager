@@ -2,29 +2,25 @@
 
 namespace App\GameEngine;
 
+use App\Events\GoalScored;
 use App\Models\Game;
+use App\Models\Person;
 use App\Models\Team;
-use Illuminate\Support\Collection;
 
-class NeutralZone
+class Shot
 {
-    public Collection $attackingPlayers;
-    public Collection $defendingPlayers;
-    public array $probability;
-    public Team $winner;
-    public Team $loser;
-    public int $attackingLine;
-    public int $defendingLine;
+    /**
+     * @var mixed|\TValue
+     */
+    public Person $shooter;
 
     public function __construct(
         public Game $game,
         public Team $attackers,
         public Team $defenders,
-    )
-    {
-        $this->attackingLine = rand(1, 3);
-        $this->defendingLine = rand(1, 3);
-
+        public int  $attackingLine,
+        public int  $defendingLine,
+    ) {
         $this->attackingPlayers = collect([
             $this->attackers->tactic->{'line' . $this->attackingLine . 'LeftForward'},
             $this->attackers->tactic->{'line' . $this->attackingLine . 'Center'},
@@ -33,6 +29,7 @@ class NeutralZone
             $this->attackers->tactic->{'line' . $this->attackingLine . 'RightDefender'},
         ]);
 
+        $this->goalkeeper = $this->defenders->tactic->goalkeeper;
         $this->defendingPlayers = collect([
             $this->defenders->tactic->{'line' . $this->defendingLine . 'LeftForward'},
             $this->defenders->tactic->{'line' . $this->defendingLine . 'Center'},
@@ -41,15 +38,41 @@ class NeutralZone
             $this->defenders->tactic->{'line' . $this->defendingLine . 'RightDefender'},
         ]);
 
+        $this->setShooter();
+
         $this->calculateProbabilities();
 
         $this->run();
     }
 
+    private function setShooter()
+    {
+        $positionShooter = rand(1,100);
+        $leftOrRight = rand(0,1);
+        if ($positionShooter < 50) {
+            // forward
+            if ($leftOrRight === 0) {
+                $this->shooter = $this->attackingPlayers->get(0);
+            } else {
+                $this->shooter = $this->attackingPlayers->get(2);
+            }
+        } elseif ($positionShooter < 85) {
+            // defender
+            if ($leftOrRight === 0) {
+                $this->shooter = $this->attackingPlayers->get(3);
+            } else {
+                $this->shooter = $this->attackingPlayers->get(4);
+            }
+        } else {
+            // center
+            $this->shooter = $this->attackingPlayers->get(1);
+        }
+    }
+
     private function calculateProbabilities()
     {
-        $defendingSkills = $this->defendingPlayers->pluck('skills.defend_neutral_zone')->sum() / 5;
-        $attackingSkills = $this->attackingPlayers->pluck('skills.attack_neutral_zone')->sum() / 5;
+        $attackingSkills = $this->shooter->skills->shooting;
+        $defendingSkills = $this->goalkeeper->skills->goaltending;
 
         $total = $defendingSkills + $attackingSkills;
 
@@ -59,7 +82,7 @@ class NeutralZone
         $this->probability = [$defendingProbability * 100, $attackingProbability * 100];
     }
 
-    public function run()
+    private function run()
     {
         $randomize = rand(0, 100);
 
@@ -69,6 +92,17 @@ class NeutralZone
         } else {
             $this->winner = $this->attackers;
             $this->loser = $this->defenders;
+
+            $assists = rand(0,2);
+            $this->attackingPlayers->shuffle();
+            $this->assisters = $this->attackingPlayers->take($assists);
+
+            // fire goal event
+            event(new GoalScored(
+                $this->game,
+                $this->shooter,
+                $this->assisters,
+            ));
         }
     }
 }

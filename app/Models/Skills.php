@@ -19,7 +19,7 @@ class Skills extends Model
         'balance',
         'agility',
         'defenseAwareness',
-        'dicipline',
+        'discipline',
         'endurance',
         'durability',
         'bodyChecking',
@@ -27,13 +27,25 @@ class Skills extends Model
         'puckControl',
         'speed',
         'passing',
+        'stickChecking',
+        'shotBlocking',
+        'vision',
+        'slapshotAccuracy',
+        'slapshotPower',
+        'wristshotAccuracy',
+        'wristshotPower',
     ];
 
     public function faceOffs(): Attribute
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                return round(($attributes['faceOffs'] + ($attributes['aggressiveness']/2) + ($attributes['strength']/2) + ($attributes['balance']/2) + ($attributes['agility']/3)) / 2.83);
+                return round((
+                    $attributes['faceOffs'] +
+                    ($attributes['aggressiveness']/2) +
+                    ($attributes['strength']/2) +
+                    ($attributes['balance']/2) +
+                    ($attributes['agility']/3)) / 2.83);
             }
         );
     }
@@ -42,7 +54,12 @@ class Skills extends Model
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                return round(($attributes['defenseAwareness'] + ($attributes['dicipline']/2) + ($attributes['endurance']/2) + ($attributes['durability']/2) + ($attributes['bodyChecking']/3)) / 2.83);
+                return round(
+                    ($attributes['defenseAwareness'] +
+                        ($attributes['discipline']/2) +
+                        ($attributes['endurance']/2) +
+                        ($attributes['durability']/2) +
+                        ($attributes['bodyChecking']/3)) / 2.83);
             }
         );
     }
@@ -51,7 +68,76 @@ class Skills extends Model
     {
         return Attribute::make(
             get: function ($value, $attributes) {
-                return round(($attributes['offensiveAwareness'] + $attributes['puckControl'] + ($attributes['speed']/2) + ($attributes['passing']/2) + ($attributes['endurance']/3)) / 3.33);
+                return round((
+                    $attributes['offensiveAwareness'] +
+                    $attributes['puckControl'] +
+                    ($attributes['speed']/2) +
+                    ($attributes['passing']/2) +
+                    ($attributes['endurance']/3)) / 3.33);
+            }
+        );
+    }
+
+    public function defendInZone(): Attribute
+    {
+        return Attribute::make(
+            get: function($value, $attributes) {
+                return round((
+                    $attributes['defenseAwareness'] +
+                    ($attributes['aggressiveness']/2) +
+                    ($attributes['shotBlocking']/2) +
+                    ($attributes['stickChecking']/2) +
+                    ($attributes['discipline']/2) +
+                    ($attributes['bodyChecking']/2)) / 3.5);
+            }
+        );
+    }
+
+    public function attackInZone(): Attribute
+    {
+        return Attribute::make(
+            get: function($value, $attributes) {
+                return round((
+                        $attributes['offensiveAwareness'] +
+                        ($attributes['aggressiveness']/2) +
+                        ($attributes['puckControl']/2) +
+                        ($attributes['agility']/2) +
+                        ($attributes['passing']/2) +
+                        ($attributes['vision']/2)) / 3.5);
+            }
+        );
+    }
+
+    public function shooting(): Attribute
+    {
+        return Attribute::make(
+            get: function($value, $attributes) {
+                return round((
+                        $attributes['wristshotPower'] +
+                        $attributes['wristshotAccuracy'] +
+                        $attributes['slapshotPower'] +
+                        $attributes['slapshotAccuracy'] +
+                        ($attributes['offensiveAwareness']/2) +
+                        ($attributes['puckControl']/2) +
+                        ($attributes['agility']/3) +
+                        ($attributes['strength']/3) +
+                        ($attributes['vision']/3)) / 6);
+            }
+        );
+    }
+
+    public function goaltending(): Attribute
+    {
+        return Attribute::make(
+            get: function($value, $attributes) {
+                return round((
+                        $attributes['reflexes'] +
+                        $attributes['agility'] +
+                        $attributes['vision'] +
+                        $attributes['aggressiveness'] +
+                        $attributes['endurance'] +
+                        $attributes['passing']/2 +
+                        $attributes['speed']) / 5.5);
             }
         );
     }

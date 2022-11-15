@@ -7,7 +7,7 @@ test('A persons defend neutral zone skills can be calculated', function () {
     $person = Person::factory()->create();
     $person->skills->update([
         'defenseAwareness' => 100,
-        'dicipline' => 100,
+        'discipline' => 100,
         'endurance' => 100,
         'durability' => 100,
         'bodyChecking' => 100,
@@ -18,7 +18,7 @@ test('A persons defend neutral zone skills can be calculated', function () {
 
     $person->skills->update([
         'defenseAwareness' => 12,
-        'dicipline' => 22,
+        'discipline' => 22,
         'endurance' => 45,
         'durability' => 23,
         'bodyChecking' => 75,

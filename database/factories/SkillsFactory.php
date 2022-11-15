@@ -17,7 +17,6 @@ class SkillsFactory extends Factory
      */
     public function definition()
     {
-        $person = Person::factory()->make();
         return [
             'person_id' => null,
             'faceOffs' => $this->faker->numberBetween(0, 100),
@@ -26,7 +25,7 @@ class SkillsFactory extends Factory
             'balance' => $this->faker->numberBetween(0, 100),
             'agility' => $this->faker->numberBetween(0, 100),
             'defenseAwareness' => $this->faker->numberBetween(0, 100),
-            'dicipline' => $this->faker->numberBetween(0, 100),
+            'discipline' => $this->faker->numberBetween(0, 100),
             'endurance' => $this->faker->numberBetween(0, 100),
             'durability' => $this->faker->numberBetween(0, 100),
             'bodyChecking' => $this->faker->numberBetween(0, 100),
@@ -34,6 +33,14 @@ class SkillsFactory extends Factory
             'speed' => $this->faker->numberBetween(0, 100),
             'passing' => $this->faker->numberBetween(0, 100),
             'puckControl' => $this->faker->numberBetween(0, 100),
+            'shotBlocking' => $this->faker->numberBetween(0, 100),
+            'stickChecking' => $this->faker->numberBetween(0, 100),
+            'vision' => $this->faker->numberBetween(0, 100),
+            'wristshotPower' => $this->faker->numberBetween(0, 100),
+            'wristshotAccuracy' => $this->faker->numberBetween(0, 100),
+            'slapshotPower' => $this->faker->numberBetween(0, 100),
+            'slapshotAccuracy' => $this->faker->numberBetween(0, 100),
+            'reflexes' => $this->faker->numberBetween(0, 100),
         ];
     }
 }

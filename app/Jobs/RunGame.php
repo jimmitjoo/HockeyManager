@@ -3,6 +3,9 @@
 namespace App\Jobs;
 
 use App\Events\EndPeriod;
+use App\GameEngine\InZone;
+use App\GameEngine\NeutralZone;
+use App\GameEngine\Shot;
 use App\Models\Game;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -40,8 +43,12 @@ class RunGame implements ShouldQueue
 
         $timeElapse = rand(30, 90);
 
-        $faceOff = new \App\GameEngine\FaceOff($this->game->homeTeam->tactic->line1Center->skills, $this->game->awayTeam->tactic->line1Center->skills);
-
+        $faceOff = new \App\GameEngine\FaceOff($this->game, $this->game->homeTeam->tactic->line1Center->skills, $this->game->awayTeam->tactic->line1Center->skills);
+        $neutralZone = new NeutralZone($this->game, $faceOff->winner, $faceOff->loser);
+        $inZone = new InZone($this->game, $neutralZone->winner, $neutralZone->loser, $neutralZone->attackingLine, $neutralZone->defendingLine);
+        if ($neutralZone->winner === $inZone->winner) {
+            new Shot($this->game, $inZone->winner, $inZone->loser, $inZone->attackingLine, $inZone->defendingLine);
+        }
 
         if ($time - $timeElapse < 0) {
             // End period

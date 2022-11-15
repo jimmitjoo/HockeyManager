@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\EndPeriod;
+use App\Events\GameEnded;
 use App\Statuses\GameStatus;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -32,6 +33,8 @@ class SetPeriodAsEnded
             } else {
                 // If the game is not tied, end the game
                 $event->game->status = GameStatus::Ended;
+
+                event(new GameEnded($event->game, 'full-time'));
             }
         }
 
@@ -42,6 +45,8 @@ class SetPeriodAsEnded
             } else {
                 // If the game is not tied, end the game
                 $event->game->status = GameStatus::Ended;
+
+                event(new GameEnded($event->game, 'overtime'));
             }
         }
 
@@ -49,6 +54,8 @@ class SetPeriodAsEnded
             // End the game if not tied
             if ($event->game->home_score !== $event->game->away_score) {
                 $event->game->status = GameStatus::Ended;
+
+                event(new GameEnded($event->game, 'penalties'));
             }
         }
 

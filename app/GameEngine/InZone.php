@@ -6,25 +6,22 @@ use App\Models\Game;
 use App\Models\Team;
 use Illuminate\Support\Collection;
 
-class NeutralZone
+class InZone
 {
     public Collection $attackingPlayers;
     public Collection $defendingPlayers;
     public array $probability;
     public Team $winner;
     public Team $loser;
-    public int $attackingLine;
-    public int $defendingLine;
 
     public function __construct(
         public Game $game,
         public Team $attackers,
         public Team $defenders,
+        public int  $attackingLine,
+        public int  $defendingLine,
     )
     {
-        $this->attackingLine = rand(1, 3);
-        $this->defendingLine = rand(1, 3);
-
         $this->attackingPlayers = collect([
             $this->attackers->tactic->{'line' . $this->attackingLine . 'LeftForward'},
             $this->attackers->tactic->{'line' . $this->attackingLine . 'Center'},
@@ -48,8 +45,8 @@ class NeutralZone
 
     private function calculateProbabilities()
     {
-        $defendingSkills = $this->defendingPlayers->pluck('skills.defend_neutral_zone')->sum() / 5;
-        $attackingSkills = $this->attackingPlayers->pluck('skills.attack_neutral_zone')->sum() / 5;
+        $defendingSkills = $this->defendingPlayers->pluck('skills.defend_in_zone')->sum() / 5;
+        $attackingSkills = $this->attackingPlayers->pluck('skills.attack_in_zone')->sum() / 5;
 
         $total = $defendingSkills + $attackingSkills;
 
@@ -59,7 +56,7 @@ class NeutralZone
         $this->probability = [$defendingProbability * 100, $attackingProbability * 100];
     }
 
-    public function run()
+    private function run()
     {
         $randomize = rand(0, 100);
 
