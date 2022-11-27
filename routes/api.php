@@ -28,3 +28,4 @@ Route::post('/teams/become-team-manager', [App\Http\Controllers\API\TeamManagerC
     ->name('api.teams.manager.store');
 
 Route::get('/competitions', [\App\Http\Controllers\API\CompetitionController::class, 'index']);
+Route::get('/competitions/{competition}', [\App\Http\Controllers\API\CompetitionController::class, 'show']);

@@ -4,31 +4,28 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Country;
-use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Competition extends Resource
+class CompetitionTeam extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Competition>
+     * @var class-string<\App\Models\CompetitionTeam>
      */
-    public static $model = \App\Models\Competition::class;
+    public static $model = \App\Models\CompetitionTeam::class;
+
+    public static $displayInNavigation = false;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -36,7 +33,7 @@ class Competition extends Resource
      * @var array
      */
     public static $search = [
-        'name',
+        'id',
     ];
 
     /**
@@ -48,20 +45,14 @@ class Competition extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            Text::make(__('Name'), 'name'),
-            Country::make(__('Country'), 'country'),
-            Boolean::make(__('Status'), 'status'),
-            DateTime::make(__('Starts At'), 'starts_at'),
-            DateTime::make(__('Ends At'), 'ends_at'),
-            Text::make(__('Type'), fn() => $this->type->label()),
-            Number::make(__('Max Teams'), 'max_teams'),
-            Number::make(__('Meetings'), 'meetings'),
-
-            HasMany::make(__('League Table'), 'leagueTable', CompetitionTeam::class),
-
-            BelongsToMany::make(__('Teams'), 'teams', Team::class),
-
-            HasMany::make(__('Games'), 'games', Game::class),
+            BelongsTo::make(__('Team'), 'team'),
+            Number::make(__('Games Played'), 'games_played'),
+            Number::make(__('Wins'), 'wins'),
+            Number::make(__('Draws'), 'draws'),
+            Number::make(__('Losses'), 'losses'),
+            Number::make(__('Goals For'), 'goals_for'),
+            Number::make(__('Goals Against'), 'goals_against'),
+            Number::make(__('Points'), 'points'),
         ];
     }
 
@@ -107,5 +98,20 @@ class Competition extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToDelete(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
     }
 }

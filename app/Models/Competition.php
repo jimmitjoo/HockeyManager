@@ -23,7 +23,31 @@ class Competition extends Model
         'status' => CompetitionStatus::class,
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
+        'recurring' => 'boolean',
     ];
+
+    protected $fillable = [
+        'name',
+        'country',
+        'type',
+        'tier',
+        'status',
+        'edition',
+        'promotion',
+        'relegation',
+        'max_teams',
+        'recurring',
+        'starts_at',
+        'ends_at',
+    ];
+
+    public function leagueTable(): HasMany
+    {
+        return $this->hasMany(CompetitionTeam::class)
+            ->orderBy('points', 'desc')
+            ->orderBy('goals_for', 'desc')
+            ->orderBy('goals_against', 'asc');
+    }
 
     public function teams(): BelongsToMany
     {
@@ -33,5 +57,15 @@ class Competition extends Model
     public function games(): HasMany
     {
         return $this->hasMany(Game::class);
+    }
+
+    public function getRelegatedTeamsAttribute()
+    {
+        return $this->leagueTable->reverse()->take($this->relegation);
+    }
+
+    public function getPromotedTeamsAttribute()
+    {
+        return $this->leagueTable->take($this->promotion);
     }
 }

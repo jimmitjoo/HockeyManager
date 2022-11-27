@@ -11,4 +11,9 @@ class CompetitionTeam extends Model
     public $timestamps = false;
 
     protected $table = 'competition_team';
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

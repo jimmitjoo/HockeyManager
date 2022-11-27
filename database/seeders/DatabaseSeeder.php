@@ -29,9 +29,27 @@ class DatabaseSeeder extends Seeder
             'country' => 'SE',
             'type' => CompetitionType::League,
             'starts_at' => now(),
-            'ends_at' => now()->addMonth(),
+            'ends_at' => now()->addHours(28),
             'max_teams' => 8,
             'meetings' => 2,
+            'tier' => 1,
+            'recurring' => true,
+            'promotion' => 0,
+            'relegation' => 2,
+        ]);
+
+        Competition::factory()->create([
+            'name' => 'Klass 2',
+            'country' => 'SE',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 2,
+            'recurring' => true,
+            'promotion' => 2,
+            'relegation' => 0,
         ]);
 
         Competition::factory()->create([
@@ -39,12 +57,86 @@ class DatabaseSeeder extends Seeder
             'country' => 'FI',
             'type' => CompetitionType::League,
             'starts_at' => now(),
-            'ends_at' => now()->addMonth(),
+            'ends_at' => now()->addHours(28),
             'max_teams' => 8,
             'meetings' => 2,
+            'tier' => 1,
+            'recurring' => true,
+            'promotion' => 0,
+            'relegation' => 2,
         ]);
 
         Competition::factory()->create([
+            'name' => 'Liiga 2',
+            'country' => 'FI',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 2,
+            'recurring' => true,
+            'promotion' => 2,
+            'relegation' => 0,
+        ]);
+
+        Competition::factory()->create([
+            'name' => 'Norge 1',
+            'country' => 'NO',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 1,
+            'recurring' => true,
+            'promotion' => 0,
+            'relegation' => 2,
+        ]);
+
+        Competition::factory()->create([
+            'name' => 'Norge 2',
+            'country' => 'NO',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 2,
+            'recurring' => true,
+            'promotion' => 2,
+            'relegation' => 0,
+        ]);
+
+        Competition::factory()->create([
+            'name' => 'Division 1',
+            'country' => 'DK',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 1,
+            'recurring' => true,
+            'promotion' => 0,
+            'relegation' => 2,
+        ]);
+
+        Competition::factory()->create([
+            'name' => 'Division 2',
+            'country' => 'DK',
+            'type' => CompetitionType::League,
+            'starts_at' => now(),
+            'ends_at' => now()->addHours(28),
+            'max_teams' => 8,
+            'meetings' => 2,
+            'tier' => 2,
+            'recurring' => true,
+            'promotion' => 2,
+            'relegation' => 0,
+        ]);
+
+        /*Competition::factory()->create([
             'name' => 'España',
             'country' => 'ES',
             'type' => CompetitionType::League,
@@ -82,6 +174,6 @@ class DatabaseSeeder extends Seeder
             'ends_at' => now()->addMonth(),
             'max_teams' => 8,
             'meetings' => 2,
-        ]);
+        ]);*/
     }
 }

@@ -32,10 +32,10 @@ class CreateCompetitionGames
     {
         $roundGamesCount = $teamAmount / 2;
         $meetingsInRound = config('manager.cups.meetings');
-        $daysBetweenGames = Carbon::make($roundStartsAt)->diffInDays($roundEndsAt) / $meetingsInRound;
+        $hoursBetweenGames = Carbon::make($roundStartsAt)->diffInHours($roundEndsAt) / $meetingsInRound;
 
         for ($i = 0; $i < $meetingsInRound; $i++) {
-            $meetingStartsAt = Carbon::make($roundStartsAt)->addDays($i * $daysBetweenGames)->format('Y-m-d H:i:s');
+            $meetingStartsAt = Carbon::make($roundStartsAt)->addHours($i * $hoursBetweenGames)->format('Y-m-d H:i:s');
 
             for ($j = 0; $j < $roundGamesCount; $j++) {
                 $competition->games()->create([
@@ -53,12 +53,12 @@ class CreateCompetitionGames
      * @param int $rounds
      * @return int
      */
-    private function daysBetweenRounds(Competition $competition, int $rounds): int
+    private function hoursBetweenRounds(Competition $competition, int $rounds): int
     {
         $competitionStartsAt = $competition->starts_at;
         $competitionEndsAt = Carbon::make($competition->ends_at);
 
-        $competitionDuration = $competitionEndsAt->diffInDays($competitionStartsAt);
+        $competitionDuration = $competitionEndsAt->diffInHours($competitionStartsAt);
 
         // Days between rounds
         return floor($competitionDuration / $rounds);
@@ -79,12 +79,12 @@ class CreateCompetitionGames
         // get index of value in $this->knockOutTeamAmount
         $roundsNeededIndex = array_search($teamAmount, $knockOutTeamAmount);
 
-        $daysBetweenRounds = $this->daysBetweenRounds($competition, $roundsNeededIndex);
+        $hoursBetweenRounds = $this->hoursBetweenRounds($competition, $roundsNeededIndex);
 
         for ($i = 0; $i <= $roundsNeededIndex; $i++) {
             $x = $i + 1;
-            $roundStartsAt = $competition->starts_at->addDays((int)$i * $daysBetweenRounds)->format('Y-m-d H:i:s');
-            $roundEndsAt = $competition->starts_at->addDays((int)$x * $daysBetweenRounds)->format('Y-m-d H:i:s');
+            $roundStartsAt = $competition->starts_at->addHours((int)$i * $hoursBetweenRounds)->format('Y-m-d H:i:s');
+            $roundEndsAt = $competition->starts_at->addHours((int)$x * $hoursBetweenRounds)->format('Y-m-d H:i:s');
             $teamAmount = $this->createKnockoutRound($teamAmount, $competition, $roundStartsAt, $roundEndsAt, $x);
         }
     }
@@ -92,7 +92,7 @@ class CreateCompetitionGames
     private function createLeague(Competition $competition)
     {
         $rounds = ($competition->max_teams - 1) * config('manager.leagues.meetings');
-        $daysBetweenRounds = $this->daysBetweenRounds($competition, $rounds);
+        $hoursBetweenRounds = $this->hoursBetweenRounds($competition, $rounds);
 
         $participants = $competition->teams()->pluck('id')->shuffle()->toArray();
         if (count($participants) % 2 !== 0) {
@@ -101,7 +101,7 @@ class CreateCompetitionGames
 
         for ($i = 1; $i <= $rounds; $i++) {
             $startsAt = Carbon::make($competition->starts_at);
-            $dateOfRound = $startsAt->addDays((int)($i - 1) * $daysBetweenRounds)->format('Y-m-d H:i:s');
+            $dateOfRound = $startsAt->addHours((int)($i - 1) * $hoursBetweenRounds)->format('Y-m-d H:i:s');
 
             $teamCount = count($participants);
             $gamesCount = ceil($competition->teams->count() / 2);

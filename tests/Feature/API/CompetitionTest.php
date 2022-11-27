@@ -117,3 +117,75 @@ test('Create a league with 5 teams', function () {
     $this->assertEquals(5, $competition->teams()->count());
     $this->assertEquals(16, $competition->games()->count());
 });
+
+test('A league can relegate teams', function () {
+    $tierOneCompetition = \App\Models\Competition::factory()->create([
+        'starts_at' => now()->subMonths(2),
+        'country' => 'SE',
+        'ends_at' => now()->subMinute(),
+        'type' => \App\Types\CompetitionType::League,
+        'status' => \App\Statuses\CompetitionStatus::InProgress,
+        'max_teams' => 4,
+        'tier' => 1,
+        'relegation' => 2,
+        'recurring' => true,
+    ]);
+
+    $tierTwoCompetition = \App\Models\Competition::factory()->create([
+        'starts_at' => now()->subMonths(2),
+        'country' => 'SE',
+        'ends_at' => now()->subMinute(),
+        'type' => \App\Types\CompetitionType::League,
+        'status' => \App\Statuses\CompetitionStatus::InProgress,
+        'max_teams' => 4,
+        'tier' => 2,
+        'promotion' => 1,
+        'recurring' => true,
+    ]);
+
+    \App\Models\Competition::factory()->create([
+        'starts_at' => now()->subMonths(2),
+        'country' => 'SE',
+        'ends_at' => now()->subMinute(),
+        'type' => \App\Types\CompetitionType::League,
+        'status' => \App\Statuses\CompetitionStatus::InProgress,
+        'max_teams' => 4,
+        'tier' => 2,
+        'promotion' => 1,
+        'recurring' => true,
+    ]);
+
+    \Pest\Laravel\artisan('competitions-run');
+
+    $tierOneCompetition->refresh();
+    $tierTwoCompetition->refresh();
+
+    $this->assertEquals(\App\Statuses\CompetitionStatus::Ended, $tierOneCompetition->status);
+    $this->assertEquals(\App\Statuses\CompetitionStatus::Ended, $tierTwoCompetition->status);
+
+    $relegatedTeamId = $tierOneCompetition->relegatedTeams->pluck('team_id')->toArray();
+    $promotedTeamId = $tierTwoCompetition->promotedTeams->pluck('team_id')->toArray();
+
+    $this->assertDatabaseHas('competitions', [
+        'name' => $tierOneCompetition->name,
+        'status' => \App\Statuses\CompetitionStatus::NotStarted,
+        'edition' => $tierOneCompetition->edition + 1,
+    ]);
+
+    $newCompetition = \App\Models\Competition::query()
+        ->where('name', $tierOneCompetition->name)
+        ->where('status', \App\Statuses\CompetitionStatus::NotStarted)
+        ->first();
+
+    $newRelegationLeague = \App\Models\Competition::query()
+        ->where('name', $tierTwoCompetition->name)
+        ->where('status', \App\Statuses\CompetitionStatus::NotStarted)
+        ->first();
+
+    $this->assertDatabaseHas('competition_team', [
+        'competition_id' => $newCompetition->id,
+        'team_id' => $promotedTeamId,
+    ]);
+
+    $this->assertEquals(4, $newRelegationLeague->teams()->count());
+});

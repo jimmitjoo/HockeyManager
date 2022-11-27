@@ -34,15 +34,20 @@ class GameFactory extends Factory
         ];
         shuffle($statuses);
 
+        $homeTeam = Team::factory()->create();
+        $awayTeam = Team::factory()->create();
+        $competition = Competition::factory()->create();
+        $competition->teams()->attach([$homeTeam->id, $awayTeam->id]);
+
         return [
             'status' => $statuses[0],
             'starts_at' => $this->faker->dateTimeBetween('now', '+4 weeks'),
             'current_time' => $this->faker->numberBetween(0, 1200),
             'home_score' => $this->faker->numberBetween(0, 10),
             'away_score' => $this->faker->numberBetween(0, 10),
-            'home_team_id' => Team::factory()->create()->id,
-            'away_team_id' => Team::factory()->create()->id,
-            'competition_id' => Competition::factory()->create()->id,
+            'home_team_id' => $homeTeam->id,
+            'away_team_id' => $awayTeam->id,
+            'competition_id' => $competition->id,
         ];
     }
 }

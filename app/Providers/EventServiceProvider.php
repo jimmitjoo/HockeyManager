@@ -14,6 +14,7 @@ use App\Events\StartPeriod;
 use App\Events\TeamCreated;
 use App\Events\UserBecameManagerOfTeam;
 use App\Listeners\CreateCompetitionGames;
+use App\Listeners\CreateNewCompetitionEdition;
 use App\Listeners\CreateTeamPlayers;
 use App\Listeners\SetCompetitionPoints;
 use App\Listeners\SetCompetitionStatusToEnded;
@@ -68,6 +69,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         CompetitionEnded::class => [
             SetCompetitionStatusToEnded::class,
+            CreateNewCompetitionEdition::class,
         ],
         TeamCreated::class => [
             CreateTeamPlayers::class,

@@ -15,8 +15,8 @@ class GameResource extends JsonResource
     public function toArray($request)
     {
         $this->resource->toArray($request)[] = [
-            'home_team' => $this->homeTeam,
-            'away_team' => $this->awayTeam,
+            'home_team' => TeamResource::make($this->homeTeam),
+            'away_team' => TeamResource::make($this->awayTeam),
         ];
 
         return $this->resource->toArray($request);

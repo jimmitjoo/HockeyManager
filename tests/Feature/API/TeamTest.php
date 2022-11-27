@@ -21,7 +21,6 @@ test('We can see a single team on its route', function () {
         $response->assertStatus(200)
             ->assertSee(e($team->name))
             ->assertSee(e($team->city))
-            ->assertSee(e($team->state))
             ->assertSee(e($team->country));
 });
 

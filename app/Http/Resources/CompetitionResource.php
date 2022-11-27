@@ -14,6 +14,16 @@ class CompetitionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'country' => $this->country,
+            'status' => $this->status,
+            'starts_at' => $this->starts_at,
+            'ends_at' => $this->ends_at,
+            'type' => $this->type,
+            'max_teams' => $this->max_teams,
+            'meetings' => $this->meetings,
+        ];
     }
 }

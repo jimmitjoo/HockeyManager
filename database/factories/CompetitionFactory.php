@@ -20,7 +20,6 @@ class CompetitionFactory extends Factory
         $startsAt = $this->faker->dateTimeBetween('-1 year', '+1 year');
         return [
             'name' => $this->faker->company,
-            'state' => $this->faker->state,
             'country' => $this->faker->countryCode,
             'status' => CompetitionStatus::NotStarted,
             'starts_at' => $startsAt,
