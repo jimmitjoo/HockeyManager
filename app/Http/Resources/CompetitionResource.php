@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Types\CompetitionType;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CompetitionResource extends JsonResource
@@ -14,7 +15,7 @@ class CompetitionResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $data = [
             'id' => $this->id,
             'name' => $this->name,
             'country' => $this->country,
@@ -25,5 +26,15 @@ class CompetitionResource extends JsonResource
             'max_teams' => $this->max_teams,
             'meetings' => $this->meetings,
         ];
+
+        if ($this->whenLoaded('teams')) {
+            $data['teams'] = TeamResource::collection($this->teams);
+        }
+
+        if ($this->type === CompetitionType::League) {
+            $data['table'] = $this->leagueTable;
+        }
+
+        return $data;
     }
 }
