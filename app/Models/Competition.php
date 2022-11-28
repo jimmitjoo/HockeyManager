@@ -44,6 +44,7 @@ class Competition extends Model
     public function leagueTable(): HasMany
     {
         return $this->hasMany(CompetitionTeam::class)
+            ->with('team')
             ->orderBy('points', 'desc')
             ->orderBy('goals_for', 'desc')
             ->orderBy('goals_against', 'asc');

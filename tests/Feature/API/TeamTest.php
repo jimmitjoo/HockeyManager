@@ -9,7 +9,6 @@ test('We can find a list of teams on teams index route', function () {
         ->assertJsonCount(5, 'data')
         ->assertSee(e($teams->first()->name))
         ->assertSee(e($teams->first()->city))
-        ->assertSee(e($teams->first()->state))
         ->assertSee(e($teams->first()->country));
 });
 

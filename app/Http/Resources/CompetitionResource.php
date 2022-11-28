@@ -25,14 +25,16 @@ class CompetitionResource extends JsonResource
             'type' => $this->type,
             'max_teams' => $this->max_teams,
             'meetings' => $this->meetings,
+            'promotion' => $this->promotion,
+            'relegation' => $this->relegation,
+            'recurring' => $this->recurring,
+            'edition' => $this->edition,
         ];
-
-        if ($this->whenLoaded('teams')) {
-            $data['teams'] = TeamResource::collection($this->teams);
-        }
 
         if ($this->type === CompetitionType::League) {
             $data['table'] = $this->leagueTable;
+        } elseif ($this->whenLoaded('teams')) {
+            $data['teams'] = TeamResource::collection($this->teams);
         }
 
         return $data;

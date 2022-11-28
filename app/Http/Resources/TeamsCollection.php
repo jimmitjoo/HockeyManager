@@ -14,6 +14,6 @@ class TeamsCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return TeamResource::collection($this->collection);
     }
 }

@@ -15,7 +15,7 @@ class CompetitionsCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->collection,
+            'data' => CompetitionResource::collection($this->collection),
             'links' => [
                 'self' => 'link-value',
             ],

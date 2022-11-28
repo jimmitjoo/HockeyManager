@@ -37,10 +37,7 @@ test('Make sure the game has two teams and that they are not the same', function
                             'id',
                             'name',
                             'city',
-                            'state',
                             'country',
-                            'created_at',
-                            'updated_at',
                         ],
                     ],
                 ])
@@ -50,10 +47,7 @@ test('Make sure the game has two teams and that they are not the same', function
                             'id',
                             'name',
                             'city',
-                            'state',
                             'country',
-                            'created_at',
-                            'updated_at',
                         ],
                     ],
                 ]);
