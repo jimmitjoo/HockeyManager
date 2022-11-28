@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::controller(AuthController::class)->group(function () {
+    Route::post('register', 'register')->name('register');
+    Route::post('login', 'login')->name('login');
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware('auth:sanctum')->group(function() {
+    Route::post('/teams/become-team-manager', [App\Http\Controllers\API\TeamManagerController::class, 'store'])
+        ->name('api.teams.manager.store');
 });
 
 Route::get('/games', [App\Http\Controllers\API\GameController::class, 'index']);
@@ -24,8 +35,6 @@ Route::get('/games/{game}', [App\Http\Controllers\API\GameController::class, 'sh
 Route::get('/teams', [App\Http\Controllers\API\TeamController::class, 'index']);
 Route::get('/teams/{team}', [App\Http\Controllers\API\TeamController::class, 'show']);
 Route::get('/teams/{team}/schedule', [App\Http\Controllers\API\TeamController::class, 'schedule']);
-Route::post('/teams/become-team-manager', [App\Http\Controllers\API\TeamManagerController::class, 'store'])
-    ->name('api.teams.manager.store');
 
 Route::get('/competitions', [\App\Http\Controllers\API\CompetitionController::class, 'index']);
 Route::get('/competitions/{competition}', [\App\Http\Controllers\API\CompetitionController::class, 'show']);

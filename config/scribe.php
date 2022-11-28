@@ -19,7 +19,7 @@ return [
     /*
      * The base URL displayed in the docs. If this is empty, Scribe will use the value of config('app.url').
      */
-    'base_url' => null,
+    'base_url' => 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com',
 
     /*
      * Tell Scribe what routes to generate documentation for.
@@ -211,7 +211,7 @@ return [
         /*
          * Set this to true if any endpoints in your API use authentication.
          */
-        'enabled' => false,
+        'enabled' => true,
 
         /*
          * Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
@@ -228,7 +228,7 @@ return [
         /*
          * The name of the auth parameter (eg token, key, apiKey) or header (eg Authorization, Api-Key).
          */
-        'name' => 'key',
+        'name' => 'Authorization',
 
         /*
          * The value of the parameter to be used by Scribe to authenticate response calls.
@@ -268,7 +268,9 @@ INTRO
      *
      */
     'example_languages' => [
+        'php',
         'bash',
+        'python',
         'javascript',
     ],
 

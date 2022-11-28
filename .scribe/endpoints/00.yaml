@@ -3,6 +3,114 @@ description: ''
 endpoints:
   -
     httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user.'
+        required: true
+        example: 'John Doe'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: test@email.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user.'
+        required: true
+        example: password
+        type: string
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: 'The password confirmation of the user.'
+        required: true
+        example: password
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      email: test@email.com
+      password: password
+      password_confirmation: password
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The email of the user.'
+        required: true
+        example: test@email.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'The password of the user.'
+        required: true
+        example: password
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: test@email.com
+      password: password
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - GET
     uri: api/user
     metadata:
@@ -42,6 +150,44 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - POST
+    uri: api/teams/become-team-manager
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      team_id:
+        name: team_id
+        description: ''
+        required: true
+        example: soluta
+        type: string
+        custom: []
+    cleanBodyParameters:
+      team_id: soluta
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - GET
     uri: api/games
     metadata:
@@ -66,12 +212,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":401,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":12,"away_score":9,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T01:33:01.000000Z","home_team_id":57,"away_team_id":58,"competition_id":8},{"id":397,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":9,"away_score":8,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T23:39:01.000000Z","home_team_id":58,"away_team_id":64,"competition_id":8},{"id":404,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":7,"away_score":5,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T01:08:02.000000Z","home_team_id":61,"away_team_id":59,"competition_id":8},{"id":448,"round":14,"status":0,"starts_at":"2022-11-28T21:58:57.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T19:58:58.000000Z","home_team_id":57,"away_team_id":62,"competition_id":8},{"id":400,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":10,"away_score":9,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T23:10:01.000000Z","home_team_id":60,"away_team_id":59,"competition_id":8},{"id":396,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":8,"away_score":4,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T21:08:02.000000Z","home_team_id":60,"away_team_id":62,"competition_id":8},{"id":402,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":7,"away_score":2,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T01:09:02.000000Z","home_team_id":64,"away_team_id":62,"competition_id":8},{"id":393,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":11,"away_score":12,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T21:35:01.000000Z","home_team_id":63,"away_team_id":58,"competition_id":8},{"id":399,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":5,"away_score":11,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T23:11:01.000000Z","home_team_id":62,"away_team_id":61,"competition_id":8},{"id":405,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":10,"away_score":5,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T03:09:01.000000Z","home_team_id":58,"away_team_id":62,"competition_id":8},{"id":403,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":6,"away_score":7,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T01:07:02.000000Z","home_team_id":63,"away_team_id":60,"competition_id":8},{"id":395,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":9,"away_score":5,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T21:13:01.000000Z","home_team_id":59,"away_team_id":57,"competition_id":8},{"id":406,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":5,"away_score":7,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T03:12:01.000000Z","home_team_id":60,"away_team_id":57,"competition_id":8},{"id":394,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":4,"away_score":7,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T21:11:01.000000Z","home_team_id":61,"away_team_id":64,"competition_id":8},{"id":407,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":6,"away_score":7,"created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-28T03:10:01.000000Z","home_team_id":59,"away_team_id":64,"competition_id":8}],"links":{"first":"https:\/\/hockeymanager.test\/api\/games?page=1","last":"https:\/\/hockeymanager.test\/api\/games?page=30","prev":null,"next":"https:\/\/hockeymanager.test\/api\/games?page=2"},"meta":{"current_page":1,"from":1,"last_page":30,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=1","label":"1","active":true},{"url":"https:\/\/hockeymanager.test\/api\/games?page=2","label":"2","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=3","label":"3","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=4","label":"4","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=5","label":"5","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=6","label":"6","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=7","label":"7","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=8","label":"8","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=9","label":"9","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=10","label":"10","active":false},{"url":null,"label":"...","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=29","label":"29","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=30","label":"30","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=2","label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/games","per_page":15,"to":15,"total":448}}'
+        content: '{"data":[{"id":401,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":12,"away_score":9,"home_team_id":57,"away_team_id":58,"competition_id":8,"home_team":{"id":57,"name":"Sporup","city":"Sporup","country":"DK"},"away_team":{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"}},{"id":397,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":9,"away_score":8,"home_team_id":58,"away_team_id":64,"competition_id":8,"home_team":{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"},"away_team":{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"}},{"id":404,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":7,"away_score":5,"home_team_id":61,"away_team_id":59,"competition_id":8,"home_team":{"id":61,"name":"Vojens","city":"Vojens","country":"DK"},"away_team":{"id":59,"name":"Djurs","city":"Djurs","country":"DK"}},{"id":448,"round":14,"status":0,"starts_at":"2022-11-28T21:58:57.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":57,"away_team_id":62,"competition_id":8,"home_team":{"id":57,"name":"Sporup","city":"Sporup","country":"DK"},"away_team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"}},{"id":400,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":10,"away_score":9,"home_team_id":60,"away_team_id":59,"competition_id":8,"home_team":{"id":60,"name":"Kolding","city":"Kolding","country":"DK"},"away_team":{"id":59,"name":"Djurs","city":"Djurs","country":"DK"}},{"id":396,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":8,"away_score":4,"home_team_id":60,"away_team_id":62,"competition_id":8,"home_team":{"id":60,"name":"Kolding","city":"Kolding","country":"DK"},"away_team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"}},{"id":402,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":7,"away_score":2,"home_team_id":64,"away_team_id":62,"competition_id":8,"home_team":{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"},"away_team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"}},{"id":393,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":11,"away_score":12,"home_team_id":63,"away_team_id":58,"competition_id":8,"home_team":{"id":63,"name":"Sydfyn","city":"Sydfyn","country":"DK"},"away_team":{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"}},{"id":399,"round":2,"status":60,"starts_at":"2022-11-27T21:58:57.000000Z","current_time":"20:00","home_score":5,"away_score":11,"home_team_id":62,"away_team_id":61,"competition_id":8,"home_team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"},"away_team":{"id":61,"name":"Vojens","city":"Vojens","country":"DK"}},{"id":405,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":10,"away_score":5,"home_team_id":58,"away_team_id":62,"competition_id":8,"home_team":{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"},"away_team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"}},{"id":403,"round":3,"status":60,"starts_at":"2022-11-27T23:58:57.000000Z","current_time":"20:00","home_score":6,"away_score":7,"home_team_id":63,"away_team_id":60,"competition_id":8,"home_team":{"id":63,"name":"Sydfyn","city":"Sydfyn","country":"DK"},"away_team":{"id":60,"name":"Kolding","city":"Kolding","country":"DK"}},{"id":395,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":9,"away_score":5,"home_team_id":59,"away_team_id":57,"competition_id":8,"home_team":{"id":59,"name":"Djurs","city":"Djurs","country":"DK"},"away_team":{"id":57,"name":"Sporup","city":"Sporup","country":"DK"}},{"id":406,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":5,"away_score":7,"home_team_id":60,"away_team_id":57,"competition_id":8,"home_team":{"id":60,"name":"Kolding","city":"Kolding","country":"DK"},"away_team":{"id":57,"name":"Sporup","city":"Sporup","country":"DK"}},{"id":394,"round":1,"status":60,"starts_at":"2022-11-27T19:58:57.000000Z","current_time":"20:00","home_score":4,"away_score":7,"home_team_id":61,"away_team_id":64,"competition_id":8,"home_team":{"id":61,"name":"Vojens","city":"Vojens","country":"DK"},"away_team":{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"}},{"id":407,"round":4,"status":60,"starts_at":"2022-11-28T01:58:57.000000Z","current_time":"20:00","home_score":6,"away_score":7,"home_team_id":59,"away_team_id":64,"competition_id":8,"home_team":{"id":59,"name":"Djurs","city":"Djurs","country":"DK"},"away_team":{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"}}],"links":{"first":"https:\/\/hockeymanager.test\/api\/games?page=1","last":"https:\/\/hockeymanager.test\/api\/games?page=30","prev":null,"next":"https:\/\/hockeymanager.test\/api\/games?page=2"},"meta":{"current_page":1,"from":1,"last_page":30,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=1","label":"1","active":true},{"url":"https:\/\/hockeymanager.test\/api\/games?page=2","label":"2","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=3","label":"3","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=4","label":"4","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=5","label":"5","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=6","label":"6","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=7","label":"7","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=8","label":"8","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=9","label":"9","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=10","label":"10","active":false},{"url":null,"label":"...","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=29","label":"29","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=30","label":"30","active":false},{"url":"https:\/\/hockeymanager.test\/api\/games?page=2","label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/games","per_page":15,"to":15,"total":448}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '49'
+          x-ratelimit-remaining: '59'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -115,12 +261,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":1,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":6,"away_score":7,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T21:13:01.000000Z","home_team_id":2,"away_team_id":5,"competition_id":1,"home_team":{"id":2,"name":"Lidhult","city":"Lidhult","state":null,"country":"SE","created_at":"2022-11-27T19:58:49.000000Z","updated_at":"2022-11-27T19:58:49.000000Z"},"away_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","state":null,"country":"SE","created_at":"2022-11-27T19:58:49.000000Z","updated_at":"2022-11-27T19:58:49.000000Z"}}}'
+        content: '{"data":{"id":1,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":6,"away_score":7,"home_team_id":2,"away_team_id":5,"competition_id":1,"home_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"},"away_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '48'
+          x-ratelimit-remaining: '58'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -156,12 +302,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","state":null,"country":"DK","created_at":"2022-11-27T19:58:58.000000Z","updated_at":"2022-11-27T19:58:58.000000Z"},{"id":57,"name":"Sporup","city":"Sporup","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":58,"name":"Glejbjerg","city":"Glejbjerg","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":59,"name":"Djurs","city":"Djurs","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":60,"name":"Kolding","city":"Kolding","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":61,"name":"Vojens","city":"Vojens","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":62,"name":"Haderslev","city":"Haderslev","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":63,"name":"Sydfyn","city":"Sydfyn","state":null,"country":"DK","created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T19:58:57.000000Z"},{"id":49,"name":"Vestj","city":"Vestj","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":50,"name":"Vinderup","city":"Vinderup","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":51,"name":"Sandved","city":"Sandved","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":52,"name":"Veks\u00f8","city":"Veks\u00f8","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":53,"name":"S\u00e5by","city":"S\u00e5by","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":54,"name":"Ulstrup","city":"Ulstrup","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"},{"id":55,"name":"Hundested","city":"Hundested","state":null,"country":"DK","created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T19:58:56.000000Z"}],"links":{"first":"https:\/\/hockeymanager.test\/api\/teams?page=1","last":"https:\/\/hockeymanager.test\/api\/teams?page=5","prev":null,"next":"https:\/\/hockeymanager.test\/api\/teams?page=2"},"meta":{"current_page":1,"from":1,"last_page":5,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=1","label":"1","active":true},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=2","label":"2","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=3","label":"3","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=4","label":"4","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=5","label":"5","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=2","label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/teams","per_page":15,"to":15,"total":64}}'
+        content: '{"data":[{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"},{"id":57,"name":"Sporup","city":"Sporup","country":"DK"},{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"},{"id":59,"name":"Djurs","city":"Djurs","country":"DK"},{"id":60,"name":"Kolding","city":"Kolding","country":"DK"},{"id":61,"name":"Vojens","city":"Vojens","country":"DK"},{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"},{"id":63,"name":"Sydfyn","city":"Sydfyn","country":"DK"},{"id":49,"name":"Vestj","city":"Vestj","country":"DK"},{"id":50,"name":"Vinderup","city":"Vinderup","country":"DK"},{"id":51,"name":"Sandved","city":"Sandved","country":"DK"},{"id":52,"name":"Veks\u00f8","city":"Veks\u00f8","country":"DK"},{"id":53,"name":"S\u00e5by","city":"S\u00e5by","country":"DK"},{"id":54,"name":"Ulstrup","city":"Ulstrup","country":"DK"},{"id":55,"name":"Hundested","city":"Hundested","country":"DK"}],"links":{"first":"https:\/\/hockeymanager.test\/api\/teams?page=1","last":"https:\/\/hockeymanager.test\/api\/teams?page=5","prev":null,"next":"https:\/\/hockeymanager.test\/api\/teams?page=2"},"meta":{"current_page":1,"from":1,"last_page":5,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=1","label":"1","active":true},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=2","label":"2","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=3","label":"3","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=4","label":"4","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=5","label":"5","active":false},{"url":"https:\/\/hockeymanager.test\/api\/teams?page=2","label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/teams","per_page":15,"to":15,"total":64}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '47'
+          x-ratelimit-remaining: '57'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -210,7 +356,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '46'
+          x-ratelimit-remaining: '56'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -254,53 +400,15 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":4,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":13,"away_score":6,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T21:14:01.000000Z","home_team_id":1,"away_team_id":7,"competition_id":1},{"id":8,"round":2,"status":60,"starts_at":"2022-11-27T21:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":9,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T23:11:01.000000Z","home_team_id":1,"away_team_id":8,"competition_id":1},{"id":11,"round":3,"status":60,"starts_at":"2022-11-27T23:58:49.000000Z","current_time":"20:00","home_score":5,"away_score":14,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-28T01:14:01.000000Z","home_team_id":2,"away_team_id":1,"competition_id":1},{"id":14,"round":4,"status":60,"starts_at":"2022-11-28T01:58:49.000000Z","current_time":"20:00","home_score":7,"away_score":8,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-28T03:08:01.000000Z","home_team_id":1,"away_team_id":6,"competition_id":1},{"id":17,"round":5,"status":60,"starts_at":"2022-11-28T03:58:49.000000Z","current_time":"20:00","home_score":3,"away_score":9,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-28T05:09:00.000000Z","home_team_id":1,"away_team_id":5,"competition_id":1},{"id":22,"round":6,"status":60,"starts_at":"2022-11-28T05:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":8,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-28T07:10:01.000000Z","home_team_id":4,"away_team_id":1,"competition_id":1},{"id":27,"round":7,"status":60,"starts_at":"2022-11-28T07:58:49.000000Z","current_time":"20:00","home_score":11,"away_score":5,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-28T09:10:01.000000Z","home_team_id":1,"away_team_id":3,"competition_id":1},{"id":32,"round":8,"status":0,"starts_at":"2022-11-28T09:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":7,"away_team_id":1,"competition_id":1},{"id":36,"round":9,"status":0,"starts_at":"2022-11-28T11:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":8,"away_team_id":1,"competition_id":1},{"id":39,"round":10,"status":0,"starts_at":"2022-11-28T13:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":1,"away_team_id":2,"competition_id":1},{"id":42,"round":11,"status":0,"starts_at":"2022-11-28T15:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":6,"away_team_id":1,"competition_id":1},{"id":45,"round":12,"status":0,"starts_at":"2022-11-28T17:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":5,"away_team_id":1,"competition_id":1},{"id":50,"round":13,"status":0,"starts_at":"2022-11-28T19:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":1,"away_team_id":4,"competition_id":1},{"id":55,"round":14,"status":0,"starts_at":"2022-11-28T21:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T19:58:50.000000Z","home_team_id":3,"away_team_id":1,"competition_id":1}]}'
+        content: '{"data":[{"id":4,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":13,"away_score":6,"home_team_id":1,"away_team_id":7,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"}},{"id":8,"round":2,"status":60,"starts_at":"2022-11-27T21:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":9,"home_team_id":1,"away_team_id":8,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}},{"id":11,"round":3,"status":60,"starts_at":"2022-11-27T23:58:49.000000Z","current_time":"20:00","home_score":5,"away_score":14,"home_team_id":2,"away_team_id":1,"competition_id":1,"home_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":14,"round":4,"status":60,"starts_at":"2022-11-28T01:58:49.000000Z","current_time":"20:00","home_score":7,"away_score":8,"home_team_id":1,"away_team_id":6,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"}},{"id":17,"round":5,"status":60,"starts_at":"2022-11-28T03:58:49.000000Z","current_time":"20:00","home_score":3,"away_score":9,"home_team_id":1,"away_team_id":5,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}},{"id":22,"round":6,"status":60,"starts_at":"2022-11-28T05:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":8,"home_team_id":4,"away_team_id":1,"competition_id":1,"home_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":27,"round":7,"status":60,"starts_at":"2022-11-28T07:58:49.000000Z","current_time":"20:00","home_score":11,"away_score":5,"home_team_id":1,"away_team_id":3,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"}},{"id":32,"round":8,"status":60,"starts_at":"2022-11-28T09:58:49.000000Z","current_time":"20:00","home_score":9,"away_score":7,"home_team_id":7,"away_team_id":1,"competition_id":1,"home_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":36,"round":9,"status":11,"starts_at":"2022-11-28T11:58:49.000000Z","current_time":"20:00","home_score":1,"away_score":4,"home_team_id":8,"away_team_id":1,"competition_id":1,"home_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":39,"round":10,"status":0,"starts_at":"2022-11-28T13:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":2,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"}},{"id":42,"round":11,"status":0,"starts_at":"2022-11-28T15:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":6,"away_team_id":1,"competition_id":1,"home_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":45,"round":12,"status":0,"starts_at":"2022-11-28T17:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":5,"away_team_id":1,"competition_id":1,"home_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":50,"round":13,"status":0,"starts_at":"2022-11-28T19:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":4,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"}},{"id":55,"round":14,"status":0,"starts_at":"2022-11-28T21:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":3,"away_team_id":1,"competition_id":1,"home_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '45'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/teams/become-team-manager
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      team_id:
-        name: team_id
-        description: ''
-        required: true
-        example: nisi
-        type: string
-        custom: []
-    cleanBodyParameters:
-      team_id: nisi
-    fileParameters: []
-    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -333,12 +441,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":1,"name":"Klass 1","country":"SE","status":10,"starts_at":"2022-11-27T19:58:49.000000Z","ends_at":"2022-11-28T23:58:49.000000Z","type":0,"max_teams":8,"meetings":2,"tier":1,"relegation":2,"promotion":0,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:49.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":2,"name":"Klass 2","country":"SE","status":10,"starts_at":"2022-11-27T19:58:50.000000Z","ends_at":"2022-11-28T23:58:50.000000Z","type":0,"max_teams":8,"meetings":2,"tier":2,"relegation":0,"promotion":2,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:50.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":3,"name":"Liiga","country":"FI","status":10,"starts_at":"2022-11-27T19:58:51.000000Z","ends_at":"2022-11-28T23:58:51.000000Z","type":0,"max_teams":8,"meetings":2,"tier":1,"relegation":2,"promotion":0,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:51.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":4,"name":"Liiga 2","country":"FI","status":10,"starts_at":"2022-11-27T19:58:52.000000Z","ends_at":"2022-11-28T23:58:52.000000Z","type":0,"max_teams":8,"meetings":2,"tier":2,"relegation":0,"promotion":2,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:52.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":5,"name":"Norge 1","country":"NO","status":10,"starts_at":"2022-11-27T19:58:53.000000Z","ends_at":"2022-11-28T23:58:53.000000Z","type":0,"max_teams":8,"meetings":2,"tier":1,"relegation":2,"promotion":0,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:53.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":6,"name":"Norge 2","country":"NO","status":10,"starts_at":"2022-11-27T19:58:54.000000Z","ends_at":"2022-11-28T23:58:54.000000Z","type":0,"max_teams":8,"meetings":2,"tier":2,"relegation":0,"promotion":2,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:54.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":7,"name":"Division 1","country":"DK","status":10,"starts_at":"2022-11-27T19:58:56.000000Z","ends_at":"2022-11-28T23:58:56.000000Z","type":0,"max_teams":8,"meetings":2,"tier":1,"relegation":2,"promotion":0,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:56.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"},{"id":8,"name":"Division 2","country":"DK","status":10,"starts_at":"2022-11-27T19:58:57.000000Z","ends_at":"2022-11-28T23:58:57.000000Z","type":0,"max_teams":8,"meetings":2,"tier":2,"relegation":0,"promotion":2,"relegation_qualification":0,"promotion_qualification":0,"recurring":true,"edition":1,"created_at":"2022-11-27T19:58:57.000000Z","updated_at":"2022-11-27T20:00:23.000000Z"}],"links":{"self":"link-value","first":"https:\/\/hockeymanager.test\/api\/competitions?page=1","last":"https:\/\/hockeymanager.test\/api\/competitions?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/competitions?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/competitions","per_page":15,"to":8,"total":8}}'
+        content: '{"data":[{"id":1,"name":"Klass 1","country":"SE","status":10,"starts_at":"2022-11-27T19:58:49.000000Z","ends_at":"2022-11-28T23:58:49.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":0,"relegation":2,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":66,"goals_against":35,"points":21,"goal_difference":31,"team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}},{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":75,"goals_against":57,"points":20,"goal_difference":18,"team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":51,"goals_against":55,"points":13,"goal_difference":-4,"team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":75,"goals_against":63,"points":12,"goal_difference":12,"team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":66,"goals_against":66,"points":12,"goal_difference":0,"team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":55,"goals_against":62,"points":11,"goal_difference":-7,"team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":54,"goals_against":83,"points":4,"goal_difference":-29,"team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":55,"goals_against":76,"points":3,"goal_difference":-21,"team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"}}]},{"id":2,"name":"Klass 2","country":"SE","status":10,"starts_at":"2022-11-27T19:58:50.000000Z","ends_at":"2022-11-28T23:58:50.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":2,"relegation":0,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":71,"goals_against":50,"points":21,"goal_difference":21,"team":{"id":13,"name":"Sj\u00f6torp","city":"Sj\u00f6torp","country":"SE"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":57,"goals_against":45,"points":16,"goal_difference":12,"team":{"id":12,"name":"Hallabro","city":"Hallabro","country":"SE"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":64,"goals_against":61,"points":15,"goal_difference":3,"team":{"id":14,"name":"Lidk\u00f6ping","city":"Lidk\u00f6ping","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":53,"goals_against":49,"points":12,"goal_difference":4,"team":{"id":11,"name":"H\u00e4llestad","city":"H\u00e4llestad","country":"SE"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":51,"goals_against":54,"points":10,"goal_difference":-3,"team":{"id":9,"name":"Sulvik","city":"Sulvik","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":64,"goals_against":68,"points":10,"goal_difference":-4,"team":{"id":15,"name":"Idala","city":"Idala","country":"SE"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":53,"goals_against":47,"points":9,"goal_difference":6,"team":{"id":10,"name":"\u00c5senh\u00f6ga","city":"\u00c5senh\u00f6ga","country":"SE"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":46,"goals_against":85,"points":3,"goal_difference":-39,"team":{"id":16,"name":"Krokek","city":"Krokek","country":"SE"}}]},{"id":3,"name":"Liiga","country":"FI","status":10,"starts_at":"2022-11-27T19:58:51.000000Z","ends_at":"2022-11-28T23:58:51.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":0,"relegation":2,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":67,"goals_against":50,"points":19,"goal_difference":17,"team":{"id":21,"name":"Uus-Joakim","city":"Uus-Joakim","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":68,"goals_against":52,"points":15,"goal_difference":16,"team":{"id":17,"name":"Uus-Mikaj\u00e4rvi","city":"Uus-Mikaj\u00e4rvi","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":60,"goals_against":59,"points":15,"goal_difference":1,"team":{"id":19,"name":"Aholahti","city":"Aholahti","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":54,"goals_against":53,"points":14,"goal_difference":1,"team":{"id":22,"name":"Kinnunenjoki","city":"Kinnunenjoki","country":"FI"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":58,"goals_against":58,"points":12,"goal_difference":0,"team":{"id":20,"name":"Helismaapudas","city":"Helismaapudas","country":"FI"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":57,"goals_against":62,"points":11,"goal_difference":-5,"team":{"id":23,"name":"Uus-Joonatanvesi","city":"Uus-Joonatanvesi","country":"FI"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":52,"goals_against":51,"points":9,"goal_difference":1,"team":{"id":24,"name":"It\u00e4-Aarni","city":"It\u00e4-Aarni","country":"FI"}},{"games_played":8,"wins":0,"draws":0,"losses":8,"goals_for":49,"goals_against":80,"points":1,"goal_difference":-31,"team":{"id":18,"name":"Uus-Neea","city":"Uus-Neea","country":"FI"}}]},{"id":4,"name":"Liiga 2","country":"FI","status":10,"starts_at":"2022-11-27T19:58:52.000000Z","ends_at":"2022-11-28T23:58:52.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":2,"relegation":0,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":64,"goals_against":48,"points":15,"goal_difference":16,"team":{"id":28,"name":"Ahovesi","city":"Ahovesi","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":67,"goals_against":54,"points":15,"goal_difference":13,"team":{"id":31,"name":"Hirvel\u00e4koski","city":"Hirvel\u00e4koski","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":60,"goals_against":49,"points":15,"goal_difference":11,"team":{"id":27,"name":"Jerelampi","city":"Jerelampi","country":"FI"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":56,"goals_against":52,"points":15,"goal_difference":4,"team":{"id":25,"name":"Er\u00e4harjulampi","city":"Er\u00e4harjulampi","country":"FI"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":49,"goals_against":51,"points":12,"goal_difference":-2,"team":{"id":29,"name":"Uus-Pihlapudas","city":"Uus-Pihlapudas","country":"FI"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":52,"goals_against":66,"points":11,"goal_difference":-14,"team":{"id":30,"name":"Linnam\u00e4kisalmi","city":"Linnam\u00e4kisalmi","country":"FI"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":56,"goals_against":70,"points":7,"goal_difference":-14,"team":{"id":26,"name":"Tuuttiharju","city":"Tuuttiharju","country":"FI"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":40,"goals_against":54,"points":6,"goal_difference":-14,"team":{"id":32,"name":"Uusi-Enna","city":"Uusi-Enna","country":"FI"}}]},{"id":5,"name":"Norge 1","country":"NO","status":10,"starts_at":"2022-11-27T19:58:53.000000Z","ends_at":"2022-11-28T23:58:53.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":0,"relegation":2,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":57,"goals_against":44,"points":20,"goal_difference":13,"team":{"id":39,"name":"Orkanger","city":"Orkanger","country":"NO"}},{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":66,"goals_against":43,"points":18,"goal_difference":23,"team":{"id":34,"name":"Skien","city":"Skien","country":"NO"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":61,"goals_against":53,"points":16,"goal_difference":8,"team":{"id":35,"name":"Fredrikstad","city":"Fredrikstad","country":"NO"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":58,"goals_against":61,"points":13,"goal_difference":-3,"team":{"id":40,"name":"Sandefjord","city":"Sandefjord","country":"NO"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":45,"goals_against":57,"points":10,"goal_difference":-12,"team":{"id":36,"name":"Vard\u00f8","city":"Vard\u00f8","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":53,"goals_against":47,"points":7,"goal_difference":6,"team":{"id":38,"name":"Molde","city":"Molde","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":52,"goals_against":53,"points":6,"goal_difference":-1,"team":{"id":33,"name":"Fosnav\u00e5g","city":"Fosnav\u00e5g","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":47,"goals_against":81,"points":6,"goal_difference":-34,"team":{"id":37,"name":"Tvedestrand","city":"Tvedestrand","country":"NO"}}]},{"id":6,"name":"Norge 2","country":"NO","status":10,"starts_at":"2022-11-27T19:58:54.000000Z","ends_at":"2022-11-28T23:58:54.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":2,"relegation":0,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":77,"goals_against":58,"points":21,"goal_difference":19,"team":{"id":44,"name":"Sandefjord","city":"Sandefjord","country":"NO"}},{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":69,"goals_against":52,"points":18,"goal_difference":17,"team":{"id":45,"name":"Horten","city":"Horten","country":"NO"}},{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":62,"goals_against":49,"points":17,"goal_difference":13,"team":{"id":41,"name":"Stokmarknes","city":"Stokmarknes","country":"NO"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":56,"goals_against":57,"points":11,"goal_difference":-1,"team":{"id":47,"name":"Haugesund","city":"Haugesund","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":59,"goals_against":65,"points":8,"goal_difference":-6,"team":{"id":43,"name":"Kristiansund","city":"Kristiansund","country":"NO"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":63,"goals_against":77,"points":8,"goal_difference":-14,"team":{"id":42,"name":"Namsos","city":"Namsos","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":38,"goals_against":57,"points":7,"goal_difference":-19,"team":{"id":46,"name":"Lyngdal","city":"Lyngdal","country":"NO"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":60,"goals_against":69,"points":6,"goal_difference":-9,"team":{"id":48,"name":"Alta","city":"Alta","country":"NO"}}]},{"id":7,"name":"Division 1","country":"DK","status":10,"starts_at":"2022-11-27T19:58:56.000000Z","ends_at":"2022-11-28T23:58:56.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":0,"relegation":2,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":58,"goals_against":31,"points":19,"goal_difference":27,"team":{"id":56,"name":"Bolderslev","city":"Bolderslev","country":"DK"}},{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":60,"goals_against":45,"points":18,"goal_difference":15,"team":{"id":52,"name":"Veks\u00f8","city":"Veks\u00f8","country":"DK"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":55,"goals_against":54,"points":16,"goal_difference":1,"team":{"id":53,"name":"S\u00e5by","city":"S\u00e5by","country":"DK"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":70,"goals_against":44,"points":14,"goal_difference":26,"team":{"id":55,"name":"Hundested","city":"Hundested","country":"DK"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":65,"goals_against":67,"points":14,"goal_difference":-2,"team":{"id":50,"name":"Vinderup","city":"Vinderup","country":"DK"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":42,"goals_against":57,"points":6,"goal_difference":-15,"team":{"id":54,"name":"Ulstrup","city":"Ulstrup","country":"DK"}},{"games_played":8,"wins":2,"draws":0,"losses":6,"goals_for":44,"goals_against":70,"points":6,"goal_difference":-26,"team":{"id":49,"name":"Vestj","city":"Vestj","country":"DK"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":41,"goals_against":67,"points":3,"goal_difference":-26,"team":{"id":51,"name":"Sandved","city":"Sandved","country":"DK"}}]},{"id":8,"name":"Division 2","country":"DK","status":10,"starts_at":"2022-11-27T19:58:57.000000Z","ends_at":"2022-11-28T23:58:57.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":2,"relegation":0,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":59,"goals_against":43,"points":21,"goal_difference":16,"team":{"id":60,"name":"Kolding","city":"Kolding","country":"DK"}},{"games_played":8,"wins":6,"draws":0,"losses":2,"goals_for":72,"goals_against":64,"points":17,"goal_difference":8,"team":{"id":58,"name":"Glejbjerg","city":"Glejbjerg","country":"DK"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":50,"goals_against":42,"points":16,"goal_difference":8,"team":{"id":64,"name":"M\u00f8rke","city":"M\u00f8rke","country":"DK"}},{"games_played":8,"wins":5,"draws":0,"losses":3,"goals_for":61,"goals_against":55,"points":14,"goal_difference":6,"team":{"id":57,"name":"Sporup","city":"Sporup","country":"DK"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":55,"goals_against":48,"points":12,"goal_difference":7,"team":{"id":61,"name":"Vojens","city":"Vojens","country":"DK"}},{"games_played":8,"wins":3,"draws":0,"losses":5,"goals_for":57,"goals_against":57,"points":9,"goal_difference":0,"team":{"id":59,"name":"Djurs","city":"Djurs","country":"DK"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":60,"goals_against":71,"points":4,"goal_difference":-11,"team":{"id":63,"name":"Sydfyn","city":"Sydfyn","country":"DK"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":40,"goals_against":74,"points":3,"goal_difference":-34,"team":{"id":62,"name":"Haderslev","city":"Haderslev","country":"DK"}}]}],"links":{"self":"link-value","first":"https:\/\/hockeymanager.test\/api\/competitions?page=1","last":"https:\/\/hockeymanager.test\/api\/competitions?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/hockeymanager.test\/api\/competitions?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"https:\/\/hockeymanager.test\/api\/competitions","per_page":15,"to":8,"total":8}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '44'
+          x-ratelimit-remaining: '54'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -382,12 +490,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":{"id":1,"name":"Klass 1","country":"SE","status":10,"starts_at":"2022-11-27T19:58:49.000000Z","ends_at":"2022-11-28T23:58:49.000000Z","type":0,"max_teams":8,"meetings":2,"teams":[{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"},{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"},{"id":4,"name":"Persbo","city":"Persbo","country":"SE"},{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"},{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"},{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"},{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}],"table":[{"ct_id":5,"competition_id":1,"team_id":5,"games_played":7,"wins":6,"draws":0,"losses":1,"goals_for":57,"goals_against":27,"points":18},{"ct_id":6,"competition_id":1,"team_id":6,"games_played":7,"wins":6,"draws":0,"losses":1,"goals_for":65,"goals_against":51,"points":17},{"ct_id":1,"competition_id":1,"team_id":1,"games_played":7,"wins":4,"draws":0,"losses":3,"goals_for":68,"goals_against":54,"points":12},{"ct_id":4,"competition_id":1,"team_id":4,"games_played":7,"wins":4,"draws":0,"losses":3,"goals_for":62,"goals_against":59,"points":12},{"ct_id":3,"competition_id":1,"team_id":3,"games_played":7,"wins":3,"draws":0,"losses":4,"goals_for":44,"goals_against":51,"points":10},{"ct_id":7,"competition_id":1,"team_id":7,"games_played":7,"wins":3,"draws":0,"losses":4,"goals_for":46,"goals_against":55,"points":8},{"ct_id":8,"competition_id":1,"team_id":8,"games_played":7,"wins":1,"draws":0,"losses":6,"goals_for":48,"goals_against":73,"points":4},{"ct_id":2,"competition_id":1,"team_id":2,"games_played":7,"wins":1,"draws":0,"losses":6,"goals_for":47,"goals_against":67,"points":3}]}}'
+        content: '{"data":{"id":1,"name":"Klass 1","country":"SE","status":10,"starts_at":"2022-11-27T19:58:49.000000Z","ends_at":"2022-11-28T23:58:49.000000Z","type":0,"max_teams":8,"meetings":2,"promotion":0,"relegation":2,"recurring":true,"edition":1,"table":[{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":66,"goals_against":35,"points":21,"goal_difference":31,"team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}},{"games_played":8,"wins":7,"draws":0,"losses":1,"goals_for":75,"goals_against":57,"points":20,"goal_difference":18,"team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":51,"goals_against":55,"points":13,"goal_difference":-4,"team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":75,"goals_against":63,"points":12,"goal_difference":12,"team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":66,"goals_against":66,"points":12,"goal_difference":0,"team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"}},{"games_played":8,"wins":4,"draws":0,"losses":4,"goals_for":55,"goals_against":62,"points":11,"goal_difference":-7,"team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":54,"goals_against":83,"points":4,"goal_difference":-29,"team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}},{"games_played":8,"wins":1,"draws":0,"losses":7,"goals_for":55,"goals_against":76,"points":3,"goal_difference":-21,"team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"}}]}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '43'
+          x-ratelimit-remaining: '53'
           access-control-allow-origin: '*'
         description: null
         custom: []

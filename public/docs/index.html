@@ -21,7 +21,9 @@
 
     <style id="language-style">
         /* starts out as display none and is replaced with js later  */
+                    body .content .php-example code { display: none; }
                     body .content .bash-example code { display: none; }
+                    body .content .python-example code { display: none; }
                     body .content .javascript-example code { display: none; }
             </style>
 
@@ -36,7 +38,7 @@
 
 </head>
 
-<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<body data-languages="[&quot;php&quot;,&quot;bash&quot;,&quot;python&quot;,&quot;javascript&quot;]">
 
 <a href="#" id="nav-button">
     <span>
@@ -47,7 +49,9 @@
 <div class="tocify-wrapper">
     
             <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="php">php</button>
                                             <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="python">python</button>
                                             <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
                     </div>
     
@@ -71,8 +75,17 @@
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
+                                <a href="#endpoints-POSTapi-register">POST api/register</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
+                                <a href="#endpoints-POSTapi-login">POST api/login</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-teams-become-team-manager">
+                                <a href="#endpoints-POSTapi-teams-become-team-manager">POST api/teams/become-team-manager</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-games">
                                 <a href="#endpoints-GETapi-games">GET api/games</a>
@@ -88,9 +101,6 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-teams--team_id--schedule">
                                 <a href="#endpoints-GETapi-teams--team_id--schedule">GET api/teams/{team_id}/schedule</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-teams-become-team-manager">
-                                <a href="#endpoints-POSTapi-teams-become-team-manager">POST api/teams/become-team-manager</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-competitions">
                                 <a href="#endpoints-GETapi-competitions">GET api/competitions</a>
@@ -118,20 +128,394 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>https://hockeymanager.test</code>
+    <strong>Base URL</strong>: <code>https://aged-reef-fiao7crdopo9.vapor-farm-g1.com</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>This API is not authenticated.</p>
+<p>This API is authenticated by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
 
         <h1 id="endpoints">Endpoints</h1>
 
     
 
-                                <h2 id="endpoints-GETapi-user">GET api/user</h2>
+                                <h2 id="endpoints-POSTapi-register">POST api/register</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/register',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'name' =&gt; 'John Doe',
+            'email' =&gt; 'test@email.com',
+            'password' =&gt; 'password',
+            'password_confirmation' =&gt; 'password',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"John Doe\",
+    \"email\": \"test@email.com\",
+    \"password\": \"password\",
+    \"password_confirmation\": \"password\"
+}"
+</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/register'
+payload = {
+    "name": "John Doe",
+    "email": "test@email.com",
+    "password": "password",
+    "password_confirmation": "password"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "John Doe",
+    "email": "test@email.com",
+    "password": "password",
+    "password_confirmation": "password"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-register">
+</span>
+<span id="execution-results-POSTapi-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-register" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-register"></code></pre>
+</span>
+<form id="form-POSTapi-register" data-method="POST"
+      data-path="api/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-register" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/register</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-register"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="name"                data-endpoint="POSTapi-register"
+               value="John Doe"
+               data-component="body">
+    <br>
+<p>The name of the user. Example: <code>John Doe</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-register"
+               value="test@email.com"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>test@email.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="password"                data-endpoint="POSTapi-register"
+               value="password"
+               data-component="body">
+    <br>
+<p>The password of the user. Example: <code>password</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="password_confirmation"                data-endpoint="POSTapi-register"
+               value="password"
+               data-component="body">
+    <br>
+<p>The password confirmation of the user. Example: <code>password</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-login">POST api/login</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/login',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'email' =&gt; 'test@email.com',
+            'password' =&gt; 'password',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"test@email.com\",
+    \"password\": \"password\"
+}"
+</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/login'
+payload = {
+    "email": "test@email.com",
+    "password": "password"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "test@email.com",
+    "password": "password"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-login">
+</span>
+<span id="execution-results-POSTapi-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-login" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-login"></code></pre>
+</span>
+<form id="form-POSTapi-login" data-method="POST"
+      data-path="api/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/login</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-login"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email"                data-endpoint="POSTapi-login"
+               value="test@email.com"
+               data-component="body">
+    <br>
+<p>The email of the user. Example: <code>test@email.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="password"                data-endpoint="POSTapi-login"
+               value="password"
+               data-component="body">
+    <br>
+<p>The password of the user. Example: <code>password</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-user">GET api/user</h2>
 
 <p>
 </p>
@@ -142,16 +526,45 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/user',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/user" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/user'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/user"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/user"
 );
 
 const headers = {
@@ -247,6 +660,162 @@ access-control-allow-origin: *
             </div>
                         </form>
 
+                    <h2 id="endpoints-POSTapi-teams-become-team-manager">POST api/teams/become-team-manager</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-teams-become-team-manager">
+<blockquote>Example request:</blockquote>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/become-team-manager',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'team_id' =&gt; 'soluta',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/become-team-manager" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"team_id\": \"soluta\"
+}"
+</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/become-team-manager'
+payload = {
+    "team_id": "soluta"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/become-team-manager"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "team_id": "soluta"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-teams-become-team-manager">
+</span>
+<span id="execution-results-POSTapi-teams-become-team-manager" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-teams-become-team-manager"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-teams-become-team-manager" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-teams-become-team-manager" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-teams-become-team-manager"></code></pre>
+</span>
+<form id="form-POSTapi-teams-become-team-manager" data-method="POST"
+      data-path="api/teams/become-team-manager"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-teams-become-team-manager', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-teams-become-team-manager"
+                    onclick="tryItOut('POSTapi-teams-become-team-manager');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-teams-become-team-manager"
+                    onclick="cancelTryOut('POSTapi-teams-become-team-manager');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-teams-become-team-manager" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/teams/become-team-manager</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-teams-become-team-manager"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-teams-become-team-manager"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="team_id"                data-endpoint="POSTapi-teams-become-team-manager"
+               value="soluta"
+               data-component="body">
+    <br>
+<p>Example: <code>soluta</code></p>
+        </div>
+        </form>
+
                     <h2 id="endpoints-GETapi-games">GET api/games</h2>
 
 <p>
@@ -258,16 +827,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/games" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/games"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games"
 );
 
 const headers = {
@@ -293,7 +891,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 49
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -307,11 +905,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 12,
             &quot;away_score&quot;: 9,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T01:33:01.000000Z&quot;,
             &quot;home_team_id&quot;: 57,
             &quot;away_team_id&quot;: 58,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 57,
+                &quot;name&quot;: &quot;Sporup&quot;,
+                &quot;city&quot;: &quot;Sporup&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 58,
+                &quot;name&quot;: &quot;Glejbjerg&quot;,
+                &quot;city&quot;: &quot;Glejbjerg&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 397,
@@ -321,11 +929,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 9,
             &quot;away_score&quot;: 8,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T23:39:01.000000Z&quot;,
             &quot;home_team_id&quot;: 58,
             &quot;away_team_id&quot;: 64,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 58,
+                &quot;name&quot;: &quot;Glejbjerg&quot;,
+                &quot;city&quot;: &quot;Glejbjerg&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 64,
+                &quot;name&quot;: &quot;M&oslash;rke&quot;,
+                &quot;city&quot;: &quot;M&oslash;rke&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 404,
@@ -335,11 +953,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 7,
             &quot;away_score&quot;: 5,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T01:08:02.000000Z&quot;,
             &quot;home_team_id&quot;: 61,
             &quot;away_team_id&quot;: 59,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 61,
+                &quot;name&quot;: &quot;Vojens&quot;,
+                &quot;city&quot;: &quot;Vojens&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 59,
+                &quot;name&quot;: &quot;Djurs&quot;,
+                &quot;city&quot;: &quot;Djurs&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 448,
@@ -349,11 +977,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
             &quot;home_team_id&quot;: 57,
             &quot;away_team_id&quot;: 62,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 57,
+                &quot;name&quot;: &quot;Sporup&quot;,
+                &quot;city&quot;: &quot;Sporup&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 62,
+                &quot;name&quot;: &quot;Haderslev&quot;,
+                &quot;city&quot;: &quot;Haderslev&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 400,
@@ -363,11 +1001,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 10,
             &quot;away_score&quot;: 9,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T23:10:01.000000Z&quot;,
             &quot;home_team_id&quot;: 60,
             &quot;away_team_id&quot;: 59,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 60,
+                &quot;name&quot;: &quot;Kolding&quot;,
+                &quot;city&quot;: &quot;Kolding&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 59,
+                &quot;name&quot;: &quot;Djurs&quot;,
+                &quot;city&quot;: &quot;Djurs&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 396,
@@ -377,11 +1025,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 8,
             &quot;away_score&quot;: 4,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T21:08:02.000000Z&quot;,
             &quot;home_team_id&quot;: 60,
             &quot;away_team_id&quot;: 62,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 60,
+                &quot;name&quot;: &quot;Kolding&quot;,
+                &quot;city&quot;: &quot;Kolding&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 62,
+                &quot;name&quot;: &quot;Haderslev&quot;,
+                &quot;city&quot;: &quot;Haderslev&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 402,
@@ -391,11 +1049,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 7,
             &quot;away_score&quot;: 2,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T01:09:02.000000Z&quot;,
             &quot;home_team_id&quot;: 64,
             &quot;away_team_id&quot;: 62,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 64,
+                &quot;name&quot;: &quot;M&oslash;rke&quot;,
+                &quot;city&quot;: &quot;M&oslash;rke&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 62,
+                &quot;name&quot;: &quot;Haderslev&quot;,
+                &quot;city&quot;: &quot;Haderslev&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 393,
@@ -405,11 +1073,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 11,
             &quot;away_score&quot;: 12,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T21:35:01.000000Z&quot;,
             &quot;home_team_id&quot;: 63,
             &quot;away_team_id&quot;: 58,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 63,
+                &quot;name&quot;: &quot;Sydfyn&quot;,
+                &quot;city&quot;: &quot;Sydfyn&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 58,
+                &quot;name&quot;: &quot;Glejbjerg&quot;,
+                &quot;city&quot;: &quot;Glejbjerg&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 399,
@@ -419,11 +1097,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 5,
             &quot;away_score&quot;: 11,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T23:11:01.000000Z&quot;,
             &quot;home_team_id&quot;: 62,
             &quot;away_team_id&quot;: 61,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 62,
+                &quot;name&quot;: &quot;Haderslev&quot;,
+                &quot;city&quot;: &quot;Haderslev&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 61,
+                &quot;name&quot;: &quot;Vojens&quot;,
+                &quot;city&quot;: &quot;Vojens&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 405,
@@ -433,11 +1121,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 10,
             &quot;away_score&quot;: 5,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T03:09:01.000000Z&quot;,
             &quot;home_team_id&quot;: 58,
             &quot;away_team_id&quot;: 62,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 58,
+                &quot;name&quot;: &quot;Glejbjerg&quot;,
+                &quot;city&quot;: &quot;Glejbjerg&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 62,
+                &quot;name&quot;: &quot;Haderslev&quot;,
+                &quot;city&quot;: &quot;Haderslev&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 403,
@@ -447,11 +1145,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 6,
             &quot;away_score&quot;: 7,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T01:07:02.000000Z&quot;,
             &quot;home_team_id&quot;: 63,
             &quot;away_team_id&quot;: 60,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 63,
+                &quot;name&quot;: &quot;Sydfyn&quot;,
+                &quot;city&quot;: &quot;Sydfyn&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 60,
+                &quot;name&quot;: &quot;Kolding&quot;,
+                &quot;city&quot;: &quot;Kolding&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 395,
@@ -461,11 +1169,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 9,
             &quot;away_score&quot;: 5,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T21:13:01.000000Z&quot;,
             &quot;home_team_id&quot;: 59,
             &quot;away_team_id&quot;: 57,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 59,
+                &quot;name&quot;: &quot;Djurs&quot;,
+                &quot;city&quot;: &quot;Djurs&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 57,
+                &quot;name&quot;: &quot;Sporup&quot;,
+                &quot;city&quot;: &quot;Sporup&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 406,
@@ -475,11 +1193,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 5,
             &quot;away_score&quot;: 7,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T03:12:01.000000Z&quot;,
             &quot;home_team_id&quot;: 60,
             &quot;away_team_id&quot;: 57,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 60,
+                &quot;name&quot;: &quot;Kolding&quot;,
+                &quot;city&quot;: &quot;Kolding&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 57,
+                &quot;name&quot;: &quot;Sporup&quot;,
+                &quot;city&quot;: &quot;Sporup&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 394,
@@ -489,11 +1217,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 4,
             &quot;away_score&quot;: 7,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T21:11:01.000000Z&quot;,
             &quot;home_team_id&quot;: 61,
             &quot;away_team_id&quot;: 64,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 61,
+                &quot;name&quot;: &quot;Vojens&quot;,
+                &quot;city&quot;: &quot;Vojens&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 64,
+                &quot;name&quot;: &quot;M&oslash;rke&quot;,
+                &quot;city&quot;: &quot;M&oslash;rke&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         },
         {
             &quot;id&quot;: 407,
@@ -503,11 +1241,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 6,
             &quot;away_score&quot;: 7,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T03:10:01.000000Z&quot;,
             &quot;home_team_id&quot;: 59,
             &quot;away_team_id&quot;: 64,
-            &quot;competition_id&quot;: 8
+            &quot;competition_id&quot;: 8,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 59,
+                &quot;name&quot;: &quot;Djurs&quot;,
+                &quot;city&quot;: &quot;Djurs&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 64,
+                &quot;name&quot;: &quot;M&oslash;rke&quot;,
+                &quot;city&quot;: &quot;M&oslash;rke&quot;,
+                &quot;country&quot;: &quot;DK&quot;
+            }
         }
     ],
     &quot;links&quot;: {
@@ -679,16 +1427,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/games/1" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games/1'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/games/1"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/games/1"
 );
 
 const headers = {
@@ -714,7 +1491,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 48
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -727,8 +1504,6 @@ access-control-allow-origin: *
         &quot;current_time&quot;: &quot;20:00&quot;,
         &quot;home_score&quot;: 6,
         &quot;away_score&quot;: 7,
-        &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2022-11-27T21:13:01.000000Z&quot;,
         &quot;home_team_id&quot;: 2,
         &quot;away_team_id&quot;: 5,
         &quot;competition_id&quot;: 1,
@@ -736,19 +1511,13 @@ access-control-allow-origin: *
             &quot;id&quot;: 2,
             &quot;name&quot;: &quot;Lidhult&quot;,
             &quot;city&quot;: &quot;Lidhult&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;SE&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:49.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:49.000000Z&quot;
+            &quot;country&quot;: &quot;SE&quot;
         },
         &quot;away_team&quot;: {
             &quot;id&quot;: 5,
             &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
             &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;SE&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:49.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:49.000000Z&quot;
+            &quot;country&quot;: &quot;SE&quot;
         }
     }
 }</code>
@@ -840,16 +1609,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/teams" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/teams"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams"
 );
 
 const headers = {
@@ -875,7 +1673,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 47
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -885,136 +1683,91 @@ access-control-allow-origin: *
             &quot;id&quot;: 64,
             &quot;name&quot;: &quot;M&oslash;rke&quot;,
             &quot;city&quot;: &quot;M&oslash;rke&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:58.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 57,
             &quot;name&quot;: &quot;Sporup&quot;,
             &quot;city&quot;: &quot;Sporup&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 58,
             &quot;name&quot;: &quot;Glejbjerg&quot;,
             &quot;city&quot;: &quot;Glejbjerg&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 59,
             &quot;name&quot;: &quot;Djurs&quot;,
             &quot;city&quot;: &quot;Djurs&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 60,
             &quot;name&quot;: &quot;Kolding&quot;,
             &quot;city&quot;: &quot;Kolding&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 61,
             &quot;name&quot;: &quot;Vojens&quot;,
             &quot;city&quot;: &quot;Vojens&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 62,
             &quot;name&quot;: &quot;Haderslev&quot;,
             &quot;city&quot;: &quot;Haderslev&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 63,
             &quot;name&quot;: &quot;Sydfyn&quot;,
             &quot;city&quot;: &quot;Sydfyn&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 49,
             &quot;name&quot;: &quot;Vestj&quot;,
             &quot;city&quot;: &quot;Vestj&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 50,
             &quot;name&quot;: &quot;Vinderup&quot;,
             &quot;city&quot;: &quot;Vinderup&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 51,
             &quot;name&quot;: &quot;Sandved&quot;,
             &quot;city&quot;: &quot;Sandved&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 52,
             &quot;name&quot;: &quot;Veks&oslash;&quot;,
             &quot;city&quot;: &quot;Veks&oslash;&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 53,
             &quot;name&quot;: &quot;S&aring;by&quot;,
             &quot;city&quot;: &quot;S&aring;by&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 54,
             &quot;name&quot;: &quot;Ulstrup&quot;,
             &quot;city&quot;: &quot;Ulstrup&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         },
         {
             &quot;id&quot;: 55,
             &quot;name&quot;: &quot;Hundested&quot;,
             &quot;city&quot;: &quot;Hundested&quot;,
-            &quot;state&quot;: null,
-            &quot;country&quot;: &quot;DK&quot;,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;
+            &quot;country&quot;: &quot;DK&quot;
         }
     ],
     &quot;links&quot;: {
@@ -1146,16 +1899,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/teams/1" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/teams/1"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1"
 );
 
 const headers = {
@@ -1181,7 +1963,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 46
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1281,16 +2063,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1/schedule',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/teams/1/schedule" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1/schedule" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1/schedule'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/teams/1/schedule"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/teams/1/schedule"
 );
 
 const headers = {
@@ -1316,7 +2127,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 45
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1330,11 +2141,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 13,
             &quot;away_score&quot;: 6,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T21:14:01.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 7,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 7,
+                &quot;name&quot;: &quot;Johannishus&quot;,
+                &quot;city&quot;: &quot;Johannishus&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 8,
@@ -1344,11 +2165,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 12,
             &quot;away_score&quot;: 9,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T23:11:01.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 8,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 8,
+                &quot;name&quot;: &quot;Hassela&quot;,
+                &quot;city&quot;: &quot;Hassela&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 11,
@@ -1358,11 +2189,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 5,
             &quot;away_score&quot;: 14,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T01:14:01.000000Z&quot;,
             &quot;home_team_id&quot;: 2,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Lidhult&quot;,
+                &quot;city&quot;: &quot;Lidhult&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 14,
@@ -1372,11 +2213,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 7,
             &quot;away_score&quot;: 8,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T03:08:01.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 6,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 6,
+                &quot;name&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                &quot;city&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 17,
@@ -1386,11 +2237,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 3,
             &quot;away_score&quot;: 9,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T05:09:00.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 5,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
+                &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 22,
@@ -1400,11 +2261,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 12,
             &quot;away_score&quot;: 8,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T07:10:01.000000Z&quot;,
             &quot;home_team_id&quot;: 4,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Persbo&quot;,
+                &quot;city&quot;: &quot;Persbo&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 27,
@@ -1414,39 +2285,69 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 11,
             &quot;away_score&quot;: 5,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-28T09:10:01.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 3,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Tystberga&quot;,
+                &quot;city&quot;: &quot;Tystberga&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 32,
             &quot;round&quot;: 8,
-            &quot;status&quot;: 0,
+            &quot;status&quot;: 60,
             &quot;starts_at&quot;: &quot;2022-11-28T09:58:49.000000Z&quot;,
             &quot;current_time&quot;: &quot;20:00&quot;,
-            &quot;home_score&quot;: 0,
-            &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
+            &quot;home_score&quot;: 9,
+            &quot;away_score&quot;: 7,
             &quot;home_team_id&quot;: 7,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 7,
+                &quot;name&quot;: &quot;Johannishus&quot;,
+                &quot;city&quot;: &quot;Johannishus&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 36,
             &quot;round&quot;: 9,
-            &quot;status&quot;: 0,
+            &quot;status&quot;: 11,
             &quot;starts_at&quot;: &quot;2022-11-28T11:58:49.000000Z&quot;,
             &quot;current_time&quot;: &quot;20:00&quot;,
-            &quot;home_score&quot;: 0,
-            &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
+            &quot;home_score&quot;: 1,
+            &quot;away_score&quot;: 4,
             &quot;home_team_id&quot;: 8,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 8,
+                &quot;name&quot;: &quot;Hassela&quot;,
+                &quot;city&quot;: &quot;Hassela&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 39,
@@ -1456,11 +2357,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 2,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Lidhult&quot;,
+                &quot;city&quot;: &quot;Lidhult&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 42,
@@ -1470,11 +2381,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
             &quot;home_team_id&quot;: 6,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 6,
+                &quot;name&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                &quot;city&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 45,
@@ -1484,11 +2405,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
             &quot;home_team_id&quot;: 5,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
+                &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 50,
@@ -1498,11 +2429,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
             &quot;home_team_id&quot;: 1,
             &quot;away_team_id&quot;: 4,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Persbo&quot;,
+                &quot;city&quot;: &quot;Persbo&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         },
         {
             &quot;id&quot;: 55,
@@ -1512,11 +2453,21 @@ access-control-allow-origin: *
             &quot;current_time&quot;: &quot;20:00&quot;,
             &quot;home_score&quot;: 0,
             &quot;away_score&quot;: 0,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
             &quot;home_team_id&quot;: 3,
             &quot;away_team_id&quot;: 1,
-            &quot;competition_id&quot;: 1
+            &quot;competition_id&quot;: 1,
+            &quot;home_team&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Tystberga&quot;,
+                &quot;city&quot;: &quot;Tystberga&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            },
+            &quot;away_team&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;&Aring;storp&quot;,
+                &quot;city&quot;: &quot;&Aring;storp&quot;,
+                &quot;country&quot;: &quot;SE&quot;
+            }
         }
     ]
 }</code>
@@ -1597,127 +2548,6 @@ access-control-allow-origin: *
             </div>
                     </form>
 
-                    <h2 id="endpoints-POSTapi-teams-become-team-manager">POST api/teams/become-team-manager</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTapi-teams-become-team-manager">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "https://hockeymanager.test/api/teams/become-team-manager" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"team_id\": \"nisi\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/teams/become-team-manager"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "team_id": "nisi"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTapi-teams-become-team-manager">
-</span>
-<span id="execution-results-POSTapi-teams-become-team-manager" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTapi-teams-become-team-manager"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-teams-become-team-manager" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-POSTapi-teams-become-team-manager" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-teams-become-team-manager"></code></pre>
-</span>
-<form id="form-POSTapi-teams-become-team-manager" data-method="POST"
-      data-path="api/teams/become-team-manager"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-teams-become-team-manager', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-teams-become-team-manager"
-                    onclick="tryItOut('POSTapi-teams-become-team-manager');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-teams-become-team-manager"
-                    onclick="cancelTryOut('POSTapi-teams-become-team-manager');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-teams-become-team-manager" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>api/teams/become-team-manager</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="POSTapi-teams-become-team-manager"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="Accept"                data-endpoint="POSTapi-teams-become-team-manager"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>team_id</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="team_id"                data-endpoint="POSTapi-teams-become-team-manager"
-               value="nisi"
-               data-component="body">
-    <br>
-<p>Example: <code>nisi</code></p>
-        </div>
-        </form>
-
                     <h2 id="endpoints-GETapi-competitions">GET api/competitions</h2>
 
 <p>
@@ -1729,16 +2559,45 @@ fetch(url, {
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/competitions" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/competitions"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions"
 );
 
 const headers = {
@@ -1764,7 +2623,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 44
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1780,15 +2639,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 1,
-            &quot;relegation&quot;: 2,
             &quot;promotion&quot;: 0,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 2,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:49.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 66,
+                    &quot;goals_against&quot;: 35,
+                    &quot;points&quot;: 21,
+                    &quot;goal_difference&quot;: 31,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 5,
+                        &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
+                        &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 75,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 20,
+                    &quot;goal_difference&quot;: 18,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 6,
+                        &quot;name&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                        &quot;city&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 51,
+                    &quot;goals_against&quot;: 55,
+                    &quot;points&quot;: 13,
+                    &quot;goal_difference&quot;: -4,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 3,
+                        &quot;name&quot;: &quot;Tystberga&quot;,
+                        &quot;city&quot;: &quot;Tystberga&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 75,
+                    &quot;goals_against&quot;: 63,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: 12,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 1,
+                        &quot;name&quot;: &quot;&Aring;storp&quot;,
+                        &quot;city&quot;: &quot;&Aring;storp&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 66,
+                    &quot;goals_against&quot;: 66,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: 0,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 4,
+                        &quot;name&quot;: &quot;Persbo&quot;,
+                        &quot;city&quot;: &quot;Persbo&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 55,
+                    &quot;goals_against&quot;: 62,
+                    &quot;points&quot;: 11,
+                    &quot;goal_difference&quot;: -7,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 7,
+                        &quot;name&quot;: &quot;Johannishus&quot;,
+                        &quot;city&quot;: &quot;Johannishus&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 54,
+                    &quot;goals_against&quot;: 83,
+                    &quot;points&quot;: 4,
+                    &quot;goal_difference&quot;: -29,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 8,
+                        &quot;name&quot;: &quot;Hassela&quot;,
+                        &quot;city&quot;: &quot;Hassela&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 55,
+                    &quot;goals_against&quot;: 76,
+                    &quot;points&quot;: 3,
+                    &quot;goal_difference&quot;: -21,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 2,
+                        &quot;name&quot;: &quot;Lidhult&quot;,
+                        &quot;city&quot;: &quot;Lidhult&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 2,
@@ -1800,15 +2784,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 2,
-            &quot;relegation&quot;: 0,
             &quot;promotion&quot;: 2,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 0,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:50.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 71,
+                    &quot;goals_against&quot;: 50,
+                    &quot;points&quot;: 21,
+                    &quot;goal_difference&quot;: 21,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 13,
+                        &quot;name&quot;: &quot;Sj&ouml;torp&quot;,
+                        &quot;city&quot;: &quot;Sj&ouml;torp&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 57,
+                    &quot;goals_against&quot;: 45,
+                    &quot;points&quot;: 16,
+                    &quot;goal_difference&quot;: 12,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 12,
+                        &quot;name&quot;: &quot;Hallabro&quot;,
+                        &quot;city&quot;: &quot;Hallabro&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 64,
+                    &quot;goals_against&quot;: 61,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 3,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 14,
+                        &quot;name&quot;: &quot;Lidk&ouml;ping&quot;,
+                        &quot;city&quot;: &quot;Lidk&ouml;ping&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 53,
+                    &quot;goals_against&quot;: 49,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: 4,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 11,
+                        &quot;name&quot;: &quot;H&auml;llestad&quot;,
+                        &quot;city&quot;: &quot;H&auml;llestad&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 51,
+                    &quot;goals_against&quot;: 54,
+                    &quot;points&quot;: 10,
+                    &quot;goal_difference&quot;: -3,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 9,
+                        &quot;name&quot;: &quot;Sulvik&quot;,
+                        &quot;city&quot;: &quot;Sulvik&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 64,
+                    &quot;goals_against&quot;: 68,
+                    &quot;points&quot;: 10,
+                    &quot;goal_difference&quot;: -4,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 15,
+                        &quot;name&quot;: &quot;Idala&quot;,
+                        &quot;city&quot;: &quot;Idala&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 53,
+                    &quot;goals_against&quot;: 47,
+                    &quot;points&quot;: 9,
+                    &quot;goal_difference&quot;: 6,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 10,
+                        &quot;name&quot;: &quot;&Aring;senh&ouml;ga&quot;,
+                        &quot;city&quot;: &quot;&Aring;senh&ouml;ga&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 46,
+                    &quot;goals_against&quot;: 85,
+                    &quot;points&quot;: 3,
+                    &quot;goal_difference&quot;: -39,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 16,
+                        &quot;name&quot;: &quot;Krokek&quot;,
+                        &quot;city&quot;: &quot;Krokek&quot;,
+                        &quot;country&quot;: &quot;SE&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 3,
@@ -1820,15 +2929,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 1,
-            &quot;relegation&quot;: 2,
             &quot;promotion&quot;: 0,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 2,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:51.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 67,
+                    &quot;goals_against&quot;: 50,
+                    &quot;points&quot;: 19,
+                    &quot;goal_difference&quot;: 17,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 21,
+                        &quot;name&quot;: &quot;Uus-Joakim&quot;,
+                        &quot;city&quot;: &quot;Uus-Joakim&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 68,
+                    &quot;goals_against&quot;: 52,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 16,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 17,
+                        &quot;name&quot;: &quot;Uus-Mikaj&auml;rvi&quot;,
+                        &quot;city&quot;: &quot;Uus-Mikaj&auml;rvi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 60,
+                    &quot;goals_against&quot;: 59,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 19,
+                        &quot;name&quot;: &quot;Aholahti&quot;,
+                        &quot;city&quot;: &quot;Aholahti&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 54,
+                    &quot;goals_against&quot;: 53,
+                    &quot;points&quot;: 14,
+                    &quot;goal_difference&quot;: 1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 22,
+                        &quot;name&quot;: &quot;Kinnunenjoki&quot;,
+                        &quot;city&quot;: &quot;Kinnunenjoki&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 58,
+                    &quot;goals_against&quot;: 58,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: 0,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 20,
+                        &quot;name&quot;: &quot;Helismaapudas&quot;,
+                        &quot;city&quot;: &quot;Helismaapudas&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 57,
+                    &quot;goals_against&quot;: 62,
+                    &quot;points&quot;: 11,
+                    &quot;goal_difference&quot;: -5,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 23,
+                        &quot;name&quot;: &quot;Uus-Joonatanvesi&quot;,
+                        &quot;city&quot;: &quot;Uus-Joonatanvesi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 52,
+                    &quot;goals_against&quot;: 51,
+                    &quot;points&quot;: 9,
+                    &quot;goal_difference&quot;: 1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 24,
+                        &quot;name&quot;: &quot;It&auml;-Aarni&quot;,
+                        &quot;city&quot;: &quot;It&auml;-Aarni&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 0,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 8,
+                    &quot;goals_for&quot;: 49,
+                    &quot;goals_against&quot;: 80,
+                    &quot;points&quot;: 1,
+                    &quot;goal_difference&quot;: -31,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 18,
+                        &quot;name&quot;: &quot;Uus-Neea&quot;,
+                        &quot;city&quot;: &quot;Uus-Neea&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 4,
@@ -1840,15 +3074,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 2,
-            &quot;relegation&quot;: 0,
             &quot;promotion&quot;: 2,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 0,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:52.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 64,
+                    &quot;goals_against&quot;: 48,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 16,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 28,
+                        &quot;name&quot;: &quot;Ahovesi&quot;,
+                        &quot;city&quot;: &quot;Ahovesi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 67,
+                    &quot;goals_against&quot;: 54,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 13,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 31,
+                        &quot;name&quot;: &quot;Hirvel&auml;koski&quot;,
+                        &quot;city&quot;: &quot;Hirvel&auml;koski&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 60,
+                    &quot;goals_against&quot;: 49,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 11,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 27,
+                        &quot;name&quot;: &quot;Jerelampi&quot;,
+                        &quot;city&quot;: &quot;Jerelampi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 56,
+                    &quot;goals_against&quot;: 52,
+                    &quot;points&quot;: 15,
+                    &quot;goal_difference&quot;: 4,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 25,
+                        &quot;name&quot;: &quot;Er&auml;harjulampi&quot;,
+                        &quot;city&quot;: &quot;Er&auml;harjulampi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 49,
+                    &quot;goals_against&quot;: 51,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: -2,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 29,
+                        &quot;name&quot;: &quot;Uus-Pihlapudas&quot;,
+                        &quot;city&quot;: &quot;Uus-Pihlapudas&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 52,
+                    &quot;goals_against&quot;: 66,
+                    &quot;points&quot;: 11,
+                    &quot;goal_difference&quot;: -14,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 30,
+                        &quot;name&quot;: &quot;Linnam&auml;kisalmi&quot;,
+                        &quot;city&quot;: &quot;Linnam&auml;kisalmi&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 56,
+                    &quot;goals_against&quot;: 70,
+                    &quot;points&quot;: 7,
+                    &quot;goal_difference&quot;: -14,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 26,
+                        &quot;name&quot;: &quot;Tuuttiharju&quot;,
+                        &quot;city&quot;: &quot;Tuuttiharju&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 40,
+                    &quot;goals_against&quot;: 54,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -14,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 32,
+                        &quot;name&quot;: &quot;Uusi-Enna&quot;,
+                        &quot;city&quot;: &quot;Uusi-Enna&quot;,
+                        &quot;country&quot;: &quot;FI&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 5,
@@ -1860,15 +3219,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 1,
-            &quot;relegation&quot;: 2,
             &quot;promotion&quot;: 0,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 2,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:53.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 57,
+                    &quot;goals_against&quot;: 44,
+                    &quot;points&quot;: 20,
+                    &quot;goal_difference&quot;: 13,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 39,
+                        &quot;name&quot;: &quot;Orkanger&quot;,
+                        &quot;city&quot;: &quot;Orkanger&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 66,
+                    &quot;goals_against&quot;: 43,
+                    &quot;points&quot;: 18,
+                    &quot;goal_difference&quot;: 23,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 34,
+                        &quot;name&quot;: &quot;Skien&quot;,
+                        &quot;city&quot;: &quot;Skien&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 61,
+                    &quot;goals_against&quot;: 53,
+                    &quot;points&quot;: 16,
+                    &quot;goal_difference&quot;: 8,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 35,
+                        &quot;name&quot;: &quot;Fredrikstad&quot;,
+                        &quot;city&quot;: &quot;Fredrikstad&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 58,
+                    &quot;goals_against&quot;: 61,
+                    &quot;points&quot;: 13,
+                    &quot;goal_difference&quot;: -3,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 40,
+                        &quot;name&quot;: &quot;Sandefjord&quot;,
+                        &quot;city&quot;: &quot;Sandefjord&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 45,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 10,
+                    &quot;goal_difference&quot;: -12,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 36,
+                        &quot;name&quot;: &quot;Vard&oslash;&quot;,
+                        &quot;city&quot;: &quot;Vard&oslash;&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 53,
+                    &quot;goals_against&quot;: 47,
+                    &quot;points&quot;: 7,
+                    &quot;goal_difference&quot;: 6,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 38,
+                        &quot;name&quot;: &quot;Molde&quot;,
+                        &quot;city&quot;: &quot;Molde&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 52,
+                    &quot;goals_against&quot;: 53,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 33,
+                        &quot;name&quot;: &quot;Fosnav&aring;g&quot;,
+                        &quot;city&quot;: &quot;Fosnav&aring;g&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 47,
+                    &quot;goals_against&quot;: 81,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -34,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 37,
+                        &quot;name&quot;: &quot;Tvedestrand&quot;,
+                        &quot;city&quot;: &quot;Tvedestrand&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 6,
@@ -1880,15 +3364,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 2,
-            &quot;relegation&quot;: 0,
             &quot;promotion&quot;: 2,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 0,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:54.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 77,
+                    &quot;goals_against&quot;: 58,
+                    &quot;points&quot;: 21,
+                    &quot;goal_difference&quot;: 19,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 44,
+                        &quot;name&quot;: &quot;Sandefjord&quot;,
+                        &quot;city&quot;: &quot;Sandefjord&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 69,
+                    &quot;goals_against&quot;: 52,
+                    &quot;points&quot;: 18,
+                    &quot;goal_difference&quot;: 17,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 45,
+                        &quot;name&quot;: &quot;Horten&quot;,
+                        &quot;city&quot;: &quot;Horten&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 62,
+                    &quot;goals_against&quot;: 49,
+                    &quot;points&quot;: 17,
+                    &quot;goal_difference&quot;: 13,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 41,
+                        &quot;name&quot;: &quot;Stokmarknes&quot;,
+                        &quot;city&quot;: &quot;Stokmarknes&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 56,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 11,
+                    &quot;goal_difference&quot;: -1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 47,
+                        &quot;name&quot;: &quot;Haugesund&quot;,
+                        &quot;city&quot;: &quot;Haugesund&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 59,
+                    &quot;goals_against&quot;: 65,
+                    &quot;points&quot;: 8,
+                    &quot;goal_difference&quot;: -6,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 43,
+                        &quot;name&quot;: &quot;Kristiansund&quot;,
+                        &quot;city&quot;: &quot;Kristiansund&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 63,
+                    &quot;goals_against&quot;: 77,
+                    &quot;points&quot;: 8,
+                    &quot;goal_difference&quot;: -14,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 42,
+                        &quot;name&quot;: &quot;Namsos&quot;,
+                        &quot;city&quot;: &quot;Namsos&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 38,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 7,
+                    &quot;goal_difference&quot;: -19,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 46,
+                        &quot;name&quot;: &quot;Lyngdal&quot;,
+                        &quot;city&quot;: &quot;Lyngdal&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 60,
+                    &quot;goals_against&quot;: 69,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -9,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 48,
+                        &quot;name&quot;: &quot;Alta&quot;,
+                        &quot;city&quot;: &quot;Alta&quot;,
+                        &quot;country&quot;: &quot;NO&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 7,
@@ -1900,15 +3509,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 1,
-            &quot;relegation&quot;: 2,
             &quot;promotion&quot;: 0,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 2,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:56.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 58,
+                    &quot;goals_against&quot;: 31,
+                    &quot;points&quot;: 19,
+                    &quot;goal_difference&quot;: 27,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 56,
+                        &quot;name&quot;: &quot;Bolderslev&quot;,
+                        &quot;city&quot;: &quot;Bolderslev&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 60,
+                    &quot;goals_against&quot;: 45,
+                    &quot;points&quot;: 18,
+                    &quot;goal_difference&quot;: 15,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 52,
+                        &quot;name&quot;: &quot;Veks&oslash;&quot;,
+                        &quot;city&quot;: &quot;Veks&oslash;&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 55,
+                    &quot;goals_against&quot;: 54,
+                    &quot;points&quot;: 16,
+                    &quot;goal_difference&quot;: 1,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 53,
+                        &quot;name&quot;: &quot;S&aring;by&quot;,
+                        &quot;city&quot;: &quot;S&aring;by&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 70,
+                    &quot;goals_against&quot;: 44,
+                    &quot;points&quot;: 14,
+                    &quot;goal_difference&quot;: 26,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 55,
+                        &quot;name&quot;: &quot;Hundested&quot;,
+                        &quot;city&quot;: &quot;Hundested&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 65,
+                    &quot;goals_against&quot;: 67,
+                    &quot;points&quot;: 14,
+                    &quot;goal_difference&quot;: -2,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 50,
+                        &quot;name&quot;: &quot;Vinderup&quot;,
+                        &quot;city&quot;: &quot;Vinderup&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 42,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -15,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 54,
+                        &quot;name&quot;: &quot;Ulstrup&quot;,
+                        &quot;city&quot;: &quot;Ulstrup&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 2,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 6,
+                    &quot;goals_for&quot;: 44,
+                    &quot;goals_against&quot;: 70,
+                    &quot;points&quot;: 6,
+                    &quot;goal_difference&quot;: -26,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 49,
+                        &quot;name&quot;: &quot;Vestj&quot;,
+                        &quot;city&quot;: &quot;Vestj&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 41,
+                    &quot;goals_against&quot;: 67,
+                    &quot;points&quot;: 3,
+                    &quot;goal_difference&quot;: -26,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 51,
+                        &quot;name&quot;: &quot;Sandved&quot;,
+                        &quot;city&quot;: &quot;Sandved&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                }
+            ]
         },
         {
             &quot;id&quot;: 8,
@@ -1920,15 +3654,140 @@ access-control-allow-origin: *
             &quot;type&quot;: 0,
             &quot;max_teams&quot;: 8,
             &quot;meetings&quot;: 2,
-            &quot;tier&quot;: 2,
-            &quot;relegation&quot;: 0,
             &quot;promotion&quot;: 2,
-            &quot;relegation_qualification&quot;: 0,
-            &quot;promotion_qualification&quot;: 0,
+            &quot;relegation&quot;: 0,
             &quot;recurring&quot;: true,
             &quot;edition&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-11-27T19:58:57.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-11-27T20:00:23.000000Z&quot;
+            &quot;table&quot;: [
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 7,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 1,
+                    &quot;goals_for&quot;: 59,
+                    &quot;goals_against&quot;: 43,
+                    &quot;points&quot;: 21,
+                    &quot;goal_difference&quot;: 16,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 60,
+                        &quot;name&quot;: &quot;Kolding&quot;,
+                        &quot;city&quot;: &quot;Kolding&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 6,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 2,
+                    &quot;goals_for&quot;: 72,
+                    &quot;goals_against&quot;: 64,
+                    &quot;points&quot;: 17,
+                    &quot;goal_difference&quot;: 8,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 58,
+                        &quot;name&quot;: &quot;Glejbjerg&quot;,
+                        &quot;city&quot;: &quot;Glejbjerg&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 50,
+                    &quot;goals_against&quot;: 42,
+                    &quot;points&quot;: 16,
+                    &quot;goal_difference&quot;: 8,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 64,
+                        &quot;name&quot;: &quot;M&oslash;rke&quot;,
+                        &quot;city&quot;: &quot;M&oslash;rke&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 5,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 3,
+                    &quot;goals_for&quot;: 61,
+                    &quot;goals_against&quot;: 55,
+                    &quot;points&quot;: 14,
+                    &quot;goal_difference&quot;: 6,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 57,
+                        &quot;name&quot;: &quot;Sporup&quot;,
+                        &quot;city&quot;: &quot;Sporup&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 4,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 4,
+                    &quot;goals_for&quot;: 55,
+                    &quot;goals_against&quot;: 48,
+                    &quot;points&quot;: 12,
+                    &quot;goal_difference&quot;: 7,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 61,
+                        &quot;name&quot;: &quot;Vojens&quot;,
+                        &quot;city&quot;: &quot;Vojens&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 3,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 5,
+                    &quot;goals_for&quot;: 57,
+                    &quot;goals_against&quot;: 57,
+                    &quot;points&quot;: 9,
+                    &quot;goal_difference&quot;: 0,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 59,
+                        &quot;name&quot;: &quot;Djurs&quot;,
+                        &quot;city&quot;: &quot;Djurs&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 60,
+                    &quot;goals_against&quot;: 71,
+                    &quot;points&quot;: 4,
+                    &quot;goal_difference&quot;: -11,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 63,
+                        &quot;name&quot;: &quot;Sydfyn&quot;,
+                        &quot;city&quot;: &quot;Sydfyn&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                },
+                {
+                    &quot;games_played&quot;: 8,
+                    &quot;wins&quot;: 1,
+                    &quot;draws&quot;: 0,
+                    &quot;losses&quot;: 7,
+                    &quot;goals_for&quot;: 40,
+                    &quot;goals_against&quot;: 74,
+                    &quot;points&quot;: 3,
+                    &quot;goal_difference&quot;: -34,
+                    &quot;team&quot;: {
+                        &quot;id&quot;: 62,
+                        &quot;name&quot;: &quot;Haderslev&quot;,
+                        &quot;city&quot;: &quot;Haderslev&quot;,
+                        &quot;country&quot;: &quot;DK&quot;
+                    }
+                }
+            ]
         }
     ],
     &quot;links&quot;: {
@@ -2041,16 +3900,45 @@ access-control-allow-origin: *
 <blockquote>Example request:</blockquote>
 
 
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions/1',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "https://hockeymanager.test/api/competitions/1" \
+    --get "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions/1'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "https://hockeymanager.test/api/competitions/1"
+    "https://aged-reef-fiao7crdopo9.vapor-farm-g1.com/api/competitions/1"
 );
 
 const headers = {
@@ -2076,7 +3964,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 43
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2091,152 +3979,138 @@ access-control-allow-origin: *
         &quot;type&quot;: 0,
         &quot;max_teams&quot;: 8,
         &quot;meetings&quot;: 2,
-        &quot;teams&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;&Aring;storp&quot;,
-                &quot;city&quot;: &quot;&Aring;storp&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 2,
-                &quot;name&quot;: &quot;Lidhult&quot;,
-                &quot;city&quot;: &quot;Lidhult&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 3,
-                &quot;name&quot;: &quot;Tystberga&quot;,
-                &quot;city&quot;: &quot;Tystberga&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Persbo&quot;,
-                &quot;city&quot;: &quot;Persbo&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 5,
-                &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
-                &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 6,
-                &quot;name&quot;: &quot;Br&auml;nn&ouml;&quot;,
-                &quot;city&quot;: &quot;Br&auml;nn&ouml;&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 7,
-                &quot;name&quot;: &quot;Johannishus&quot;,
-                &quot;city&quot;: &quot;Johannishus&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            },
-            {
-                &quot;id&quot;: 8,
-                &quot;name&quot;: &quot;Hassela&quot;,
-                &quot;city&quot;: &quot;Hassela&quot;,
-                &quot;country&quot;: &quot;SE&quot;
-            }
-        ],
+        &quot;promotion&quot;: 0,
+        &quot;relegation&quot;: 2,
+        &quot;recurring&quot;: true,
+        &quot;edition&quot;: 1,
         &quot;table&quot;: [
             {
-                &quot;ct_id&quot;: 5,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 5,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 6,
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 7,
                 &quot;draws&quot;: 0,
                 &quot;losses&quot;: 1,
-                &quot;goals_for&quot;: 57,
-                &quot;goals_against&quot;: 27,
-                &quot;points&quot;: 18
+                &quot;goals_for&quot;: 66,
+                &quot;goals_against&quot;: 35,
+                &quot;points&quot;: 21,
+                &quot;goal_difference&quot;: 31,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 5,
+                    &quot;name&quot;: &quot;Naglarby och Enbacka&quot;,
+                    &quot;city&quot;: &quot;Naglarby och Enbacka&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
             },
             {
-                &quot;ct_id&quot;: 6,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 6,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 6,
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 7,
                 &quot;draws&quot;: 0,
                 &quot;losses&quot;: 1,
-                &quot;goals_for&quot;: 65,
-                &quot;goals_against&quot;: 51,
-                &quot;points&quot;: 17
+                &quot;goals_for&quot;: 75,
+                &quot;goals_against&quot;: 57,
+                &quot;points&quot;: 20,
+                &quot;goal_difference&quot;: 18,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 6,
+                    &quot;name&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                    &quot;city&quot;: &quot;Br&auml;nn&ouml;&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
             },
             {
-                &quot;ct_id&quot;: 1,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 1,
-                &quot;games_played&quot;: 7,
+                &quot;games_played&quot;: 8,
                 &quot;wins&quot;: 4,
                 &quot;draws&quot;: 0,
-                &quot;losses&quot;: 3,
-                &quot;goals_for&quot;: 68,
-                &quot;goals_against&quot;: 54,
-                &quot;points&quot;: 12
-            },
-            {
-                &quot;ct_id&quot;: 4,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 4,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 4,
-                &quot;draws&quot;: 0,
-                &quot;losses&quot;: 3,
-                &quot;goals_for&quot;: 62,
-                &quot;goals_against&quot;: 59,
-                &quot;points&quot;: 12
-            },
-            {
-                &quot;ct_id&quot;: 3,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 3,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 3,
-                &quot;draws&quot;: 0,
                 &quot;losses&quot;: 4,
-                &quot;goals_for&quot;: 44,
-                &quot;goals_against&quot;: 51,
-                &quot;points&quot;: 10
-            },
-            {
-                &quot;ct_id&quot;: 7,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 7,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 3,
-                &quot;draws&quot;: 0,
-                &quot;losses&quot;: 4,
-                &quot;goals_for&quot;: 46,
+                &quot;goals_for&quot;: 51,
                 &quot;goals_against&quot;: 55,
-                &quot;points&quot;: 8
+                &quot;points&quot;: 13,
+                &quot;goal_difference&quot;: -4,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 3,
+                    &quot;name&quot;: &quot;Tystberga&quot;,
+                    &quot;city&quot;: &quot;Tystberga&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
             },
             {
-                &quot;ct_id&quot;: 8,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 8,
-                &quot;games_played&quot;: 7,
-                &quot;wins&quot;: 1,
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 4,
                 &quot;draws&quot;: 0,
-                &quot;losses&quot;: 6,
-                &quot;goals_for&quot;: 48,
-                &quot;goals_against&quot;: 73,
-                &quot;points&quot;: 4
+                &quot;losses&quot;: 4,
+                &quot;goals_for&quot;: 75,
+                &quot;goals_against&quot;: 63,
+                &quot;points&quot;: 12,
+                &quot;goal_difference&quot;: 12,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;&Aring;storp&quot;,
+                    &quot;city&quot;: &quot;&Aring;storp&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
             },
             {
-                &quot;ct_id&quot;: 2,
-                &quot;competition_id&quot;: 1,
-                &quot;team_id&quot;: 2,
-                &quot;games_played&quot;: 7,
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 4,
+                &quot;draws&quot;: 0,
+                &quot;losses&quot;: 4,
+                &quot;goals_for&quot;: 66,
+                &quot;goals_against&quot;: 66,
+                &quot;points&quot;: 12,
+                &quot;goal_difference&quot;: 0,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 4,
+                    &quot;name&quot;: &quot;Persbo&quot;,
+                    &quot;city&quot;: &quot;Persbo&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
+            },
+            {
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 4,
+                &quot;draws&quot;: 0,
+                &quot;losses&quot;: 4,
+                &quot;goals_for&quot;: 55,
+                &quot;goals_against&quot;: 62,
+                &quot;points&quot;: 11,
+                &quot;goal_difference&quot;: -7,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;name&quot;: &quot;Johannishus&quot;,
+                    &quot;city&quot;: &quot;Johannishus&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
+            },
+            {
+                &quot;games_played&quot;: 8,
                 &quot;wins&quot;: 1,
                 &quot;draws&quot;: 0,
-                &quot;losses&quot;: 6,
-                &quot;goals_for&quot;: 47,
-                &quot;goals_against&quot;: 67,
-                &quot;points&quot;: 3
+                &quot;losses&quot;: 7,
+                &quot;goals_for&quot;: 54,
+                &quot;goals_against&quot;: 83,
+                &quot;points&quot;: 4,
+                &quot;goal_difference&quot;: -29,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 8,
+                    &quot;name&quot;: &quot;Hassela&quot;,
+                    &quot;city&quot;: &quot;Hassela&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
+            },
+            {
+                &quot;games_played&quot;: 8,
+                &quot;wins&quot;: 1,
+                &quot;draws&quot;: 0,
+                &quot;losses&quot;: 7,
+                &quot;goals_for&quot;: 55,
+                &quot;goals_against&quot;: 76,
+                &quot;points&quot;: 3,
+                &quot;goal_difference&quot;: -21,
+                &quot;team&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;Lidhult&quot;,
+                    &quot;city&quot;: &quot;Lidhult&quot;,
+                    &quot;country&quot;: &quot;SE&quot;
+                }
             }
         ]
     }
@@ -2324,7 +4198,9 @@ access-control-allow-origin: *
     </div>
     <div class="dark-box">
                     <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="php">php</button>
                                                         <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="python">python</button>
                                                         <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
                             </div>
             </div>

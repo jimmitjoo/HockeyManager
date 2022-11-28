@@ -3,7 +3,7 @@
 
 
 <aside>
-    <strong>Base URL</strong>: <code>https://hockeymanager.test</code>
+    <strong>Base URL</strong>: <code>https://aged-reef-fiao7crdopo9.vapor-farm-g1.com</code>
 </aside>
 
 This documentation aims to provide all the information you need to work with our API.

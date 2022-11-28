@@ -5,8 +5,102 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'https://hockeymanager.test'
+    url: 'https://aged-reef-fiao7crdopo9.vapor-farm-g1.com'
 paths:
+  /api/register:
+    post:
+      summary: ''
+      operationId: postApiRegister
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: test@email.com
+                password:
+                  type: string
+                  description: 'The password of the user.'
+                  example: password
+                password_confirmation:
+                  type: string
+                  description: 'The password confirmation of the user.'
+                  example: password
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+      security: []
+  /api/login:
+    post:
+      summary: ''
+      operationId: postApiLogin
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: test@email.com
+                password:
+                  type: string
+                  description: 'The password of the user.'
+                  example: password
+              required:
+                - email
+                - password
+      security: []
   /api/user:
     get:
       summary: ''
@@ -42,6 +136,43 @@ paths:
                     example: Unauthenticated.
       tags:
         - Endpoints
+      security: []
+  /api/teams/become-team-manager:
+    post:
+      summary: ''
+      operationId: postApiTeamsBecomeTeamManager
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                team_id:
+                  type: string
+                  description: ''
+                  example: soluta
+              required:
+                - team_id
       security: []
   /api/games:
     get:
@@ -80,11 +211,19 @@ paths:
                       current_time: '20:00'
                       home_score: 12
                       away_score: 9
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T01:33:01.000000Z'
                       home_team_id: 57
                       away_team_id: 58
                       competition_id: 8
+                      home_team:
+                        id: 57
+                        name: Sporup
+                        city: Sporup
+                        country: DK
+                      away_team:
+                        id: 58
+                        name: Glejbjerg
+                        city: Glejbjerg
+                        country: DK
                     -
                       id: 397
                       round: 2
@@ -93,11 +232,19 @@ paths:
                       current_time: '20:00'
                       home_score: 9
                       away_score: 8
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T23:39:01.000000Z'
                       home_team_id: 58
                       away_team_id: 64
                       competition_id: 8
+                      home_team:
+                        id: 58
+                        name: Glejbjerg
+                        city: Glejbjerg
+                        country: DK
+                      away_team:
+                        id: 64
+                        name: Mørke
+                        city: Mørke
+                        country: DK
                     -
                       id: 404
                       round: 3
@@ -106,11 +253,19 @@ paths:
                       current_time: '20:00'
                       home_score: 7
                       away_score: 5
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T01:08:02.000000Z'
                       home_team_id: 61
                       away_team_id: 59
                       competition_id: 8
+                      home_team:
+                        id: 61
+                        name: Vojens
+                        city: Vojens
+                        country: DK
+                      away_team:
+                        id: 59
+                        name: Djurs
+                        city: Djurs
+                        country: DK
                     -
                       id: 448
                       round: 14
@@ -119,11 +274,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T19:58:58.000000Z'
                       home_team_id: 57
                       away_team_id: 62
                       competition_id: 8
+                      home_team:
+                        id: 57
+                        name: Sporup
+                        city: Sporup
+                        country: DK
+                      away_team:
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        country: DK
                     -
                       id: 400
                       round: 2
@@ -132,11 +295,19 @@ paths:
                       current_time: '20:00'
                       home_score: 10
                       away_score: 9
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T23:10:01.000000Z'
                       home_team_id: 60
                       away_team_id: 59
                       competition_id: 8
+                      home_team:
+                        id: 60
+                        name: Kolding
+                        city: Kolding
+                        country: DK
+                      away_team:
+                        id: 59
+                        name: Djurs
+                        city: Djurs
+                        country: DK
                     -
                       id: 396
                       round: 1
@@ -145,11 +316,19 @@ paths:
                       current_time: '20:00'
                       home_score: 8
                       away_score: 4
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T21:08:02.000000Z'
                       home_team_id: 60
                       away_team_id: 62
                       competition_id: 8
+                      home_team:
+                        id: 60
+                        name: Kolding
+                        city: Kolding
+                        country: DK
+                      away_team:
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        country: DK
                     -
                       id: 402
                       round: 3
@@ -158,11 +337,19 @@ paths:
                       current_time: '20:00'
                       home_score: 7
                       away_score: 2
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T01:09:02.000000Z'
                       home_team_id: 64
                       away_team_id: 62
                       competition_id: 8
+                      home_team:
+                        id: 64
+                        name: Mørke
+                        city: Mørke
+                        country: DK
+                      away_team:
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        country: DK
                     -
                       id: 393
                       round: 1
@@ -171,11 +358,19 @@ paths:
                       current_time: '20:00'
                       home_score: 11
                       away_score: 12
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T21:35:01.000000Z'
                       home_team_id: 63
                       away_team_id: 58
                       competition_id: 8
+                      home_team:
+                        id: 63
+                        name: Sydfyn
+                        city: Sydfyn
+                        country: DK
+                      away_team:
+                        id: 58
+                        name: Glejbjerg
+                        city: Glejbjerg
+                        country: DK
                     -
                       id: 399
                       round: 2
@@ -184,11 +379,19 @@ paths:
                       current_time: '20:00'
                       home_score: 5
                       away_score: 11
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T23:11:01.000000Z'
                       home_team_id: 62
                       away_team_id: 61
                       competition_id: 8
+                      home_team:
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        country: DK
+                      away_team:
+                        id: 61
+                        name: Vojens
+                        city: Vojens
+                        country: DK
                     -
                       id: 405
                       round: 4
@@ -197,11 +400,19 @@ paths:
                       current_time: '20:00'
                       home_score: 10
                       away_score: 5
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T03:09:01.000000Z'
                       home_team_id: 58
                       away_team_id: 62
                       competition_id: 8
+                      home_team:
+                        id: 58
+                        name: Glejbjerg
+                        city: Glejbjerg
+                        country: DK
+                      away_team:
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        country: DK
                     -
                       id: 403
                       round: 3
@@ -210,11 +421,19 @@ paths:
                       current_time: '20:00'
                       home_score: 6
                       away_score: 7
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T01:07:02.000000Z'
                       home_team_id: 63
                       away_team_id: 60
                       competition_id: 8
+                      home_team:
+                        id: 63
+                        name: Sydfyn
+                        city: Sydfyn
+                        country: DK
+                      away_team:
+                        id: 60
+                        name: Kolding
+                        city: Kolding
+                        country: DK
                     -
                       id: 395
                       round: 1
@@ -223,11 +442,19 @@ paths:
                       current_time: '20:00'
                       home_score: 9
                       away_score: 5
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T21:13:01.000000Z'
                       home_team_id: 59
                       away_team_id: 57
                       competition_id: 8
+                      home_team:
+                        id: 59
+                        name: Djurs
+                        city: Djurs
+                        country: DK
+                      away_team:
+                        id: 57
+                        name: Sporup
+                        city: Sporup
+                        country: DK
                     -
                       id: 406
                       round: 4
@@ -236,11 +463,19 @@ paths:
                       current_time: '20:00'
                       home_score: 5
                       away_score: 7
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T03:12:01.000000Z'
                       home_team_id: 60
                       away_team_id: 57
                       competition_id: 8
+                      home_team:
+                        id: 60
+                        name: Kolding
+                        city: Kolding
+                        country: DK
+                      away_team:
+                        id: 57
+                        name: Sporup
+                        city: Sporup
+                        country: DK
                     -
                       id: 394
                       round: 1
@@ -249,11 +484,19 @@ paths:
                       current_time: '20:00'
                       home_score: 4
                       away_score: 7
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T21:11:01.000000Z'
                       home_team_id: 61
                       away_team_id: 64
                       competition_id: 8
+                      home_team:
+                        id: 61
+                        name: Vojens
+                        city: Vojens
+                        country: DK
+                      away_team:
+                        id: 64
+                        name: Mørke
+                        city: Mørke
+                        country: DK
                     -
                       id: 407
                       round: 4
@@ -262,11 +505,19 @@ paths:
                       current_time: '20:00'
                       home_score: 6
                       away_score: 7
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-28T03:10:01.000000Z'
                       home_team_id: 59
                       away_team_id: 64
                       competition_id: 8
+                      home_team:
+                        id: 59
+                        name: Djurs
+                        city: Djurs
+                        country: DK
+                      away_team:
+                        id: 64
+                        name: Mørke
+                        city: Mørke
+                        country: DK
                   links:
                     first: 'https://hockeymanager.test/api/games?page=1'
                     last: 'https://hockeymanager.test/api/games?page=30'
@@ -353,11 +604,19 @@ paths:
                         current_time: '20:00'
                         home_score: 12
                         away_score: 9
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T01:33:01.000000Z'
                         home_team_id: 57
                         away_team_id: 58
                         competition_id: 8
+                        home_team:
+                          id: 57
+                          name: Sporup
+                          city: Sporup
+                          country: DK
+                        away_team:
+                          id: 58
+                          name: Glejbjerg
+                          city: Glejbjerg
+                          country: DK
                       -
                         id: 397
                         round: 2
@@ -366,11 +625,19 @@ paths:
                         current_time: '20:00'
                         home_score: 9
                         away_score: 8
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T23:39:01.000000Z'
                         home_team_id: 58
                         away_team_id: 64
                         competition_id: 8
+                        home_team:
+                          id: 58
+                          name: Glejbjerg
+                          city: Glejbjerg
+                          country: DK
+                        away_team:
+                          id: 64
+                          name: Mørke
+                          city: Mørke
+                          country: DK
                       -
                         id: 404
                         round: 3
@@ -379,11 +646,19 @@ paths:
                         current_time: '20:00'
                         home_score: 7
                         away_score: 5
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T01:08:02.000000Z'
                         home_team_id: 61
                         away_team_id: 59
                         competition_id: 8
+                        home_team:
+                          id: 61
+                          name: Vojens
+                          city: Vojens
+                          country: DK
+                        away_team:
+                          id: 59
+                          name: Djurs
+                          city: Djurs
+                          country: DK
                       -
                         id: 448
                         round: 14
@@ -392,11 +667,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T19:58:58.000000Z'
                         home_team_id: 57
                         away_team_id: 62
                         competition_id: 8
+                        home_team:
+                          id: 57
+                          name: Sporup
+                          city: Sporup
+                          country: DK
+                        away_team:
+                          id: 62
+                          name: Haderslev
+                          city: Haderslev
+                          country: DK
                       -
                         id: 400
                         round: 2
@@ -405,11 +688,19 @@ paths:
                         current_time: '20:00'
                         home_score: 10
                         away_score: 9
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T23:10:01.000000Z'
                         home_team_id: 60
                         away_team_id: 59
                         competition_id: 8
+                        home_team:
+                          id: 60
+                          name: Kolding
+                          city: Kolding
+                          country: DK
+                        away_team:
+                          id: 59
+                          name: Djurs
+                          city: Djurs
+                          country: DK
                       -
                         id: 396
                         round: 1
@@ -418,11 +709,19 @@ paths:
                         current_time: '20:00'
                         home_score: 8
                         away_score: 4
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T21:08:02.000000Z'
                         home_team_id: 60
                         away_team_id: 62
                         competition_id: 8
+                        home_team:
+                          id: 60
+                          name: Kolding
+                          city: Kolding
+                          country: DK
+                        away_team:
+                          id: 62
+                          name: Haderslev
+                          city: Haderslev
+                          country: DK
                       -
                         id: 402
                         round: 3
@@ -431,11 +730,19 @@ paths:
                         current_time: '20:00'
                         home_score: 7
                         away_score: 2
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T01:09:02.000000Z'
                         home_team_id: 64
                         away_team_id: 62
                         competition_id: 8
+                        home_team:
+                          id: 64
+                          name: Mørke
+                          city: Mørke
+                          country: DK
+                        away_team:
+                          id: 62
+                          name: Haderslev
+                          city: Haderslev
+                          country: DK
                       -
                         id: 393
                         round: 1
@@ -444,11 +751,19 @@ paths:
                         current_time: '20:00'
                         home_score: 11
                         away_score: 12
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T21:35:01.000000Z'
                         home_team_id: 63
                         away_team_id: 58
                         competition_id: 8
+                        home_team:
+                          id: 63
+                          name: Sydfyn
+                          city: Sydfyn
+                          country: DK
+                        away_team:
+                          id: 58
+                          name: Glejbjerg
+                          city: Glejbjerg
+                          country: DK
                       -
                         id: 399
                         round: 2
@@ -457,11 +772,19 @@ paths:
                         current_time: '20:00'
                         home_score: 5
                         away_score: 11
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T23:11:01.000000Z'
                         home_team_id: 62
                         away_team_id: 61
                         competition_id: 8
+                        home_team:
+                          id: 62
+                          name: Haderslev
+                          city: Haderslev
+                          country: DK
+                        away_team:
+                          id: 61
+                          name: Vojens
+                          city: Vojens
+                          country: DK
                       -
                         id: 405
                         round: 4
@@ -470,11 +793,19 @@ paths:
                         current_time: '20:00'
                         home_score: 10
                         away_score: 5
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T03:09:01.000000Z'
                         home_team_id: 58
                         away_team_id: 62
                         competition_id: 8
+                        home_team:
+                          id: 58
+                          name: Glejbjerg
+                          city: Glejbjerg
+                          country: DK
+                        away_team:
+                          id: 62
+                          name: Haderslev
+                          city: Haderslev
+                          country: DK
                       -
                         id: 403
                         round: 3
@@ -483,11 +814,19 @@ paths:
                         current_time: '20:00'
                         home_score: 6
                         away_score: 7
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T01:07:02.000000Z'
                         home_team_id: 63
                         away_team_id: 60
                         competition_id: 8
+                        home_team:
+                          id: 63
+                          name: Sydfyn
+                          city: Sydfyn
+                          country: DK
+                        away_team:
+                          id: 60
+                          name: Kolding
+                          city: Kolding
+                          country: DK
                       -
                         id: 395
                         round: 1
@@ -496,11 +835,19 @@ paths:
                         current_time: '20:00'
                         home_score: 9
                         away_score: 5
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T21:13:01.000000Z'
                         home_team_id: 59
                         away_team_id: 57
                         competition_id: 8
+                        home_team:
+                          id: 59
+                          name: Djurs
+                          city: Djurs
+                          country: DK
+                        away_team:
+                          id: 57
+                          name: Sporup
+                          city: Sporup
+                          country: DK
                       -
                         id: 406
                         round: 4
@@ -509,11 +856,19 @@ paths:
                         current_time: '20:00'
                         home_score: 5
                         away_score: 7
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T03:12:01.000000Z'
                         home_team_id: 60
                         away_team_id: 57
                         competition_id: 8
+                        home_team:
+                          id: 60
+                          name: Kolding
+                          city: Kolding
+                          country: DK
+                        away_team:
+                          id: 57
+                          name: Sporup
+                          city: Sporup
+                          country: DK
                       -
                         id: 394
                         round: 1
@@ -522,11 +877,19 @@ paths:
                         current_time: '20:00'
                         home_score: 4
                         away_score: 7
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T21:11:01.000000Z'
                         home_team_id: 61
                         away_team_id: 64
                         competition_id: 8
+                        home_team:
+                          id: 61
+                          name: Vojens
+                          city: Vojens
+                          country: DK
+                        away_team:
+                          id: 64
+                          name: Mørke
+                          city: Mørke
+                          country: DK
                       -
                         id: 407
                         round: 4
@@ -535,11 +898,19 @@ paths:
                         current_time: '20:00'
                         home_score: 6
                         away_score: 7
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-28T03:10:01.000000Z'
                         home_team_id: 59
                         away_team_id: 64
                         competition_id: 8
+                        home_team:
+                          id: 59
+                          name: Djurs
+                          city: Djurs
+                          country: DK
+                        away_team:
+                          id: 64
+                          name: Mørke
+                          city: Mørke
+                          country: DK
                     items:
                       type: object
                   links:
@@ -659,8 +1030,6 @@ paths:
                     current_time: '20:00'
                     home_score: 6
                     away_score: 7
-                    created_at: '2022-11-27T19:58:50.000000Z'
-                    updated_at: '2022-11-27T21:13:01.000000Z'
                     home_team_id: 2
                     away_team_id: 5
                     competition_id: 1
@@ -668,18 +1037,12 @@ paths:
                       id: 2
                       name: Lidhult
                       city: Lidhult
-                      state: null
                       country: SE
-                      created_at: '2022-11-27T19:58:49.000000Z'
-                      updated_at: '2022-11-27T19:58:49.000000Z'
                     away_team:
                       id: 5
                       name: 'Naglarby och Enbacka'
                       city: 'Naglarby och Enbacka'
-                      state: null
                       country: SE
-                      created_at: '2022-11-27T19:58:49.000000Z'
-                      updated_at: '2022-11-27T19:58:49.000000Z'
                 properties:
                   data:
                     type: object
@@ -691,8 +1054,6 @@ paths:
                       current_time: '20:00'
                       home_score: 6
                       away_score: 7
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T21:13:01.000000Z'
                       home_team_id: 2
                       away_team_id: 5
                       competition_id: 1
@@ -700,18 +1061,12 @@ paths:
                         id: 2
                         name: Lidhult
                         city: Lidhult
-                        state: null
                         country: SE
-                        created_at: '2022-11-27T19:58:49.000000Z'
-                        updated_at: '2022-11-27T19:58:49.000000Z'
                       away_team:
                         id: 5
                         name: 'Naglarby och Enbacka'
                         city: 'Naglarby och Enbacka'
-                        state: null
                         country: SE
-                        created_at: '2022-11-27T19:58:49.000000Z'
-                        updated_at: '2022-11-27T19:58:49.000000Z'
       tags:
         - Endpoints
       security: []
@@ -757,122 +1112,77 @@ paths:
                       id: 64
                       name: Mørke
                       city: Mørke
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:58.000000Z'
-                      updated_at: '2022-11-27T19:58:58.000000Z'
                     -
                       id: 57
                       name: Sporup
                       city: Sporup
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 58
                       name: Glejbjerg
                       city: Glejbjerg
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 59
                       name: Djurs
                       city: Djurs
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 60
                       name: Kolding
                       city: Kolding
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 61
                       name: Vojens
                       city: Vojens
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 62
                       name: Haderslev
                       city: Haderslev
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 63
                       name: Sydfyn
                       city: Sydfyn
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T19:58:57.000000Z'
                     -
                       id: 49
                       name: Vestj
                       city: Vestj
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 50
                       name: Vinderup
                       city: Vinderup
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 51
                       name: Sandved
                       city: Sandved
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 52
                       name: Veksø
                       city: Veksø
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 53
                       name: Såby
                       city: Såby
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 54
                       name: Ulstrup
                       city: Ulstrup
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                     -
                       id: 55
                       name: Hundested
                       city: Hundested
-                      state: null
                       country: DK
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T19:58:56.000000Z'
                   links:
                     first: 'https://hockeymanager.test/api/teams?page=1'
                     last: 'https://hockeymanager.test/api/teams?page=5'
@@ -923,122 +1233,77 @@ paths:
                         id: 64
                         name: Mørke
                         city: Mørke
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:58.000000Z'
-                        updated_at: '2022-11-27T19:58:58.000000Z'
                       -
                         id: 57
                         name: Sporup
                         city: Sporup
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 58
                         name: Glejbjerg
                         city: Glejbjerg
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 59
                         name: Djurs
                         city: Djurs
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 60
                         name: Kolding
                         city: Kolding
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 61
                         name: Vojens
                         city: Vojens
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 62
                         name: Haderslev
                         city: Haderslev
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 63
                         name: Sydfyn
                         city: Sydfyn
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T19:58:57.000000Z'
                       -
                         id: 49
                         name: Vestj
                         city: Vestj
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 50
                         name: Vinderup
                         city: Vinderup
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 51
                         name: Sandved
                         city: Sandved
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 52
                         name: Veksø
                         city: Veksø
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 53
                         name: Såby
                         city: Såby
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 54
                         name: Ulstrup
                         city: Ulstrup
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                       -
                         id: 55
                         name: Hundested
                         city: Hundested
-                        state: null
                         country: DK
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T19:58:56.000000Z'
                     items:
                       type: object
                   links:
@@ -1180,11 +1445,19 @@ paths:
                       current_time: '20:00'
                       home_score: 13
                       away_score: 6
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T21:14:01.000000Z'
                       home_team_id: 1
                       away_team_id: 7
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 7
+                        name: Johannishus
+                        city: Johannishus
+                        country: SE
                     -
                       id: 8
                       round: 2
@@ -1193,11 +1466,19 @@ paths:
                       current_time: '20:00'
                       home_score: 12
                       away_score: 9
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T23:11:01.000000Z'
                       home_team_id: 1
                       away_team_id: 8
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 8
+                        name: Hassela
+                        city: Hassela
+                        country: SE
                     -
                       id: 11
                       round: 3
@@ -1206,11 +1487,19 @@ paths:
                       current_time: '20:00'
                       home_score: 5
                       away_score: 14
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-28T01:14:01.000000Z'
                       home_team_id: 2
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 2
+                        name: Lidhult
+                        city: Lidhult
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 14
                       round: 4
@@ -1219,11 +1508,19 @@ paths:
                       current_time: '20:00'
                       home_score: 7
                       away_score: 8
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-28T03:08:01.000000Z'
                       home_team_id: 1
                       away_team_id: 6
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 6
+                        name: Brännö
+                        city: Brännö
+                        country: SE
                     -
                       id: 17
                       round: 5
@@ -1232,11 +1529,19 @@ paths:
                       current_time: '20:00'
                       home_score: 3
                       away_score: 9
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-28T05:09:00.000000Z'
                       home_team_id: 1
                       away_team_id: 5
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 5
+                        name: 'Naglarby och Enbacka'
+                        city: 'Naglarby och Enbacka'
+                        country: SE
                     -
                       id: 22
                       round: 6
@@ -1245,11 +1550,19 @@ paths:
                       current_time: '20:00'
                       home_score: 12
                       away_score: 8
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-28T07:10:01.000000Z'
                       home_team_id: 4
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 4
+                        name: Persbo
+                        city: Persbo
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 27
                       round: 7
@@ -1258,37 +1571,61 @@ paths:
                       current_time: '20:00'
                       home_score: 11
                       away_score: 5
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-28T09:10:01.000000Z'
                       home_team_id: 1
                       away_team_id: 3
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 3
+                        name: Tystberga
+                        city: Tystberga
+                        country: SE
                     -
                       id: 32
                       round: 8
-                      status: 0
+                      status: 60
                       starts_at: '2022-11-28T09:58:49.000000Z'
                       current_time: '20:00'
-                      home_score: 0
-                      away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_score: 9
+                      away_score: 7
                       home_team_id: 7
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 7
+                        name: Johannishus
+                        city: Johannishus
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 36
                       round: 9
-                      status: 0
+                      status: 11
                       starts_at: '2022-11-28T11:58:49.000000Z'
                       current_time: '20:00'
-                      home_score: 0
-                      away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_score: 1
+                      away_score: 4
                       home_team_id: 8
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 8
+                        name: Hassela
+                        city: Hassela
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 39
                       round: 10
@@ -1297,11 +1634,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
                       home_team_id: 1
                       away_team_id: 2
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 2
+                        name: Lidhult
+                        city: Lidhult
+                        country: SE
                     -
                       id: 42
                       round: 11
@@ -1310,11 +1655,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
                       home_team_id: 6
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 6
+                        name: Brännö
+                        city: Brännö
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 45
                       round: 12
@@ -1323,11 +1676,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
                       home_team_id: 5
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 5
+                        name: 'Naglarby och Enbacka'
+                        city: 'Naglarby och Enbacka'
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                     -
                       id: 50
                       round: 13
@@ -1336,11 +1697,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
                       home_team_id: 1
                       away_team_id: 4
                       competition_id: 1
+                      home_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      away_team:
+                        id: 4
+                        name: Persbo
+                        city: Persbo
+                        country: SE
                     -
                       id: 55
                       round: 14
@@ -1349,11 +1718,19 @@ paths:
                       current_time: '20:00'
                       home_score: 0
                       away_score: 0
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T19:58:50.000000Z'
                       home_team_id: 3
                       away_team_id: 1
                       competition_id: 1
+                      home_team:
+                        id: 3
+                        name: Tystberga
+                        city: Tystberga
+                        country: SE
+                      away_team:
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
                 properties:
                   data:
                     type: array
@@ -1366,11 +1743,19 @@ paths:
                         current_time: '20:00'
                         home_score: 13
                         away_score: 6
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T21:14:01.000000Z'
                         home_team_id: 1
                         away_team_id: 7
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 7
+                          name: Johannishus
+                          city: Johannishus
+                          country: SE
                       -
                         id: 8
                         round: 2
@@ -1379,11 +1764,19 @@ paths:
                         current_time: '20:00'
                         home_score: 12
                         away_score: 9
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T23:11:01.000000Z'
                         home_team_id: 1
                         away_team_id: 8
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 8
+                          name: Hassela
+                          city: Hassela
+                          country: SE
                       -
                         id: 11
                         round: 3
@@ -1392,11 +1785,19 @@ paths:
                         current_time: '20:00'
                         home_score: 5
                         away_score: 14
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-28T01:14:01.000000Z'
                         home_team_id: 2
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 2
+                          name: Lidhult
+                          city: Lidhult
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 14
                         round: 4
@@ -1405,11 +1806,19 @@ paths:
                         current_time: '20:00'
                         home_score: 7
                         away_score: 8
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-28T03:08:01.000000Z'
                         home_team_id: 1
                         away_team_id: 6
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 6
+                          name: Brännö
+                          city: Brännö
+                          country: SE
                       -
                         id: 17
                         round: 5
@@ -1418,11 +1827,19 @@ paths:
                         current_time: '20:00'
                         home_score: 3
                         away_score: 9
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-28T05:09:00.000000Z'
                         home_team_id: 1
                         away_team_id: 5
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 5
+                          name: 'Naglarby och Enbacka'
+                          city: 'Naglarby och Enbacka'
+                          country: SE
                       -
                         id: 22
                         round: 6
@@ -1431,11 +1848,19 @@ paths:
                         current_time: '20:00'
                         home_score: 12
                         away_score: 8
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-28T07:10:01.000000Z'
                         home_team_id: 4
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 4
+                          name: Persbo
+                          city: Persbo
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 27
                         round: 7
@@ -1444,37 +1869,61 @@ paths:
                         current_time: '20:00'
                         home_score: 11
                         away_score: 5
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-28T09:10:01.000000Z'
                         home_team_id: 1
                         away_team_id: 3
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 3
+                          name: Tystberga
+                          city: Tystberga
+                          country: SE
                       -
                         id: 32
                         round: 8
-                        status: 0
+                        status: 60
                         starts_at: '2022-11-28T09:58:49.000000Z'
                         current_time: '20:00'
-                        home_score: 0
-                        away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_score: 9
+                        away_score: 7
                         home_team_id: 7
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 7
+                          name: Johannishus
+                          city: Johannishus
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 36
                         round: 9
-                        status: 0
+                        status: 11
                         starts_at: '2022-11-28T11:58:49.000000Z'
                         current_time: '20:00'
-                        home_score: 0
-                        away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_score: 1
+                        away_score: 4
                         home_team_id: 8
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 8
+                          name: Hassela
+                          city: Hassela
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 39
                         round: 10
@@ -1483,11 +1932,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
                         home_team_id: 1
                         away_team_id: 2
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 2
+                          name: Lidhult
+                          city: Lidhult
+                          country: SE
                       -
                         id: 42
                         round: 11
@@ -1496,11 +1953,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
                         home_team_id: 6
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 6
+                          name: Brännö
+                          city: Brännö
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 45
                         round: 12
@@ -1509,11 +1974,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
                         home_team_id: 5
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 5
+                          name: 'Naglarby och Enbacka'
+                          city: 'Naglarby och Enbacka'
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                       -
                         id: 50
                         round: 13
@@ -1522,11 +1995,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
                         home_team_id: 1
                         away_team_id: 4
                         competition_id: 1
+                        home_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        away_team:
+                          id: 4
+                          name: Persbo
+                          city: Persbo
+                          country: SE
                       -
                         id: 55
                         round: 14
@@ -1535,11 +2016,19 @@ paths:
                         current_time: '20:00'
                         home_score: 0
                         away_score: 0
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T19:58:50.000000Z'
                         home_team_id: 3
                         away_team_id: 1
                         competition_id: 1
+                        home_team:
+                          id: 3
+                          name: Tystberga
+                          city: Tystberga
+                          country: SE
+                        away_team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
                     items:
                       type: object
       tags:
@@ -1554,43 +2043,6 @@ paths:
         required: true
         schema:
           type: integer
-  /api/teams/become-team-manager:
-    post:
-      summary: ''
-      operationId: postApiTeamsBecomeTeamManager
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                team_id:
-                  type: string
-                  description: ''
-                  example: nisi
-              required:
-                - team_id
-      security: []
   /api/competitions:
     get:
       summary: ''
@@ -1630,15 +2082,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 1
-                      relegation: 2
                       promotion: 0
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 2
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:49.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 66
+                          goals_against: 35
+                          points: 21
+                          goal_difference: 31
+                          team:
+                            id: 5
+                            name: 'Naglarby och Enbacka'
+                            city: 'Naglarby och Enbacka'
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 75
+                          goals_against: 57
+                          points: 20
+                          goal_difference: 18
+                          team:
+                            id: 6
+                            name: Brännö
+                            city: Brännö
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 51
+                          goals_against: 55
+                          points: 13
+                          goal_difference: -4
+                          team:
+                            id: 3
+                            name: Tystberga
+                            city: Tystberga
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 75
+                          goals_against: 63
+                          points: 12
+                          goal_difference: 12
+                          team:
+                            id: 1
+                            name: Åstorp
+                            city: Åstorp
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 66
+                          goals_against: 66
+                          points: 12
+                          goal_difference: 0
+                          team:
+                            id: 4
+                            name: Persbo
+                            city: Persbo
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 55
+                          goals_against: 62
+                          points: 11
+                          goal_difference: -7
+                          team:
+                            id: 7
+                            name: Johannishus
+                            city: Johannishus
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 54
+                          goals_against: 83
+                          points: 4
+                          goal_difference: -29
+                          team:
+                            id: 8
+                            name: Hassela
+                            city: Hassela
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 55
+                          goals_against: 76
+                          points: 3
+                          goal_difference: -21
+                          team:
+                            id: 2
+                            name: Lidhult
+                            city: Lidhult
+                            country: SE
                     -
                       id: 2
                       name: 'Klass 2'
@@ -1649,15 +2209,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 2
-                      relegation: 0
                       promotion: 2
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 0
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:50.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 71
+                          goals_against: 50
+                          points: 21
+                          goal_difference: 21
+                          team:
+                            id: 13
+                            name: Sjötorp
+                            city: Sjötorp
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 57
+                          goals_against: 45
+                          points: 16
+                          goal_difference: 12
+                          team:
+                            id: 12
+                            name: Hallabro
+                            city: Hallabro
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 64
+                          goals_against: 61
+                          points: 15
+                          goal_difference: 3
+                          team:
+                            id: 14
+                            name: Lidköping
+                            city: Lidköping
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 53
+                          goals_against: 49
+                          points: 12
+                          goal_difference: 4
+                          team:
+                            id: 11
+                            name: Hällestad
+                            city: Hällestad
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 51
+                          goals_against: 54
+                          points: 10
+                          goal_difference: -3
+                          team:
+                            id: 9
+                            name: Sulvik
+                            city: Sulvik
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 64
+                          goals_against: 68
+                          points: 10
+                          goal_difference: -4
+                          team:
+                            id: 15
+                            name: Idala
+                            city: Idala
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 53
+                          goals_against: 47
+                          points: 9
+                          goal_difference: 6
+                          team:
+                            id: 10
+                            name: Åsenhöga
+                            city: Åsenhöga
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 46
+                          goals_against: 85
+                          points: 3
+                          goal_difference: -39
+                          team:
+                            id: 16
+                            name: Krokek
+                            city: Krokek
+                            country: SE
                     -
                       id: 3
                       name: Liiga
@@ -1668,15 +2336,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 1
-                      relegation: 2
                       promotion: 0
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 2
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:51.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 67
+                          goals_against: 50
+                          points: 19
+                          goal_difference: 17
+                          team:
+                            id: 21
+                            name: Uus-Joakim
+                            city: Uus-Joakim
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 68
+                          goals_against: 52
+                          points: 15
+                          goal_difference: 16
+                          team:
+                            id: 17
+                            name: Uus-Mikajärvi
+                            city: Uus-Mikajärvi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 60
+                          goals_against: 59
+                          points: 15
+                          goal_difference: 1
+                          team:
+                            id: 19
+                            name: Aholahti
+                            city: Aholahti
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 54
+                          goals_against: 53
+                          points: 14
+                          goal_difference: 1
+                          team:
+                            id: 22
+                            name: Kinnunenjoki
+                            city: Kinnunenjoki
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 58
+                          goals_against: 58
+                          points: 12
+                          goal_difference: 0
+                          team:
+                            id: 20
+                            name: Helismaapudas
+                            city: Helismaapudas
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 57
+                          goals_against: 62
+                          points: 11
+                          goal_difference: -5
+                          team:
+                            id: 23
+                            name: Uus-Joonatanvesi
+                            city: Uus-Joonatanvesi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 52
+                          goals_against: 51
+                          points: 9
+                          goal_difference: 1
+                          team:
+                            id: 24
+                            name: Itä-Aarni
+                            city: Itä-Aarni
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 0
+                          draws: 0
+                          losses: 8
+                          goals_for: 49
+                          goals_against: 80
+                          points: 1
+                          goal_difference: -31
+                          team:
+                            id: 18
+                            name: Uus-Neea
+                            city: Uus-Neea
+                            country: FI
                     -
                       id: 4
                       name: 'Liiga 2'
@@ -1687,15 +2463,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 2
-                      relegation: 0
                       promotion: 2
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 0
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:52.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 64
+                          goals_against: 48
+                          points: 15
+                          goal_difference: 16
+                          team:
+                            id: 28
+                            name: Ahovesi
+                            city: Ahovesi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 67
+                          goals_against: 54
+                          points: 15
+                          goal_difference: 13
+                          team:
+                            id: 31
+                            name: Hirveläkoski
+                            city: Hirveläkoski
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 60
+                          goals_against: 49
+                          points: 15
+                          goal_difference: 11
+                          team:
+                            id: 27
+                            name: Jerelampi
+                            city: Jerelampi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 56
+                          goals_against: 52
+                          points: 15
+                          goal_difference: 4
+                          team:
+                            id: 25
+                            name: Eräharjulampi
+                            city: Eräharjulampi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 49
+                          goals_against: 51
+                          points: 12
+                          goal_difference: -2
+                          team:
+                            id: 29
+                            name: Uus-Pihlapudas
+                            city: Uus-Pihlapudas
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 52
+                          goals_against: 66
+                          points: 11
+                          goal_difference: -14
+                          team:
+                            id: 30
+                            name: Linnamäkisalmi
+                            city: Linnamäkisalmi
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 56
+                          goals_against: 70
+                          points: 7
+                          goal_difference: -14
+                          team:
+                            id: 26
+                            name: Tuuttiharju
+                            city: Tuuttiharju
+                            country: FI
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 40
+                          goals_against: 54
+                          points: 6
+                          goal_difference: -14
+                          team:
+                            id: 32
+                            name: Uusi-Enna
+                            city: Uusi-Enna
+                            country: FI
                     -
                       id: 5
                       name: 'Norge 1'
@@ -1706,15 +2590,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 1
-                      relegation: 2
                       promotion: 0
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 2
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:53.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 57
+                          goals_against: 44
+                          points: 20
+                          goal_difference: 13
+                          team:
+                            id: 39
+                            name: Orkanger
+                            city: Orkanger
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 66
+                          goals_against: 43
+                          points: 18
+                          goal_difference: 23
+                          team:
+                            id: 34
+                            name: Skien
+                            city: Skien
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 61
+                          goals_against: 53
+                          points: 16
+                          goal_difference: 8
+                          team:
+                            id: 35
+                            name: Fredrikstad
+                            city: Fredrikstad
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 58
+                          goals_against: 61
+                          points: 13
+                          goal_difference: -3
+                          team:
+                            id: 40
+                            name: Sandefjord
+                            city: Sandefjord
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 45
+                          goals_against: 57
+                          points: 10
+                          goal_difference: -12
+                          team:
+                            id: 36
+                            name: Vardø
+                            city: Vardø
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 53
+                          goals_against: 47
+                          points: 7
+                          goal_difference: 6
+                          team:
+                            id: 38
+                            name: Molde
+                            city: Molde
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 52
+                          goals_against: 53
+                          points: 6
+                          goal_difference: -1
+                          team:
+                            id: 33
+                            name: Fosnavåg
+                            city: Fosnavåg
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 47
+                          goals_against: 81
+                          points: 6
+                          goal_difference: -34
+                          team:
+                            id: 37
+                            name: Tvedestrand
+                            city: Tvedestrand
+                            country: 'NO'
                     -
                       id: 6
                       name: 'Norge 2'
@@ -1725,15 +2717,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 2
-                      relegation: 0
                       promotion: 2
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 0
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:54.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 77
+                          goals_against: 58
+                          points: 21
+                          goal_difference: 19
+                          team:
+                            id: 44
+                            name: Sandefjord
+                            city: Sandefjord
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 69
+                          goals_against: 52
+                          points: 18
+                          goal_difference: 17
+                          team:
+                            id: 45
+                            name: Horten
+                            city: Horten
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 62
+                          goals_against: 49
+                          points: 17
+                          goal_difference: 13
+                          team:
+                            id: 41
+                            name: Stokmarknes
+                            city: Stokmarknes
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 56
+                          goals_against: 57
+                          points: 11
+                          goal_difference: -1
+                          team:
+                            id: 47
+                            name: Haugesund
+                            city: Haugesund
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 59
+                          goals_against: 65
+                          points: 8
+                          goal_difference: -6
+                          team:
+                            id: 43
+                            name: Kristiansund
+                            city: Kristiansund
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 63
+                          goals_against: 77
+                          points: 8
+                          goal_difference: -14
+                          team:
+                            id: 42
+                            name: Namsos
+                            city: Namsos
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 38
+                          goals_against: 57
+                          points: 7
+                          goal_difference: -19
+                          team:
+                            id: 46
+                            name: Lyngdal
+                            city: Lyngdal
+                            country: 'NO'
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 60
+                          goals_against: 69
+                          points: 6
+                          goal_difference: -9
+                          team:
+                            id: 48
+                            name: Alta
+                            city: Alta
+                            country: 'NO'
                     -
                       id: 7
                       name: 'Division 1'
@@ -1744,15 +2844,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 1
-                      relegation: 2
                       promotion: 0
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 2
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:56.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 58
+                          goals_against: 31
+                          points: 19
+                          goal_difference: 27
+                          team:
+                            id: 56
+                            name: Bolderslev
+                            city: Bolderslev
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 60
+                          goals_against: 45
+                          points: 18
+                          goal_difference: 15
+                          team:
+                            id: 52
+                            name: Veksø
+                            city: Veksø
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 55
+                          goals_against: 54
+                          points: 16
+                          goal_difference: 1
+                          team:
+                            id: 53
+                            name: Såby
+                            city: Såby
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 70
+                          goals_against: 44
+                          points: 14
+                          goal_difference: 26
+                          team:
+                            id: 55
+                            name: Hundested
+                            city: Hundested
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 65
+                          goals_against: 67
+                          points: 14
+                          goal_difference: -2
+                          team:
+                            id: 50
+                            name: Vinderup
+                            city: Vinderup
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 42
+                          goals_against: 57
+                          points: 6
+                          goal_difference: -15
+                          team:
+                            id: 54
+                            name: Ulstrup
+                            city: Ulstrup
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 2
+                          draws: 0
+                          losses: 6
+                          goals_for: 44
+                          goals_against: 70
+                          points: 6
+                          goal_difference: -26
+                          team:
+                            id: 49
+                            name: Vestj
+                            city: Vestj
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 41
+                          goals_against: 67
+                          points: 3
+                          goal_difference: -26
+                          team:
+                            id: 51
+                            name: Sandved
+                            city: Sandved
+                            country: DK
                     -
                       id: 8
                       name: 'Division 2'
@@ -1763,15 +2971,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      tier: 2
-                      relegation: 0
                       promotion: 2
-                      relegation_qualification: 0
-                      promotion_qualification: 0
+                      relegation: 0
                       recurring: true
                       edition: 1
-                      created_at: '2022-11-27T19:58:57.000000Z'
-                      updated_at: '2022-11-27T20:00:23.000000Z'
+                      table:
+                        -
+                          games_played: 8
+                          wins: 7
+                          draws: 0
+                          losses: 1
+                          goals_for: 59
+                          goals_against: 43
+                          points: 21
+                          goal_difference: 16
+                          team:
+                            id: 60
+                            name: Kolding
+                            city: Kolding
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 6
+                          draws: 0
+                          losses: 2
+                          goals_for: 72
+                          goals_against: 64
+                          points: 17
+                          goal_difference: 8
+                          team:
+                            id: 58
+                            name: Glejbjerg
+                            city: Glejbjerg
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 50
+                          goals_against: 42
+                          points: 16
+                          goal_difference: 8
+                          team:
+                            id: 64
+                            name: Mørke
+                            city: Mørke
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 5
+                          draws: 0
+                          losses: 3
+                          goals_for: 61
+                          goals_against: 55
+                          points: 14
+                          goal_difference: 6
+                          team:
+                            id: 57
+                            name: Sporup
+                            city: Sporup
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 55
+                          goals_against: 48
+                          points: 12
+                          goal_difference: 7
+                          team:
+                            id: 61
+                            name: Vojens
+                            city: Vojens
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 3
+                          draws: 0
+                          losses: 5
+                          goals_for: 57
+                          goals_against: 57
+                          points: 9
+                          goal_difference: 0
+                          team:
+                            id: 59
+                            name: Djurs
+                            city: Djurs
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 60
+                          goals_against: 71
+                          points: 4
+                          goal_difference: -11
+                          team:
+                            id: 63
+                            name: Sydfyn
+                            city: Sydfyn
+                            country: DK
+                        -
+                          games_played: 8
+                          wins: 1
+                          draws: 0
+                          losses: 7
+                          goals_for: 40
+                          goals_against: 74
+                          points: 3
+                          goal_difference: -34
+                          team:
+                            id: 62
+                            name: Haderslev
+                            city: Haderslev
+                            country: DK
                   links:
                     self: link-value
                     first: 'https://hockeymanager.test/api/competitions?page=1'
@@ -1813,15 +3129,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 1
-                        relegation: 2
                         promotion: 0
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 2
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:49.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 66
+                            goals_against: 35
+                            points: 21
+                            goal_difference: 31
+                            team:
+                              id: 5
+                              name: 'Naglarby och Enbacka'
+                              city: 'Naglarby och Enbacka'
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 75
+                            goals_against: 57
+                            points: 20
+                            goal_difference: 18
+                            team:
+                              id: 6
+                              name: Brännö
+                              city: Brännö
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 51
+                            goals_against: 55
+                            points: 13
+                            goal_difference: -4
+                            team:
+                              id: 3
+                              name: Tystberga
+                              city: Tystberga
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 75
+                            goals_against: 63
+                            points: 12
+                            goal_difference: 12
+                            team:
+                              id: 1
+                              name: Åstorp
+                              city: Åstorp
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 66
+                            goals_against: 66
+                            points: 12
+                            goal_difference: 0
+                            team:
+                              id: 4
+                              name: Persbo
+                              city: Persbo
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 55
+                            goals_against: 62
+                            points: 11
+                            goal_difference: -7
+                            team:
+                              id: 7
+                              name: Johannishus
+                              city: Johannishus
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 54
+                            goals_against: 83
+                            points: 4
+                            goal_difference: -29
+                            team:
+                              id: 8
+                              name: Hassela
+                              city: Hassela
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 55
+                            goals_against: 76
+                            points: 3
+                            goal_difference: -21
+                            team:
+                              id: 2
+                              name: Lidhult
+                              city: Lidhult
+                              country: SE
                       -
                         id: 2
                         name: 'Klass 2'
@@ -1832,15 +3256,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 2
-                        relegation: 0
                         promotion: 2
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 0
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:50.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 71
+                            goals_against: 50
+                            points: 21
+                            goal_difference: 21
+                            team:
+                              id: 13
+                              name: Sjötorp
+                              city: Sjötorp
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 57
+                            goals_against: 45
+                            points: 16
+                            goal_difference: 12
+                            team:
+                              id: 12
+                              name: Hallabro
+                              city: Hallabro
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 64
+                            goals_against: 61
+                            points: 15
+                            goal_difference: 3
+                            team:
+                              id: 14
+                              name: Lidköping
+                              city: Lidköping
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 53
+                            goals_against: 49
+                            points: 12
+                            goal_difference: 4
+                            team:
+                              id: 11
+                              name: Hällestad
+                              city: Hällestad
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 51
+                            goals_against: 54
+                            points: 10
+                            goal_difference: -3
+                            team:
+                              id: 9
+                              name: Sulvik
+                              city: Sulvik
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 64
+                            goals_against: 68
+                            points: 10
+                            goal_difference: -4
+                            team:
+                              id: 15
+                              name: Idala
+                              city: Idala
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 53
+                            goals_against: 47
+                            points: 9
+                            goal_difference: 6
+                            team:
+                              id: 10
+                              name: Åsenhöga
+                              city: Åsenhöga
+                              country: SE
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 46
+                            goals_against: 85
+                            points: 3
+                            goal_difference: -39
+                            team:
+                              id: 16
+                              name: Krokek
+                              city: Krokek
+                              country: SE
                       -
                         id: 3
                         name: Liiga
@@ -1851,15 +3383,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 1
-                        relegation: 2
                         promotion: 0
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 2
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:51.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 67
+                            goals_against: 50
+                            points: 19
+                            goal_difference: 17
+                            team:
+                              id: 21
+                              name: Uus-Joakim
+                              city: Uus-Joakim
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 68
+                            goals_against: 52
+                            points: 15
+                            goal_difference: 16
+                            team:
+                              id: 17
+                              name: Uus-Mikajärvi
+                              city: Uus-Mikajärvi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 60
+                            goals_against: 59
+                            points: 15
+                            goal_difference: 1
+                            team:
+                              id: 19
+                              name: Aholahti
+                              city: Aholahti
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 54
+                            goals_against: 53
+                            points: 14
+                            goal_difference: 1
+                            team:
+                              id: 22
+                              name: Kinnunenjoki
+                              city: Kinnunenjoki
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 58
+                            goals_against: 58
+                            points: 12
+                            goal_difference: 0
+                            team:
+                              id: 20
+                              name: Helismaapudas
+                              city: Helismaapudas
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 57
+                            goals_against: 62
+                            points: 11
+                            goal_difference: -5
+                            team:
+                              id: 23
+                              name: Uus-Joonatanvesi
+                              city: Uus-Joonatanvesi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 52
+                            goals_against: 51
+                            points: 9
+                            goal_difference: 1
+                            team:
+                              id: 24
+                              name: Itä-Aarni
+                              city: Itä-Aarni
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 0
+                            draws: 0
+                            losses: 8
+                            goals_for: 49
+                            goals_against: 80
+                            points: 1
+                            goal_difference: -31
+                            team:
+                              id: 18
+                              name: Uus-Neea
+                              city: Uus-Neea
+                              country: FI
                       -
                         id: 4
                         name: 'Liiga 2'
@@ -1870,15 +3510,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 2
-                        relegation: 0
                         promotion: 2
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 0
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:52.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 64
+                            goals_against: 48
+                            points: 15
+                            goal_difference: 16
+                            team:
+                              id: 28
+                              name: Ahovesi
+                              city: Ahovesi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 67
+                            goals_against: 54
+                            points: 15
+                            goal_difference: 13
+                            team:
+                              id: 31
+                              name: Hirveläkoski
+                              city: Hirveläkoski
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 60
+                            goals_against: 49
+                            points: 15
+                            goal_difference: 11
+                            team:
+                              id: 27
+                              name: Jerelampi
+                              city: Jerelampi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 56
+                            goals_against: 52
+                            points: 15
+                            goal_difference: 4
+                            team:
+                              id: 25
+                              name: Eräharjulampi
+                              city: Eräharjulampi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 49
+                            goals_against: 51
+                            points: 12
+                            goal_difference: -2
+                            team:
+                              id: 29
+                              name: Uus-Pihlapudas
+                              city: Uus-Pihlapudas
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 52
+                            goals_against: 66
+                            points: 11
+                            goal_difference: -14
+                            team:
+                              id: 30
+                              name: Linnamäkisalmi
+                              city: Linnamäkisalmi
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 56
+                            goals_against: 70
+                            points: 7
+                            goal_difference: -14
+                            team:
+                              id: 26
+                              name: Tuuttiharju
+                              city: Tuuttiharju
+                              country: FI
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 40
+                            goals_against: 54
+                            points: 6
+                            goal_difference: -14
+                            team:
+                              id: 32
+                              name: Uusi-Enna
+                              city: Uusi-Enna
+                              country: FI
                       -
                         id: 5
                         name: 'Norge 1'
@@ -1889,15 +3637,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 1
-                        relegation: 2
                         promotion: 0
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 2
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:53.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 57
+                            goals_against: 44
+                            points: 20
+                            goal_difference: 13
+                            team:
+                              id: 39
+                              name: Orkanger
+                              city: Orkanger
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 66
+                            goals_against: 43
+                            points: 18
+                            goal_difference: 23
+                            team:
+                              id: 34
+                              name: Skien
+                              city: Skien
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 61
+                            goals_against: 53
+                            points: 16
+                            goal_difference: 8
+                            team:
+                              id: 35
+                              name: Fredrikstad
+                              city: Fredrikstad
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 58
+                            goals_against: 61
+                            points: 13
+                            goal_difference: -3
+                            team:
+                              id: 40
+                              name: Sandefjord
+                              city: Sandefjord
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 45
+                            goals_against: 57
+                            points: 10
+                            goal_difference: -12
+                            team:
+                              id: 36
+                              name: Vardø
+                              city: Vardø
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 53
+                            goals_against: 47
+                            points: 7
+                            goal_difference: 6
+                            team:
+                              id: 38
+                              name: Molde
+                              city: Molde
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 52
+                            goals_against: 53
+                            points: 6
+                            goal_difference: -1
+                            team:
+                              id: 33
+                              name: Fosnavåg
+                              city: Fosnavåg
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 47
+                            goals_against: 81
+                            points: 6
+                            goal_difference: -34
+                            team:
+                              id: 37
+                              name: Tvedestrand
+                              city: Tvedestrand
+                              country: 'NO'
                       -
                         id: 6
                         name: 'Norge 2'
@@ -1908,15 +3764,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 2
-                        relegation: 0
                         promotion: 2
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 0
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:54.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 77
+                            goals_against: 58
+                            points: 21
+                            goal_difference: 19
+                            team:
+                              id: 44
+                              name: Sandefjord
+                              city: Sandefjord
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 69
+                            goals_against: 52
+                            points: 18
+                            goal_difference: 17
+                            team:
+                              id: 45
+                              name: Horten
+                              city: Horten
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 62
+                            goals_against: 49
+                            points: 17
+                            goal_difference: 13
+                            team:
+                              id: 41
+                              name: Stokmarknes
+                              city: Stokmarknes
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 56
+                            goals_against: 57
+                            points: 11
+                            goal_difference: -1
+                            team:
+                              id: 47
+                              name: Haugesund
+                              city: Haugesund
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 59
+                            goals_against: 65
+                            points: 8
+                            goal_difference: -6
+                            team:
+                              id: 43
+                              name: Kristiansund
+                              city: Kristiansund
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 63
+                            goals_against: 77
+                            points: 8
+                            goal_difference: -14
+                            team:
+                              id: 42
+                              name: Namsos
+                              city: Namsos
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 38
+                            goals_against: 57
+                            points: 7
+                            goal_difference: -19
+                            team:
+                              id: 46
+                              name: Lyngdal
+                              city: Lyngdal
+                              country: 'NO'
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 60
+                            goals_against: 69
+                            points: 6
+                            goal_difference: -9
+                            team:
+                              id: 48
+                              name: Alta
+                              city: Alta
+                              country: 'NO'
                       -
                         id: 7
                         name: 'Division 1'
@@ -1927,15 +3891,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 1
-                        relegation: 2
                         promotion: 0
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 2
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:56.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 58
+                            goals_against: 31
+                            points: 19
+                            goal_difference: 27
+                            team:
+                              id: 56
+                              name: Bolderslev
+                              city: Bolderslev
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 60
+                            goals_against: 45
+                            points: 18
+                            goal_difference: 15
+                            team:
+                              id: 52
+                              name: Veksø
+                              city: Veksø
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 55
+                            goals_against: 54
+                            points: 16
+                            goal_difference: 1
+                            team:
+                              id: 53
+                              name: Såby
+                              city: Såby
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 70
+                            goals_against: 44
+                            points: 14
+                            goal_difference: 26
+                            team:
+                              id: 55
+                              name: Hundested
+                              city: Hundested
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 65
+                            goals_against: 67
+                            points: 14
+                            goal_difference: -2
+                            team:
+                              id: 50
+                              name: Vinderup
+                              city: Vinderup
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 42
+                            goals_against: 57
+                            points: 6
+                            goal_difference: -15
+                            team:
+                              id: 54
+                              name: Ulstrup
+                              city: Ulstrup
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 2
+                            draws: 0
+                            losses: 6
+                            goals_for: 44
+                            goals_against: 70
+                            points: 6
+                            goal_difference: -26
+                            team:
+                              id: 49
+                              name: Vestj
+                              city: Vestj
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 41
+                            goals_against: 67
+                            points: 3
+                            goal_difference: -26
+                            team:
+                              id: 51
+                              name: Sandved
+                              city: Sandved
+                              country: DK
                       -
                         id: 8
                         name: 'Division 2'
@@ -1946,15 +4018,123 @@ paths:
                         type: 0
                         max_teams: 8
                         meetings: 2
-                        tier: 2
-                        relegation: 0
                         promotion: 2
-                        relegation_qualification: 0
-                        promotion_qualification: 0
+                        relegation: 0
                         recurring: true
                         edition: 1
-                        created_at: '2022-11-27T19:58:57.000000Z'
-                        updated_at: '2022-11-27T20:00:23.000000Z'
+                        table:
+                          -
+                            games_played: 8
+                            wins: 7
+                            draws: 0
+                            losses: 1
+                            goals_for: 59
+                            goals_against: 43
+                            points: 21
+                            goal_difference: 16
+                            team:
+                              id: 60
+                              name: Kolding
+                              city: Kolding
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 6
+                            draws: 0
+                            losses: 2
+                            goals_for: 72
+                            goals_against: 64
+                            points: 17
+                            goal_difference: 8
+                            team:
+                              id: 58
+                              name: Glejbjerg
+                              city: Glejbjerg
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 50
+                            goals_against: 42
+                            points: 16
+                            goal_difference: 8
+                            team:
+                              id: 64
+                              name: Mørke
+                              city: Mørke
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 5
+                            draws: 0
+                            losses: 3
+                            goals_for: 61
+                            goals_against: 55
+                            points: 14
+                            goal_difference: 6
+                            team:
+                              id: 57
+                              name: Sporup
+                              city: Sporup
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 4
+                            draws: 0
+                            losses: 4
+                            goals_for: 55
+                            goals_against: 48
+                            points: 12
+                            goal_difference: 7
+                            team:
+                              id: 61
+                              name: Vojens
+                              city: Vojens
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 3
+                            draws: 0
+                            losses: 5
+                            goals_for: 57
+                            goals_against: 57
+                            points: 9
+                            goal_difference: 0
+                            team:
+                              id: 59
+                              name: Djurs
+                              city: Djurs
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 60
+                            goals_against: 71
+                            points: 4
+                            goal_difference: -11
+                            team:
+                              id: 63
+                              name: Sydfyn
+                              city: Sydfyn
+                              country: DK
+                          -
+                            games_played: 8
+                            wins: 1
+                            draws: 0
+                            losses: 7
+                            goals_for: 40
+                            goals_against: 74
+                            points: 3
+                            goal_difference: -34
+                            team:
+                              id: 62
+                              name: Haderslev
+                              city: Haderslev
+                              country: DK
                     items:
                       type: object
                   links:
@@ -2029,136 +4209,123 @@ paths:
                     type: 0
                     max_teams: 8
                     meetings: 2
-                    teams:
-                      -
-                        id: 1
-                        name: Åstorp
-                        city: Åstorp
-                        country: SE
-                      -
-                        id: 2
-                        name: Lidhult
-                        city: Lidhult
-                        country: SE
-                      -
-                        id: 3
-                        name: Tystberga
-                        city: Tystberga
-                        country: SE
-                      -
-                        id: 4
-                        name: Persbo
-                        city: Persbo
-                        country: SE
-                      -
-                        id: 5
-                        name: 'Naglarby och Enbacka'
-                        city: 'Naglarby och Enbacka'
-                        country: SE
-                      -
-                        id: 6
-                        name: Brännö
-                        city: Brännö
-                        country: SE
-                      -
-                        id: 7
-                        name: Johannishus
-                        city: Johannishus
-                        country: SE
-                      -
-                        id: 8
-                        name: Hassela
-                        city: Hassela
-                        country: SE
+                    promotion: 0
+                    relegation: 2
+                    recurring: true
+                    edition: 1
                     table:
                       -
-                        ct_id: 5
-                        competition_id: 1
-                        team_id: 5
-                        games_played: 7
-                        wins: 6
+                        games_played: 8
+                        wins: 7
                         draws: 0
                         losses: 1
-                        goals_for: 57
-                        goals_against: 27
-                        points: 18
+                        goals_for: 66
+                        goals_against: 35
+                        points: 21
+                        goal_difference: 31
+                        team:
+                          id: 5
+                          name: 'Naglarby och Enbacka'
+                          city: 'Naglarby och Enbacka'
+                          country: SE
                       -
-                        ct_id: 6
-                        competition_id: 1
-                        team_id: 6
-                        games_played: 7
-                        wins: 6
+                        games_played: 8
+                        wins: 7
                         draws: 0
                         losses: 1
-                        goals_for: 65
-                        goals_against: 51
-                        points: 17
+                        goals_for: 75
+                        goals_against: 57
+                        points: 20
+                        goal_difference: 18
+                        team:
+                          id: 6
+                          name: Brännö
+                          city: Brännö
+                          country: SE
                       -
-                        ct_id: 1
-                        competition_id: 1
-                        team_id: 1
-                        games_played: 7
+                        games_played: 8
                         wins: 4
                         draws: 0
-                        losses: 3
-                        goals_for: 68
-                        goals_against: 54
-                        points: 12
-                      -
-                        ct_id: 4
-                        competition_id: 1
-                        team_id: 4
-                        games_played: 7
-                        wins: 4
-                        draws: 0
-                        losses: 3
-                        goals_for: 62
-                        goals_against: 59
-                        points: 12
-                      -
-                        ct_id: 3
-                        competition_id: 1
-                        team_id: 3
-                        games_played: 7
-                        wins: 3
-                        draws: 0
                         losses: 4
-                        goals_for: 44
-                        goals_against: 51
-                        points: 10
-                      -
-                        ct_id: 7
-                        competition_id: 1
-                        team_id: 7
-                        games_played: 7
-                        wins: 3
-                        draws: 0
-                        losses: 4
-                        goals_for: 46
+                        goals_for: 51
                         goals_against: 55
-                        points: 8
+                        points: 13
+                        goal_difference: -4
+                        team:
+                          id: 3
+                          name: Tystberga
+                          city: Tystberga
+                          country: SE
                       -
-                        ct_id: 8
-                        competition_id: 1
-                        team_id: 8
-                        games_played: 7
+                        games_played: 8
+                        wins: 4
+                        draws: 0
+                        losses: 4
+                        goals_for: 75
+                        goals_against: 63
+                        points: 12
+                        goal_difference: 12
+                        team:
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                      -
+                        games_played: 8
+                        wins: 4
+                        draws: 0
+                        losses: 4
+                        goals_for: 66
+                        goals_against: 66
+                        points: 12
+                        goal_difference: 0
+                        team:
+                          id: 4
+                          name: Persbo
+                          city: Persbo
+                          country: SE
+                      -
+                        games_played: 8
+                        wins: 4
+                        draws: 0
+                        losses: 4
+                        goals_for: 55
+                        goals_against: 62
+                        points: 11
+                        goal_difference: -7
+                        team:
+                          id: 7
+                          name: Johannishus
+                          city: Johannishus
+                          country: SE
+                      -
+                        games_played: 8
                         wins: 1
                         draws: 0
-                        losses: 6
-                        goals_for: 48
-                        goals_against: 73
+                        losses: 7
+                        goals_for: 54
+                        goals_against: 83
                         points: 4
+                        goal_difference: -29
+                        team:
+                          id: 8
+                          name: Hassela
+                          city: Hassela
+                          country: SE
                       -
-                        ct_id: 2
-                        competition_id: 1
-                        team_id: 2
-                        games_played: 7
+                        games_played: 8
                         wins: 1
                         draws: 0
-                        losses: 6
-                        goals_for: 47
-                        goals_against: 67
+                        losses: 7
+                        goals_for: 55
+                        goals_against: 76
                         points: 3
+                        goal_difference: -21
+                        team:
+                          id: 2
+                          name: Lidhult
+                          city: Lidhult
+                          country: SE
                 properties:
                   data:
                     type: object
@@ -2172,136 +4339,123 @@ paths:
                       type: 0
                       max_teams: 8
                       meetings: 2
-                      teams:
-                        -
-                          id: 1
-                          name: Åstorp
-                          city: Åstorp
-                          country: SE
-                        -
-                          id: 2
-                          name: Lidhult
-                          city: Lidhult
-                          country: SE
-                        -
-                          id: 3
-                          name: Tystberga
-                          city: Tystberga
-                          country: SE
-                        -
-                          id: 4
-                          name: Persbo
-                          city: Persbo
-                          country: SE
-                        -
-                          id: 5
-                          name: 'Naglarby och Enbacka'
-                          city: 'Naglarby och Enbacka'
-                          country: SE
-                        -
-                          id: 6
-                          name: Brännö
-                          city: Brännö
-                          country: SE
-                        -
-                          id: 7
-                          name: Johannishus
-                          city: Johannishus
-                          country: SE
-                        -
-                          id: 8
-                          name: Hassela
-                          city: Hassela
-                          country: SE
+                      promotion: 0
+                      relegation: 2
+                      recurring: true
+                      edition: 1
                       table:
                         -
-                          ct_id: 5
-                          competition_id: 1
-                          team_id: 5
-                          games_played: 7
-                          wins: 6
+                          games_played: 8
+                          wins: 7
                           draws: 0
                           losses: 1
-                          goals_for: 57
-                          goals_against: 27
-                          points: 18
+                          goals_for: 66
+                          goals_against: 35
+                          points: 21
+                          goal_difference: 31
+                          team:
+                            id: 5
+                            name: 'Naglarby och Enbacka'
+                            city: 'Naglarby och Enbacka'
+                            country: SE
                         -
-                          ct_id: 6
-                          competition_id: 1
-                          team_id: 6
-                          games_played: 7
-                          wins: 6
+                          games_played: 8
+                          wins: 7
                           draws: 0
                           losses: 1
-                          goals_for: 65
-                          goals_against: 51
-                          points: 17
+                          goals_for: 75
+                          goals_against: 57
+                          points: 20
+                          goal_difference: 18
+                          team:
+                            id: 6
+                            name: Brännö
+                            city: Brännö
+                            country: SE
                         -
-                          ct_id: 1
-                          competition_id: 1
-                          team_id: 1
-                          games_played: 7
+                          games_played: 8
                           wins: 4
                           draws: 0
-                          losses: 3
-                          goals_for: 68
-                          goals_against: 54
-                          points: 12
-                        -
-                          ct_id: 4
-                          competition_id: 1
-                          team_id: 4
-                          games_played: 7
-                          wins: 4
-                          draws: 0
-                          losses: 3
-                          goals_for: 62
-                          goals_against: 59
-                          points: 12
-                        -
-                          ct_id: 3
-                          competition_id: 1
-                          team_id: 3
-                          games_played: 7
-                          wins: 3
-                          draws: 0
                           losses: 4
-                          goals_for: 44
-                          goals_against: 51
-                          points: 10
-                        -
-                          ct_id: 7
-                          competition_id: 1
-                          team_id: 7
-                          games_played: 7
-                          wins: 3
-                          draws: 0
-                          losses: 4
-                          goals_for: 46
+                          goals_for: 51
                           goals_against: 55
-                          points: 8
+                          points: 13
+                          goal_difference: -4
+                          team:
+                            id: 3
+                            name: Tystberga
+                            city: Tystberga
+                            country: SE
                         -
-                          ct_id: 8
-                          competition_id: 1
-                          team_id: 8
-                          games_played: 7
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 75
+                          goals_against: 63
+                          points: 12
+                          goal_difference: 12
+                          team:
+                            id: 1
+                            name: Åstorp
+                            city: Åstorp
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 66
+                          goals_against: 66
+                          points: 12
+                          goal_difference: 0
+                          team:
+                            id: 4
+                            name: Persbo
+                            city: Persbo
+                            country: SE
+                        -
+                          games_played: 8
+                          wins: 4
+                          draws: 0
+                          losses: 4
+                          goals_for: 55
+                          goals_against: 62
+                          points: 11
+                          goal_difference: -7
+                          team:
+                            id: 7
+                            name: Johannishus
+                            city: Johannishus
+                            country: SE
+                        -
+                          games_played: 8
                           wins: 1
                           draws: 0
-                          losses: 6
-                          goals_for: 48
-                          goals_against: 73
+                          losses: 7
+                          goals_for: 54
+                          goals_against: 83
                           points: 4
+                          goal_difference: -29
+                          team:
+                            id: 8
+                            name: Hassela
+                            city: Hassela
+                            country: SE
                         -
-                          ct_id: 2
-                          competition_id: 1
-                          team_id: 2
-                          games_played: 7
+                          games_played: 8
                           wins: 1
                           draws: 0
-                          losses: 6
-                          goals_for: 47
-                          goals_against: 67
+                          losses: 7
+                          goals_for: 55
+                          goals_against: 76
                           points: 3
+                          goal_difference: -21
+                          team:
+                            id: 2
+                            name: Lidhult
+                            city: Lidhult
+                            country: SE
       tags:
         - Endpoints
       security: []
@@ -2318,3 +4472,12 @@ tags:
   -
     name: Endpoints
     description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

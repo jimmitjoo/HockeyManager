@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\TeamManager;
+
 test('We can find a list of teams on teams index route', function () {
 
     $teams = \App\Models\Team::factory()->count(5)->create();
@@ -64,15 +66,45 @@ test('A guest user cannot become manager of a team', function () {
 
     $team = \App\Models\Team::factory()->create();
 
-    $response = $this->post(route('api.teams.manager.store', $team->id));
+    $response = $this->post(
+        route('api.teams.manager.store', $team->id),
+        ['team_id' => $team->id],
+        ['Accept' => 'application/json']);
 
-    $response->assertStatus(403);
+    $response->assertStatus(401);
 
     $this->assertDatabaseMissing('team_managers', [
         'team_id' => $team->id,
     ]);
 
     $this->assertNull($team->manager);
+});
+
+test('A user that already is a manager cannot become manager of another team', function () {
+
+    $team = \App\Models\Team::factory()->create();
+    $user = \App\Models\User::factory()->create();
+    TeamManager::create([
+        'team_id' => $team->id,
+        'manager_id' => $user->id,
+    ]);
+
+    $otherTeam = \App\Models\Team::factory()->create();
+
+    $this->actingAs($user);
+
+    $response = $this->post(
+        route('api.teams.manager.store', $otherTeam->id),
+        ['team_id' => $otherTeam->id],
+        ['Accept' => 'application/json']);
+
+    $response->assertStatus(403);
+
+    $this->assertDatabaseMissing('team_managers', [
+        'team_id' => $otherTeam->id,
+    ]);
+
+    $this->assertEquals($user->id, $team->manager->id);
 });
 
 

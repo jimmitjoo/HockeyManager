@@ -10,7 +10,10 @@ use App\Models\TeamManager;
 
 class TeamManagerController extends Controller
 {
-    public function store(BecomeManagerRequest $request)
+    /*
+     * @bodyParam team_id int required The id of the team. Example: 1
+     */
+    public function store(BecomeManagerRequest $request): \Illuminate\Http\JsonResponse
     {
         TeamManager::create([
             'team_id' => $request->team_id,
@@ -21,8 +24,8 @@ class TeamManagerController extends Controller
 
         event(new UserBecameManagerOfTeam(auth()->user(), $team));
 
-        return [
+        return response()->json([
             __('You are now the manager of :team', ['team' => $team->name]),
-        ];
+        ]);
     }
 }

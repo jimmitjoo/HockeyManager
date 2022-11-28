@@ -41,4 +41,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isManagerOfATeam()
+    {
+        return $this->teamManager()->exists();
+    }
+
+    public function teamManager()
+    {
+        return $this->hasOneThrough(
+            Team::class,
+            TeamManager::class,
+            'manager_id',
+            'id',
+            'id',
+            'team_id'
+        )->whereNull('team_managers.resigned_at');
+    }
 }
