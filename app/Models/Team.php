@@ -54,7 +54,7 @@ class Team extends Model
         $homeGames = $this->homeGames();
         $awayGames = $this->awayGames();
 
-        return $homeGames->union($awayGames)->latest();
+        return $homeGames->union($awayGames)->orderBy('starts_at');
     }
 
     public function competitions(): BelongsToMany

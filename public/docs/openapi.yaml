@@ -1,0 +1,2320 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://hockeymanager.test'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/games:
+    get:
+      summary: ''
+      operationId: getApiGames
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 401
+                      round: 3
+                      status: 60
+                      starts_at: '2022-11-27T23:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 12
+                      away_score: 9
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T01:33:01.000000Z'
+                      home_team_id: 57
+                      away_team_id: 58
+                      competition_id: 8
+                    -
+                      id: 397
+                      round: 2
+                      status: 60
+                      starts_at: '2022-11-27T21:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 9
+                      away_score: 8
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T23:39:01.000000Z'
+                      home_team_id: 58
+                      away_team_id: 64
+                      competition_id: 8
+                    -
+                      id: 404
+                      round: 3
+                      status: 60
+                      starts_at: '2022-11-27T23:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 7
+                      away_score: 5
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T01:08:02.000000Z'
+                      home_team_id: 61
+                      away_team_id: 59
+                      competition_id: 8
+                    -
+                      id: 448
+                      round: 14
+                      status: 0
+                      starts_at: '2022-11-28T21:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T19:58:58.000000Z'
+                      home_team_id: 57
+                      away_team_id: 62
+                      competition_id: 8
+                    -
+                      id: 400
+                      round: 2
+                      status: 60
+                      starts_at: '2022-11-27T21:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 10
+                      away_score: 9
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T23:10:01.000000Z'
+                      home_team_id: 60
+                      away_team_id: 59
+                      competition_id: 8
+                    -
+                      id: 396
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 8
+                      away_score: 4
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T21:08:02.000000Z'
+                      home_team_id: 60
+                      away_team_id: 62
+                      competition_id: 8
+                    -
+                      id: 402
+                      round: 3
+                      status: 60
+                      starts_at: '2022-11-27T23:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 7
+                      away_score: 2
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T01:09:02.000000Z'
+                      home_team_id: 64
+                      away_team_id: 62
+                      competition_id: 8
+                    -
+                      id: 393
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 11
+                      away_score: 12
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T21:35:01.000000Z'
+                      home_team_id: 63
+                      away_team_id: 58
+                      competition_id: 8
+                    -
+                      id: 399
+                      round: 2
+                      status: 60
+                      starts_at: '2022-11-27T21:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 5
+                      away_score: 11
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T23:11:01.000000Z'
+                      home_team_id: 62
+                      away_team_id: 61
+                      competition_id: 8
+                    -
+                      id: 405
+                      round: 4
+                      status: 60
+                      starts_at: '2022-11-28T01:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 10
+                      away_score: 5
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T03:09:01.000000Z'
+                      home_team_id: 58
+                      away_team_id: 62
+                      competition_id: 8
+                    -
+                      id: 403
+                      round: 3
+                      status: 60
+                      starts_at: '2022-11-27T23:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 6
+                      away_score: 7
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T01:07:02.000000Z'
+                      home_team_id: 63
+                      away_team_id: 60
+                      competition_id: 8
+                    -
+                      id: 395
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 9
+                      away_score: 5
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T21:13:01.000000Z'
+                      home_team_id: 59
+                      away_team_id: 57
+                      competition_id: 8
+                    -
+                      id: 406
+                      round: 4
+                      status: 60
+                      starts_at: '2022-11-28T01:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 5
+                      away_score: 7
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T03:12:01.000000Z'
+                      home_team_id: 60
+                      away_team_id: 57
+                      competition_id: 8
+                    -
+                      id: 394
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 4
+                      away_score: 7
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T21:11:01.000000Z'
+                      home_team_id: 61
+                      away_team_id: 64
+                      competition_id: 8
+                    -
+                      id: 407
+                      round: 4
+                      status: 60
+                      starts_at: '2022-11-28T01:58:57.000000Z'
+                      current_time: '20:00'
+                      home_score: 6
+                      away_score: 7
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-28T03:10:01.000000Z'
+                      home_team_id: 59
+                      away_team_id: 64
+                      competition_id: 8
+                  links:
+                    first: 'https://hockeymanager.test/api/games?page=1'
+                    last: 'https://hockeymanager.test/api/games?page=30'
+                    prev: null
+                    next: 'https://hockeymanager.test/api/games?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 30
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=3'
+                        label: '3'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=4'
+                        label: '4'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=5'
+                        label: '5'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=6'
+                        label: '6'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=7'
+                        label: '7'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=8'
+                        label: '8'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=9'
+                        label: '9'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=10'
+                        label: '10'
+                        active: false
+                      -
+                        url: null
+                        label: ...
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=29'
+                        label: '29'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=30'
+                        label: '30'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/games?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'https://hockeymanager.test/api/games'
+                    per_page: 15
+                    to: 15
+                    total: 448
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 401
+                        round: 3
+                        status: 60
+                        starts_at: '2022-11-27T23:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 12
+                        away_score: 9
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T01:33:01.000000Z'
+                        home_team_id: 57
+                        away_team_id: 58
+                        competition_id: 8
+                      -
+                        id: 397
+                        round: 2
+                        status: 60
+                        starts_at: '2022-11-27T21:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 9
+                        away_score: 8
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T23:39:01.000000Z'
+                        home_team_id: 58
+                        away_team_id: 64
+                        competition_id: 8
+                      -
+                        id: 404
+                        round: 3
+                        status: 60
+                        starts_at: '2022-11-27T23:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 7
+                        away_score: 5
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T01:08:02.000000Z'
+                        home_team_id: 61
+                        away_team_id: 59
+                        competition_id: 8
+                      -
+                        id: 448
+                        round: 14
+                        status: 0
+                        starts_at: '2022-11-28T21:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T19:58:58.000000Z'
+                        home_team_id: 57
+                        away_team_id: 62
+                        competition_id: 8
+                      -
+                        id: 400
+                        round: 2
+                        status: 60
+                        starts_at: '2022-11-27T21:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 10
+                        away_score: 9
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T23:10:01.000000Z'
+                        home_team_id: 60
+                        away_team_id: 59
+                        competition_id: 8
+                      -
+                        id: 396
+                        round: 1
+                        status: 60
+                        starts_at: '2022-11-27T19:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 8
+                        away_score: 4
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T21:08:02.000000Z'
+                        home_team_id: 60
+                        away_team_id: 62
+                        competition_id: 8
+                      -
+                        id: 402
+                        round: 3
+                        status: 60
+                        starts_at: '2022-11-27T23:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 7
+                        away_score: 2
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T01:09:02.000000Z'
+                        home_team_id: 64
+                        away_team_id: 62
+                        competition_id: 8
+                      -
+                        id: 393
+                        round: 1
+                        status: 60
+                        starts_at: '2022-11-27T19:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 11
+                        away_score: 12
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T21:35:01.000000Z'
+                        home_team_id: 63
+                        away_team_id: 58
+                        competition_id: 8
+                      -
+                        id: 399
+                        round: 2
+                        status: 60
+                        starts_at: '2022-11-27T21:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 5
+                        away_score: 11
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T23:11:01.000000Z'
+                        home_team_id: 62
+                        away_team_id: 61
+                        competition_id: 8
+                      -
+                        id: 405
+                        round: 4
+                        status: 60
+                        starts_at: '2022-11-28T01:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 10
+                        away_score: 5
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T03:09:01.000000Z'
+                        home_team_id: 58
+                        away_team_id: 62
+                        competition_id: 8
+                      -
+                        id: 403
+                        round: 3
+                        status: 60
+                        starts_at: '2022-11-27T23:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 6
+                        away_score: 7
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T01:07:02.000000Z'
+                        home_team_id: 63
+                        away_team_id: 60
+                        competition_id: 8
+                      -
+                        id: 395
+                        round: 1
+                        status: 60
+                        starts_at: '2022-11-27T19:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 9
+                        away_score: 5
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T21:13:01.000000Z'
+                        home_team_id: 59
+                        away_team_id: 57
+                        competition_id: 8
+                      -
+                        id: 406
+                        round: 4
+                        status: 60
+                        starts_at: '2022-11-28T01:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 5
+                        away_score: 7
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T03:12:01.000000Z'
+                        home_team_id: 60
+                        away_team_id: 57
+                        competition_id: 8
+                      -
+                        id: 394
+                        round: 1
+                        status: 60
+                        starts_at: '2022-11-27T19:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 4
+                        away_score: 7
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T21:11:01.000000Z'
+                        home_team_id: 61
+                        away_team_id: 64
+                        competition_id: 8
+                      -
+                        id: 407
+                        round: 4
+                        status: 60
+                        starts_at: '2022-11-28T01:58:57.000000Z'
+                        current_time: '20:00'
+                        home_score: 6
+                        away_score: 7
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-28T03:10:01.000000Z'
+                        home_team_id: 59
+                        away_team_id: 64
+                        competition_id: 8
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      first: 'https://hockeymanager.test/api/games?page=1'
+                      last: 'https://hockeymanager.test/api/games?page=30'
+                      prev: null
+                      next: 'https://hockeymanager.test/api/games?page=2'
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 30
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=2'
+                          label: '2'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=3'
+                          label: '3'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=4'
+                          label: '4'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=5'
+                          label: '5'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=6'
+                          label: '6'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=7'
+                          label: '7'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=8'
+                          label: '8'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=9'
+                          label: '9'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=10'
+                          label: '10'
+                          active: false
+                        -
+                          url: null
+                          label: ...
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=29'
+                          label: '29'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=30'
+                          label: '30'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/games?page=2'
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'https://hockeymanager.test/api/games'
+                      per_page: 15
+                      to: 15
+                      total: 448
+      tags:
+        - Endpoints
+      security: []
+  '/api/games/{game_id}':
+    get:
+      summary: ''
+      operationId: getApiGamesGame_id
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    round: 1
+                    status: 60
+                    starts_at: '2022-11-27T19:58:49.000000Z'
+                    current_time: '20:00'
+                    home_score: 6
+                    away_score: 7
+                    created_at: '2022-11-27T19:58:50.000000Z'
+                    updated_at: '2022-11-27T21:13:01.000000Z'
+                    home_team_id: 2
+                    away_team_id: 5
+                    competition_id: 1
+                    home_team:
+                      id: 2
+                      name: Lidhult
+                      city: Lidhult
+                      state: null
+                      country: SE
+                      created_at: '2022-11-27T19:58:49.000000Z'
+                      updated_at: '2022-11-27T19:58:49.000000Z'
+                    away_team:
+                      id: 5
+                      name: 'Naglarby och Enbacka'
+                      city: 'Naglarby och Enbacka'
+                      state: null
+                      country: SE
+                      created_at: '2022-11-27T19:58:49.000000Z'
+                      updated_at: '2022-11-27T19:58:49.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 6
+                      away_score: 7
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T21:13:01.000000Z'
+                      home_team_id: 2
+                      away_team_id: 5
+                      competition_id: 1
+                      home_team:
+                        id: 2
+                        name: Lidhult
+                        city: Lidhult
+                        state: null
+                        country: SE
+                        created_at: '2022-11-27T19:58:49.000000Z'
+                        updated_at: '2022-11-27T19:58:49.000000Z'
+                      away_team:
+                        id: 5
+                        name: 'Naglarby och Enbacka'
+                        city: 'Naglarby och Enbacka'
+                        state: null
+                        country: SE
+                        created_at: '2022-11-27T19:58:49.000000Z'
+                        updated_at: '2022-11-27T19:58:49.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: game_id
+        description: 'The ID of the game.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/teams:
+    get:
+      summary: ''
+      operationId: getApiTeams
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 64
+                      name: Mørke
+                      city: Mørke
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:58.000000Z'
+                      updated_at: '2022-11-27T19:58:58.000000Z'
+                    -
+                      id: 57
+                      name: Sporup
+                      city: Sporup
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 58
+                      name: Glejbjerg
+                      city: Glejbjerg
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 59
+                      name: Djurs
+                      city: Djurs
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 60
+                      name: Kolding
+                      city: Kolding
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 61
+                      name: Vojens
+                      city: Vojens
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 62
+                      name: Haderslev
+                      city: Haderslev
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 63
+                      name: Sydfyn
+                      city: Sydfyn
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T19:58:57.000000Z'
+                    -
+                      id: 49
+                      name: Vestj
+                      city: Vestj
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 50
+                      name: Vinderup
+                      city: Vinderup
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 51
+                      name: Sandved
+                      city: Sandved
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 52
+                      name: Veksø
+                      city: Veksø
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 53
+                      name: Såby
+                      city: Såby
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 54
+                      name: Ulstrup
+                      city: Ulstrup
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                    -
+                      id: 55
+                      name: Hundested
+                      city: Hundested
+                      state: null
+                      country: DK
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T19:58:56.000000Z'
+                  links:
+                    first: 'https://hockeymanager.test/api/teams?page=1'
+                    last: 'https://hockeymanager.test/api/teams?page=5'
+                    prev: null
+                    next: 'https://hockeymanager.test/api/teams?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 5
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=3'
+                        label: '3'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=4'
+                        label: '4'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=5'
+                        label: '5'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/teams?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'https://hockeymanager.test/api/teams'
+                    per_page: 15
+                    to: 15
+                    total: 64
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 64
+                        name: Mørke
+                        city: Mørke
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:58.000000Z'
+                        updated_at: '2022-11-27T19:58:58.000000Z'
+                      -
+                        id: 57
+                        name: Sporup
+                        city: Sporup
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 58
+                        name: Glejbjerg
+                        city: Glejbjerg
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 59
+                        name: Djurs
+                        city: Djurs
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 60
+                        name: Kolding
+                        city: Kolding
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 61
+                        name: Vojens
+                        city: Vojens
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 62
+                        name: Haderslev
+                        city: Haderslev
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 63
+                        name: Sydfyn
+                        city: Sydfyn
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T19:58:57.000000Z'
+                      -
+                        id: 49
+                        name: Vestj
+                        city: Vestj
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 50
+                        name: Vinderup
+                        city: Vinderup
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 51
+                        name: Sandved
+                        city: Sandved
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 52
+                        name: Veksø
+                        city: Veksø
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 53
+                        name: Såby
+                        city: Såby
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 54
+                        name: Ulstrup
+                        city: Ulstrup
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                      -
+                        id: 55
+                        name: Hundested
+                        city: Hundested
+                        state: null
+                        country: DK
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T19:58:56.000000Z'
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      first: 'https://hockeymanager.test/api/teams?page=1'
+                      last: 'https://hockeymanager.test/api/teams?page=5'
+                      prev: null
+                      next: 'https://hockeymanager.test/api/teams?page=2'
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 5
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=2'
+                          label: '2'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=3'
+                          label: '3'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=4'
+                          label: '4'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=5'
+                          label: '5'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/teams?page=2'
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'https://hockeymanager.test/api/teams'
+                      per_page: 15
+                      to: 15
+                      total: 64
+      tags:
+        - Endpoints
+      security: []
+  '/api/teams/{team_id}':
+    get:
+      summary: ''
+      operationId: getApiTeamsTeam_id
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Åstorp
+                    city: Åstorp
+                    country: SE
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: Åstorp
+                      city: Åstorp
+                      country: SE
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: team_id
+        description: 'The ID of the team.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/teams/{team_id}/schedule':
+    get:
+      summary: ''
+      operationId: getApiTeamsTeam_idSchedule
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 4
+                      round: 1
+                      status: 60
+                      starts_at: '2022-11-27T19:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 13
+                      away_score: 6
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T21:14:01.000000Z'
+                      home_team_id: 1
+                      away_team_id: 7
+                      competition_id: 1
+                    -
+                      id: 8
+                      round: 2
+                      status: 60
+                      starts_at: '2022-11-27T21:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 12
+                      away_score: 9
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T23:11:01.000000Z'
+                      home_team_id: 1
+                      away_team_id: 8
+                      competition_id: 1
+                    -
+                      id: 11
+                      round: 3
+                      status: 60
+                      starts_at: '2022-11-27T23:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 5
+                      away_score: 14
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-28T01:14:01.000000Z'
+                      home_team_id: 2
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 14
+                      round: 4
+                      status: 60
+                      starts_at: '2022-11-28T01:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 7
+                      away_score: 8
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-28T03:08:01.000000Z'
+                      home_team_id: 1
+                      away_team_id: 6
+                      competition_id: 1
+                    -
+                      id: 17
+                      round: 5
+                      status: 60
+                      starts_at: '2022-11-28T03:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 3
+                      away_score: 9
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-28T05:09:00.000000Z'
+                      home_team_id: 1
+                      away_team_id: 5
+                      competition_id: 1
+                    -
+                      id: 22
+                      round: 6
+                      status: 60
+                      starts_at: '2022-11-28T05:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 12
+                      away_score: 8
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-28T07:10:01.000000Z'
+                      home_team_id: 4
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 27
+                      round: 7
+                      status: 60
+                      starts_at: '2022-11-28T07:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 11
+                      away_score: 5
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-28T09:10:01.000000Z'
+                      home_team_id: 1
+                      away_team_id: 3
+                      competition_id: 1
+                    -
+                      id: 32
+                      round: 8
+                      status: 0
+                      starts_at: '2022-11-28T09:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 7
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 36
+                      round: 9
+                      status: 0
+                      starts_at: '2022-11-28T11:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 8
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 39
+                      round: 10
+                      status: 0
+                      starts_at: '2022-11-28T13:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 1
+                      away_team_id: 2
+                      competition_id: 1
+                    -
+                      id: 42
+                      round: 11
+                      status: 0
+                      starts_at: '2022-11-28T15:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 6
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 45
+                      round: 12
+                      status: 0
+                      starts_at: '2022-11-28T17:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 5
+                      away_team_id: 1
+                      competition_id: 1
+                    -
+                      id: 50
+                      round: 13
+                      status: 0
+                      starts_at: '2022-11-28T19:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 1
+                      away_team_id: 4
+                      competition_id: 1
+                    -
+                      id: 55
+                      round: 14
+                      status: 0
+                      starts_at: '2022-11-28T21:58:49.000000Z'
+                      current_time: '20:00'
+                      home_score: 0
+                      away_score: 0
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T19:58:50.000000Z'
+                      home_team_id: 3
+                      away_team_id: 1
+                      competition_id: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 4
+                        round: 1
+                        status: 60
+                        starts_at: '2022-11-27T19:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 13
+                        away_score: 6
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T21:14:01.000000Z'
+                        home_team_id: 1
+                        away_team_id: 7
+                        competition_id: 1
+                      -
+                        id: 8
+                        round: 2
+                        status: 60
+                        starts_at: '2022-11-27T21:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 12
+                        away_score: 9
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T23:11:01.000000Z'
+                        home_team_id: 1
+                        away_team_id: 8
+                        competition_id: 1
+                      -
+                        id: 11
+                        round: 3
+                        status: 60
+                        starts_at: '2022-11-27T23:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 5
+                        away_score: 14
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-28T01:14:01.000000Z'
+                        home_team_id: 2
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 14
+                        round: 4
+                        status: 60
+                        starts_at: '2022-11-28T01:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 7
+                        away_score: 8
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-28T03:08:01.000000Z'
+                        home_team_id: 1
+                        away_team_id: 6
+                        competition_id: 1
+                      -
+                        id: 17
+                        round: 5
+                        status: 60
+                        starts_at: '2022-11-28T03:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 3
+                        away_score: 9
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-28T05:09:00.000000Z'
+                        home_team_id: 1
+                        away_team_id: 5
+                        competition_id: 1
+                      -
+                        id: 22
+                        round: 6
+                        status: 60
+                        starts_at: '2022-11-28T05:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 12
+                        away_score: 8
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-28T07:10:01.000000Z'
+                        home_team_id: 4
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 27
+                        round: 7
+                        status: 60
+                        starts_at: '2022-11-28T07:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 11
+                        away_score: 5
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-28T09:10:01.000000Z'
+                        home_team_id: 1
+                        away_team_id: 3
+                        competition_id: 1
+                      -
+                        id: 32
+                        round: 8
+                        status: 0
+                        starts_at: '2022-11-28T09:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 7
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 36
+                        round: 9
+                        status: 0
+                        starts_at: '2022-11-28T11:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 8
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 39
+                        round: 10
+                        status: 0
+                        starts_at: '2022-11-28T13:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 1
+                        away_team_id: 2
+                        competition_id: 1
+                      -
+                        id: 42
+                        round: 11
+                        status: 0
+                        starts_at: '2022-11-28T15:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 6
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 45
+                        round: 12
+                        status: 0
+                        starts_at: '2022-11-28T17:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 5
+                        away_team_id: 1
+                        competition_id: 1
+                      -
+                        id: 50
+                        round: 13
+                        status: 0
+                        starts_at: '2022-11-28T19:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 1
+                        away_team_id: 4
+                        competition_id: 1
+                      -
+                        id: 55
+                        round: 14
+                        status: 0
+                        starts_at: '2022-11-28T21:58:49.000000Z'
+                        current_time: '20:00'
+                        home_score: 0
+                        away_score: 0
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T19:58:50.000000Z'
+                        home_team_id: 3
+                        away_team_id: 1
+                        competition_id: 1
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: team_id
+        description: 'The ID of the team.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/teams/become-team-manager:
+    post:
+      summary: ''
+      operationId: postApiTeamsBecomeTeamManager
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                team_id:
+                  type: string
+                  description: ''
+                  example: nisi
+              required:
+                - team_id
+      security: []
+  /api/competitions:
+    get:
+      summary: ''
+      operationId: getApiCompetitions
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Klass 1'
+                      country: SE
+                      status: 10
+                      starts_at: '2022-11-27T19:58:49.000000Z'
+                      ends_at: '2022-11-28T23:58:49.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 1
+                      relegation: 2
+                      promotion: 0
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:49.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 2
+                      name: 'Klass 2'
+                      country: SE
+                      status: 10
+                      starts_at: '2022-11-27T19:58:50.000000Z'
+                      ends_at: '2022-11-28T23:58:50.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 2
+                      relegation: 0
+                      promotion: 2
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:50.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 3
+                      name: Liiga
+                      country: FI
+                      status: 10
+                      starts_at: '2022-11-27T19:58:51.000000Z'
+                      ends_at: '2022-11-28T23:58:51.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 1
+                      relegation: 2
+                      promotion: 0
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:51.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 4
+                      name: 'Liiga 2'
+                      country: FI
+                      status: 10
+                      starts_at: '2022-11-27T19:58:52.000000Z'
+                      ends_at: '2022-11-28T23:58:52.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 2
+                      relegation: 0
+                      promotion: 2
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:52.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 5
+                      name: 'Norge 1'
+                      country: 'NO'
+                      status: 10
+                      starts_at: '2022-11-27T19:58:53.000000Z'
+                      ends_at: '2022-11-28T23:58:53.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 1
+                      relegation: 2
+                      promotion: 0
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:53.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 6
+                      name: 'Norge 2'
+                      country: 'NO'
+                      status: 10
+                      starts_at: '2022-11-27T19:58:54.000000Z'
+                      ends_at: '2022-11-28T23:58:54.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 2
+                      relegation: 0
+                      promotion: 2
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:54.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 7
+                      name: 'Division 1'
+                      country: DK
+                      status: 10
+                      starts_at: '2022-11-27T19:58:56.000000Z'
+                      ends_at: '2022-11-28T23:58:56.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 1
+                      relegation: 2
+                      promotion: 0
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:56.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                    -
+                      id: 8
+                      name: 'Division 2'
+                      country: DK
+                      status: 10
+                      starts_at: '2022-11-27T19:58:57.000000Z'
+                      ends_at: '2022-11-28T23:58:57.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      tier: 2
+                      relegation: 0
+                      promotion: 2
+                      relegation_qualification: 0
+                      promotion_qualification: 0
+                      recurring: true
+                      edition: 1
+                      created_at: '2022-11-27T19:58:57.000000Z'
+                      updated_at: '2022-11-27T20:00:23.000000Z'
+                  links:
+                    self: link-value
+                    first: 'https://hockeymanager.test/api/competitions?page=1'
+                    last: 'https://hockeymanager.test/api/competitions?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'https://hockeymanager.test/api/competitions?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'https://hockeymanager.test/api/competitions'
+                    per_page: 15
+                    to: 8
+                    total: 8
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Klass 1'
+                        country: SE
+                        status: 10
+                        starts_at: '2022-11-27T19:58:49.000000Z'
+                        ends_at: '2022-11-28T23:58:49.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 1
+                        relegation: 2
+                        promotion: 0
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:49.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 2
+                        name: 'Klass 2'
+                        country: SE
+                        status: 10
+                        starts_at: '2022-11-27T19:58:50.000000Z'
+                        ends_at: '2022-11-28T23:58:50.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 2
+                        relegation: 0
+                        promotion: 2
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:50.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 3
+                        name: Liiga
+                        country: FI
+                        status: 10
+                        starts_at: '2022-11-27T19:58:51.000000Z'
+                        ends_at: '2022-11-28T23:58:51.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 1
+                        relegation: 2
+                        promotion: 0
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:51.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 4
+                        name: 'Liiga 2'
+                        country: FI
+                        status: 10
+                        starts_at: '2022-11-27T19:58:52.000000Z'
+                        ends_at: '2022-11-28T23:58:52.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 2
+                        relegation: 0
+                        promotion: 2
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:52.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 5
+                        name: 'Norge 1'
+                        country: 'NO'
+                        status: 10
+                        starts_at: '2022-11-27T19:58:53.000000Z'
+                        ends_at: '2022-11-28T23:58:53.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 1
+                        relegation: 2
+                        promotion: 0
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:53.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 6
+                        name: 'Norge 2'
+                        country: 'NO'
+                        status: 10
+                        starts_at: '2022-11-27T19:58:54.000000Z'
+                        ends_at: '2022-11-28T23:58:54.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 2
+                        relegation: 0
+                        promotion: 2
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:54.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 7
+                        name: 'Division 1'
+                        country: DK
+                        status: 10
+                        starts_at: '2022-11-27T19:58:56.000000Z'
+                        ends_at: '2022-11-28T23:58:56.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 1
+                        relegation: 2
+                        promotion: 0
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:56.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                      -
+                        id: 8
+                        name: 'Division 2'
+                        country: DK
+                        status: 10
+                        starts_at: '2022-11-27T19:58:57.000000Z'
+                        ends_at: '2022-11-28T23:58:57.000000Z'
+                        type: 0
+                        max_teams: 8
+                        meetings: 2
+                        tier: 2
+                        relegation: 0
+                        promotion: 2
+                        relegation_qualification: 0
+                        promotion_qualification: 0
+                        recurring: true
+                        edition: 1
+                        created_at: '2022-11-27T19:58:57.000000Z'
+                        updated_at: '2022-11-27T20:00:23.000000Z'
+                    items:
+                      type: object
+                  links:
+                    type: object
+                    example:
+                      self: link-value
+                      first: 'https://hockeymanager.test/api/competitions?page=1'
+                      last: 'https://hockeymanager.test/api/competitions?page=1'
+                      prev: null
+                      next: null
+                  meta:
+                    type: object
+                    example:
+                      current_page: 1
+                      from: 1
+                      last_page: 1
+                      links:
+                        -
+                          url: null
+                          label: '&laquo; Previous'
+                          active: false
+                        -
+                          url: 'https://hockeymanager.test/api/competitions?page=1'
+                          label: '1'
+                          active: true
+                        -
+                          url: null
+                          label: 'Next &raquo;'
+                          active: false
+                      path: 'https://hockeymanager.test/api/competitions'
+                      per_page: 15
+                      to: 8
+                      total: 8
+      tags:
+        - Endpoints
+      security: []
+  '/api/competitions/{competition_id}':
+    get:
+      summary: ''
+      operationId: getApiCompetitionsCompetition_id
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Klass 1'
+                    country: SE
+                    status: 10
+                    starts_at: '2022-11-27T19:58:49.000000Z'
+                    ends_at: '2022-11-28T23:58:49.000000Z'
+                    type: 0
+                    max_teams: 8
+                    meetings: 2
+                    teams:
+                      -
+                        id: 1
+                        name: Åstorp
+                        city: Åstorp
+                        country: SE
+                      -
+                        id: 2
+                        name: Lidhult
+                        city: Lidhult
+                        country: SE
+                      -
+                        id: 3
+                        name: Tystberga
+                        city: Tystberga
+                        country: SE
+                      -
+                        id: 4
+                        name: Persbo
+                        city: Persbo
+                        country: SE
+                      -
+                        id: 5
+                        name: 'Naglarby och Enbacka'
+                        city: 'Naglarby och Enbacka'
+                        country: SE
+                      -
+                        id: 6
+                        name: Brännö
+                        city: Brännö
+                        country: SE
+                      -
+                        id: 7
+                        name: Johannishus
+                        city: Johannishus
+                        country: SE
+                      -
+                        id: 8
+                        name: Hassela
+                        city: Hassela
+                        country: SE
+                    table:
+                      -
+                        ct_id: 5
+                        competition_id: 1
+                        team_id: 5
+                        games_played: 7
+                        wins: 6
+                        draws: 0
+                        losses: 1
+                        goals_for: 57
+                        goals_against: 27
+                        points: 18
+                      -
+                        ct_id: 6
+                        competition_id: 1
+                        team_id: 6
+                        games_played: 7
+                        wins: 6
+                        draws: 0
+                        losses: 1
+                        goals_for: 65
+                        goals_against: 51
+                        points: 17
+                      -
+                        ct_id: 1
+                        competition_id: 1
+                        team_id: 1
+                        games_played: 7
+                        wins: 4
+                        draws: 0
+                        losses: 3
+                        goals_for: 68
+                        goals_against: 54
+                        points: 12
+                      -
+                        ct_id: 4
+                        competition_id: 1
+                        team_id: 4
+                        games_played: 7
+                        wins: 4
+                        draws: 0
+                        losses: 3
+                        goals_for: 62
+                        goals_against: 59
+                        points: 12
+                      -
+                        ct_id: 3
+                        competition_id: 1
+                        team_id: 3
+                        games_played: 7
+                        wins: 3
+                        draws: 0
+                        losses: 4
+                        goals_for: 44
+                        goals_against: 51
+                        points: 10
+                      -
+                        ct_id: 7
+                        competition_id: 1
+                        team_id: 7
+                        games_played: 7
+                        wins: 3
+                        draws: 0
+                        losses: 4
+                        goals_for: 46
+                        goals_against: 55
+                        points: 8
+                      -
+                        ct_id: 8
+                        competition_id: 1
+                        team_id: 8
+                        games_played: 7
+                        wins: 1
+                        draws: 0
+                        losses: 6
+                        goals_for: 48
+                        goals_against: 73
+                        points: 4
+                      -
+                        ct_id: 2
+                        competition_id: 1
+                        team_id: 2
+                        games_played: 7
+                        wins: 1
+                        draws: 0
+                        losses: 6
+                        goals_for: 47
+                        goals_against: 67
+                        points: 3
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 1
+                      name: 'Klass 1'
+                      country: SE
+                      status: 10
+                      starts_at: '2022-11-27T19:58:49.000000Z'
+                      ends_at: '2022-11-28T23:58:49.000000Z'
+                      type: 0
+                      max_teams: 8
+                      meetings: 2
+                      teams:
+                        -
+                          id: 1
+                          name: Åstorp
+                          city: Åstorp
+                          country: SE
+                        -
+                          id: 2
+                          name: Lidhult
+                          city: Lidhult
+                          country: SE
+                        -
+                          id: 3
+                          name: Tystberga
+                          city: Tystberga
+                          country: SE
+                        -
+                          id: 4
+                          name: Persbo
+                          city: Persbo
+                          country: SE
+                        -
+                          id: 5
+                          name: 'Naglarby och Enbacka'
+                          city: 'Naglarby och Enbacka'
+                          country: SE
+                        -
+                          id: 6
+                          name: Brännö
+                          city: Brännö
+                          country: SE
+                        -
+                          id: 7
+                          name: Johannishus
+                          city: Johannishus
+                          country: SE
+                        -
+                          id: 8
+                          name: Hassela
+                          city: Hassela
+                          country: SE
+                      table:
+                        -
+                          ct_id: 5
+                          competition_id: 1
+                          team_id: 5
+                          games_played: 7
+                          wins: 6
+                          draws: 0
+                          losses: 1
+                          goals_for: 57
+                          goals_against: 27
+                          points: 18
+                        -
+                          ct_id: 6
+                          competition_id: 1
+                          team_id: 6
+                          games_played: 7
+                          wins: 6
+                          draws: 0
+                          losses: 1
+                          goals_for: 65
+                          goals_against: 51
+                          points: 17
+                        -
+                          ct_id: 1
+                          competition_id: 1
+                          team_id: 1
+                          games_played: 7
+                          wins: 4
+                          draws: 0
+                          losses: 3
+                          goals_for: 68
+                          goals_against: 54
+                          points: 12
+                        -
+                          ct_id: 4
+                          competition_id: 1
+                          team_id: 4
+                          games_played: 7
+                          wins: 4
+                          draws: 0
+                          losses: 3
+                          goals_for: 62
+                          goals_against: 59
+                          points: 12
+                        -
+                          ct_id: 3
+                          competition_id: 1
+                          team_id: 3
+                          games_played: 7
+                          wins: 3
+                          draws: 0
+                          losses: 4
+                          goals_for: 44
+                          goals_against: 51
+                          points: 10
+                        -
+                          ct_id: 7
+                          competition_id: 1
+                          team_id: 7
+                          games_played: 7
+                          wins: 3
+                          draws: 0
+                          losses: 4
+                          goals_for: 46
+                          goals_against: 55
+                          points: 8
+                        -
+                          ct_id: 8
+                          competition_id: 1
+                          team_id: 8
+                          games_played: 7
+                          wins: 1
+                          draws: 0
+                          losses: 6
+                          goals_for: 48
+                          goals_against: 73
+                          points: 4
+                        -
+                          ct_id: 2
+                          competition_id: 1
+                          team_id: 2
+                          games_played: 7
+                          wins: 1
+                          draws: 0
+                          losses: 6
+                          goals_for: 47
+                          goals_against: 67
+                          points: 3
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: competition_id
+        description: 'The ID of the competition.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
