@@ -20,6 +20,8 @@ class CompetitionTeam extends Resource
 
     public static $displayInNavigation = false;
 
+    public static $perPageViaRelationship = 25;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -27,14 +29,7 @@ class CompetitionTeam extends Resource
      */
     public static $title = 'id';
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'id',
-    ];
+    public static $searchable = false;
 
     /**
      * Get the fields displayed by the resource.

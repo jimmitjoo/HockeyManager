@@ -20,6 +20,8 @@ class Person extends Resource
      */
     public static $model = \App\Models\Person::class;
 
+    public static $perPageViaRelationship = 50;
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -37,6 +39,9 @@ class Person extends Resource
      */
     public static $search = [
         'name',
+        'city',
+        'age',
+        'country',
     ];
 
     /**

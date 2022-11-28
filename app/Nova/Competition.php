@@ -50,14 +50,18 @@ class Competition extends Resource
         return [
             Text::make(__('Name'), 'name'),
             Country::make(__('Country'), 'country'),
-            Boolean::make(__('Status'), 'status'),
+            Text::make(__('Status'), fn() => $this->status->label()),
             DateTime::make(__('Starts At'), 'starts_at'),
             DateTime::make(__('Ends At'), 'ends_at'),
             Text::make(__('Type'), fn() => $this->type->label()),
             Number::make(__('Max Teams'), 'max_teams'),
             Number::make(__('Meetings'), 'meetings'),
 
-            HasMany::make(__('League Table'), 'leagueTable', CompetitionTeam::class),
+            HasMany::make(
+                __('League Table'),
+                'leagueTable',
+                CompetitionTeam::class
+            ),
 
             BelongsToMany::make(__('Teams'), 'teams', Team::class),
 
