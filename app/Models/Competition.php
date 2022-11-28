@@ -45,9 +45,10 @@ class Competition extends Model
     {
         return $this->hasMany(CompetitionTeam::class)
             ->with('team')
-            ->orderBy('points', 'desc')
-            ->orderBy('goals_for', 'desc')
-            ->orderBy('goals_against', 'asc');
+            ->selectRaw('*, (goals_for - goals_against) as goal_difference')
+            ->orderByDesc('points')
+            ->orderByDesc('goal_difference')
+            ->orderByDesc('goals_for');
     }
 
     public function teams(): BelongsToMany
