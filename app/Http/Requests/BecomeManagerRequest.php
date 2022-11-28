@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @bodyParam team_id int required The id of the team. Example: 1
+ */
 class BecomeManagerRequest extends FormRequest
 {
     /**
@@ -35,7 +38,7 @@ class BecomeManagerRequest extends FormRequest
     public function rules()
     {
         return [
-            'team_id' => 'required|exists:teams,id',
+            'team_id' => 'required|integer|exists:teams,id',
         ];
     }
 }

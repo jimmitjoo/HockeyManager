@@ -10,9 +10,6 @@ use App\Models\TeamManager;
 
 class TeamManagerController extends Controller
 {
-    /*
-     * @bodyParam team_id int required The id of the team. Example: 1
-     */
     public function store(BecomeManagerRequest $request): \Illuminate\Http\JsonResponse
     {
         TeamManager::create([

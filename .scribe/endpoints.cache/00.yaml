@@ -173,13 +173,13 @@ endpoints:
     bodyParameters:
       team_id:
         name: team_id
-        description: ''
+        description: 'The id of the team.'
         required: true
-        example: soluta
-        type: string
+        example: 1
+        type: integer
         custom: []
     cleanBodyParameters:
-      team_id: soluta
+      team_id: 1
     fileParameters: []
     responses: []
     responseFields: []
@@ -219,7 +219,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
+          x-ratelimit-remaining: '52'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -268,7 +268,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '58'
+          x-ratelimit-remaining: '51'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -309,7 +309,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
+          x-ratelimit-remaining: '50'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -358,7 +358,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '49'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -402,12 +402,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"data":[{"id":4,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":13,"away_score":6,"home_team_id":1,"away_team_id":7,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"}},{"id":8,"round":2,"status":60,"starts_at":"2022-11-27T21:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":9,"home_team_id":1,"away_team_id":8,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}},{"id":11,"round":3,"status":60,"starts_at":"2022-11-27T23:58:49.000000Z","current_time":"20:00","home_score":5,"away_score":14,"home_team_id":2,"away_team_id":1,"competition_id":1,"home_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":14,"round":4,"status":60,"starts_at":"2022-11-28T01:58:49.000000Z","current_time":"20:00","home_score":7,"away_score":8,"home_team_id":1,"away_team_id":6,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"}},{"id":17,"round":5,"status":60,"starts_at":"2022-11-28T03:58:49.000000Z","current_time":"20:00","home_score":3,"away_score":9,"home_team_id":1,"away_team_id":5,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}},{"id":22,"round":6,"status":60,"starts_at":"2022-11-28T05:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":8,"home_team_id":4,"away_team_id":1,"competition_id":1,"home_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":27,"round":7,"status":60,"starts_at":"2022-11-28T07:58:49.000000Z","current_time":"20:00","home_score":11,"away_score":5,"home_team_id":1,"away_team_id":3,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"}},{"id":32,"round":8,"status":60,"starts_at":"2022-11-28T09:58:49.000000Z","current_time":"20:00","home_score":9,"away_score":7,"home_team_id":7,"away_team_id":1,"competition_id":1,"home_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":36,"round":9,"status":11,"starts_at":"2022-11-28T11:58:49.000000Z","current_time":"20:00","home_score":1,"away_score":4,"home_team_id":8,"away_team_id":1,"competition_id":1,"home_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":39,"round":10,"status":0,"starts_at":"2022-11-28T13:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":2,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"}},{"id":42,"round":11,"status":0,"starts_at":"2022-11-28T15:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":6,"away_team_id":1,"competition_id":1,"home_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":45,"round":12,"status":0,"starts_at":"2022-11-28T17:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":5,"away_team_id":1,"competition_id":1,"home_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":50,"round":13,"status":0,"starts_at":"2022-11-28T19:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":4,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"}},{"id":55,"round":14,"status":0,"starts_at":"2022-11-28T21:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":3,"away_team_id":1,"competition_id":1,"home_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}}]}'
+        content: '{"data":[{"id":4,"round":1,"status":60,"starts_at":"2022-11-27T19:58:49.000000Z","current_time":"20:00","home_score":13,"away_score":6,"home_team_id":1,"away_team_id":7,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"}},{"id":8,"round":2,"status":60,"starts_at":"2022-11-27T21:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":9,"home_team_id":1,"away_team_id":8,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"}},{"id":11,"round":3,"status":60,"starts_at":"2022-11-27T23:58:49.000000Z","current_time":"20:00","home_score":5,"away_score":14,"home_team_id":2,"away_team_id":1,"competition_id":1,"home_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":14,"round":4,"status":60,"starts_at":"2022-11-28T01:58:49.000000Z","current_time":"20:00","home_score":7,"away_score":8,"home_team_id":1,"away_team_id":6,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"}},{"id":17,"round":5,"status":60,"starts_at":"2022-11-28T03:58:49.000000Z","current_time":"20:00","home_score":3,"away_score":9,"home_team_id":1,"away_team_id":5,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"}},{"id":22,"round":6,"status":60,"starts_at":"2022-11-28T05:58:49.000000Z","current_time":"20:00","home_score":12,"away_score":8,"home_team_id":4,"away_team_id":1,"competition_id":1,"home_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":27,"round":7,"status":60,"starts_at":"2022-11-28T07:58:49.000000Z","current_time":"20:00","home_score":11,"away_score":5,"home_team_id":1,"away_team_id":3,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"}},{"id":32,"round":8,"status":60,"starts_at":"2022-11-28T09:58:49.000000Z","current_time":"20:00","home_score":9,"away_score":7,"home_team_id":7,"away_team_id":1,"competition_id":1,"home_team":{"id":7,"name":"Johannishus","city":"Johannishus","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":36,"round":9,"status":20,"starts_at":"2022-11-28T11:58:49.000000Z","current_time":"18:46","home_score":1,"away_score":4,"home_team_id":8,"away_team_id":1,"competition_id":1,"home_team":{"id":8,"name":"Hassela","city":"Hassela","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":39,"round":10,"status":0,"starts_at":"2022-11-28T13:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":2,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":2,"name":"Lidhult","city":"Lidhult","country":"SE"}},{"id":42,"round":11,"status":0,"starts_at":"2022-11-28T15:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":6,"away_team_id":1,"competition_id":1,"home_team":{"id":6,"name":"Br\u00e4nn\u00f6","city":"Br\u00e4nn\u00f6","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":45,"round":12,"status":0,"starts_at":"2022-11-28T17:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":5,"away_team_id":1,"competition_id":1,"home_team":{"id":5,"name":"Naglarby och Enbacka","city":"Naglarby och Enbacka","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}},{"id":50,"round":13,"status":0,"starts_at":"2022-11-28T19:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":1,"away_team_id":4,"competition_id":1,"home_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"},"away_team":{"id":4,"name":"Persbo","city":"Persbo","country":"SE"}},{"id":55,"round":14,"status":0,"starts_at":"2022-11-28T21:58:49.000000Z","current_time":"20:00","home_score":0,"away_score":0,"home_team_id":3,"away_team_id":1,"competition_id":1,"home_team":{"id":3,"name":"Tystberga","city":"Tystberga","country":"SE"},"away_team":{"id":1,"name":"\u00c5storp","city":"\u00c5storp","country":"SE"}}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '48'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -448,7 +448,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '47'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -497,7 +497,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-remaining: '46'
           access-control-allow-origin: '*'
         description: null
         custom: []

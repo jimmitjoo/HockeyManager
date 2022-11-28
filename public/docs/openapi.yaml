@@ -168,9 +168,9 @@ paths:
               type: object
               properties:
                 team_id:
-                  type: string
-                  description: ''
-                  example: soluta
+                  type: integer
+                  description: 'The id of the team.'
+                  example: 1
               required:
                 - team_id
       security: []
@@ -1608,9 +1608,9 @@ paths:
                     -
                       id: 36
                       round: 9
-                      status: 11
+                      status: 20
                       starts_at: '2022-11-28T11:58:49.000000Z'
-                      current_time: '20:00'
+                      current_time: '18:46'
                       home_score: 1
                       away_score: 4
                       home_team_id: 8
@@ -1906,9 +1906,9 @@ paths:
                       -
                         id: 36
                         round: 9
-                        status: 11
+                        status: 20
                         starts_at: '2022-11-28T11:58:49.000000Z'
-                        current_time: '20:00'
+                        current_time: '18:46'
                         home_score: 1
                         away_score: 4
                         home_team_id: 8
