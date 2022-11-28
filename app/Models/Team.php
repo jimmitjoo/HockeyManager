@@ -23,8 +23,13 @@ class Team extends Model
     protected $fillable = [
         'name',
         'city',
-        'state',
         'country',
+    ];
+
+    protected $hidden = [
+        'state',
+        'created_at',
+        'updated_at',
     ];
 
     public function manager(): HasOneThrough

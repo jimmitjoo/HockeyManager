@@ -30,6 +30,11 @@ class Game extends Model
         'current_time' => GameTime::class,
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function homeTeam(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'home_team_id');
