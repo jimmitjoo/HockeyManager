@@ -23,6 +23,10 @@ class CreateNewCompetitionEdition
 
         $duration = $event->competition->ends_at->diffInDays($event->competition->starts_at);
 
+        if ($duration < 1) {
+            $duration = 2;
+        }
+
         Competition::create([
             'name' => $event->competition->name,
             'country' => $event->competition->country,
