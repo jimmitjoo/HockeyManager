@@ -34,48 +34,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        // Send to queue
-        Competition::factory()->create([
-            'name' => 'Klass 1',
-            'country' => 'SE',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 14,
-            'meetings' => 4,
-            'tier' => 1,
-            'recurring' => true,
-            'promotion' => 0,
-            'relegation' => 2,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Klass 2',
-            'country' => 'SE',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 14,
-            'meetings' => 4,
-            'tier' => 2,
-            'recurring' => true,
-            'promotion' => 2,
-            'relegation' => 0,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Klass 3',
-            'country' => 'SE',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 12,
-            'meetings' => 4,
-            'tier' => 3,
-            'recurring' => true,
-            'promotion' => 2,
-            'relegation' => 0,
-        ]);
 
         Competition::factory()->create([
             'name' => 'Liiga',
