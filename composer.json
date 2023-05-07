@@ -16,11 +16,11 @@
         "laravel/tinker": "^2.7",
         "laravel/vapor-cli": "^1.49",
         "laravel/vapor-core": "^2.25",
-        "laravel/vapor-ui": "^1.5"
+        "laravel/vapor-ui": "^1.5",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
-        "fakerphp/faker": "^1.9.1",
         "knuckleswtf/scribe": "^4.6",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",

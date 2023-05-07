@@ -65,9 +65,6 @@ class EventServiceProvider extends ServiceProvider
             SetCompetitionTeams::class,
             CreateCompetitionGames::class,
         ],
-        CompetitionTeamsCreated::class => [
-            CreateCompetitionGames::class,
-        ],
         CompetitionStarted::class => [
             SetCompetitionStatusToInProgress::class,
         ],

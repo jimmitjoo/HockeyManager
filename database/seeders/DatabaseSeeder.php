@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
+        // Send to queue
         Competition::factory()->create([
             'name' => 'Klass 1',
             'country' => 'SE',

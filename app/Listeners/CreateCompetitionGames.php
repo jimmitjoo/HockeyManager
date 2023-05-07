@@ -20,16 +20,12 @@ class CreateCompetitionGames
     public function handle($event)
     {
         if ($event->competition->type === CompetitionType::CupPlayOffs) {
-            Log::debug('Creating cup games');
             $this->createKnockoutCup($event->competition);
         }
 
         if ($event->competition->type === CompetitionType::League) {
-            Log::debug('Creating league games');
             $this->createLeague($event->competition);
         }
-
-        Log::debug('Games created');
     }
 
 
