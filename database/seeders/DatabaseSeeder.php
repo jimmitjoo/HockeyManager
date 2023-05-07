@@ -26,97 +26,10 @@ class DatabaseSeeder extends Seeder
             $duration = now()->addHours(24);
         }
 
-        // \App\Models\User::factory(10)->create();
-
         \App\Models\User::factory()->create([
             'name' => 'Jimmie Johansson',
             'email' => 'jimmitjoo@gmail.com',
             'password' => bcrypt('password'),
-        ]);
-
-
-        Competition::factory()->create([
-            'name' => 'Liiga',
-            'country' => 'FI',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 15,
-            'meetings' => 4,
-            'tier' => 1,
-            'recurring' => true,
-            'promotion' => 0,
-            'relegation' => 2,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Liiga 2',
-            'country' => 'FI',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 14,
-            'meetings' => 4,
-            'tier' => 2,
-            'recurring' => true,
-            'promotion' => 2,
-            'relegation' => 0,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Norge 1',
-            'country' => 'NO',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 10,
-            'meetings' => 4,
-            'tier' => 1,
-            'recurring' => true,
-            'promotion' => 0,
-            'relegation' => 2,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Norge 2',
-            'country' => 'NO',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 10,
-            'meetings' => 4,
-            'tier' => 2,
-            'recurring' => true,
-            'promotion' => 2,
-            'relegation' => 0,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Division 1',
-            'country' => 'DK',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 9,
-            'meetings' => 4,
-            'tier' => 1,
-            'recurring' => true,
-            'promotion' => 0,
-            'relegation' => 2,
-        ]);
-
-        Competition::factory()->create([
-            'name' => 'Division 2',
-            'country' => 'DK',
-            'type' => CompetitionType::League,
-            'starts_at' => now(),
-            'ends_at' => $duration,
-            'max_teams' => 10,
-            'meetings' => 4,
-            'tier' => 2,
-            'recurring' => true,
-            'promotion' => 2,
-            'relegation' => 0,
         ]);
 
         /*Competition::factory()->create([
