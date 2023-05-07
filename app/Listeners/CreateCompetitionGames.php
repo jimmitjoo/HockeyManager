@@ -7,6 +7,7 @@ use App\Types\CompetitionType;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class CreateCompetitionGames
 {
@@ -19,12 +20,16 @@ class CreateCompetitionGames
     public function handle($event)
     {
         if ($event->competition->type === CompetitionType::CupPlayOffs) {
+            Log::debug('Creating cup games');
             $this->createKnockoutCup($event->competition);
         }
 
         if ($event->competition->type === CompetitionType::League) {
+            Log::debug('Creating league games');
             $this->createLeague($event->competition);
         }
+
+        Log::debug('Games created');
     }
 
 
@@ -91,6 +96,7 @@ class CreateCompetitionGames
 
     private function createLeague(Competition $competition)
     {
+        Log::debug('Creating league games');
         $rounds = ($competition->max_teams - 1) * config('manager.leagues.meetings');
         $hoursBetweenRounds = $this->hoursBetweenRounds($competition, $rounds);
 

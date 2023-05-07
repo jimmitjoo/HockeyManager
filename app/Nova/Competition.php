@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Types\CompetitionType;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -11,6 +12,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -49,6 +51,9 @@ class Competition extends Resource
     {
         return [
             Text::make(__('Name'), 'name'),
+            Select::make(__('Type'), 'type')->options(
+                CompetitionType::toSelectOptions(),
+            ),
             Country::make(__('Country'), 'country'),
             Text::make(__('Status'), fn() => $this->status->label()),
             DateTime::make(__('Starts At'), 'starts_at'),

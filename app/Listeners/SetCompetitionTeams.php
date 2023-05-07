@@ -8,6 +8,7 @@ use App\Types\CompetitionType;
 use Faker\Factory;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log;
 
 class SetCompetitionTeams
 {
@@ -100,6 +101,21 @@ class SetCompetitionTeams
                 'city' => $city,
                 'country' => $event->competition->country,
             ]);
+
+            Log::debug('Team created', [
+                'competition' => $event->competition->name,
+                'team' => $city,
+            ]);
+
+            if ($i === ($event->competition->max_teams - 1)) {
+                Log::debug('Competition teams created', [
+                    'competition' => $event->competition->name,
+                ]);
+                event(new \App\Events\CompetitionTeamsCreated($event->competition));
+                Log::debug('Competition teams created event fired', [
+                    'competition' => $event->competition->name,
+                ]);
+            }
         }
     }
 }

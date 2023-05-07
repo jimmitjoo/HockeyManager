@@ -2,7 +2,10 @@
     "name": "jimmitjoo/hockeymanager",
     "type": "project",
     "description": "This is a hockey manager game.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.1",
@@ -40,12 +43,16 @@
             "Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
+    "repositories": {
+        "nova": {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        },
+        "0": {
             "type": "composer",
             "url": "https://nova.laravel.com"
         }
-    ],
+    },
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

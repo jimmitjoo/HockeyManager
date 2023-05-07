@@ -26,4 +26,17 @@ enum CompetitionType: int
             default => throw new \Exception('Unexpected match value'),
         };
     }
+
+    public static function toSelectOptions(): array
+    {
+        return [
+            self::League->value => __('League'),
+            self::LeagueQualification->value => __('League Qualification'),
+            self::CupPlayOffs->value => __('Cup'),
+            self::CupWithGroupsOf3->value => __('Cup with groups of 3'),
+            self::CupWithGroupsOf4->value => __('Cup with groups of 4'),
+            self::CupWithGroupsOf5->value => __('Cup with groups of 5'),
+            self::Friendly->value => __('Friendly'),
+        ];
+    }
 }

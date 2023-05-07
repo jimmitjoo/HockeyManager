@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\CompetitionCreated;
 use App\Events\CompetitionEnded;
 use App\Events\CompetitionStarted;
+use App\Events\CompetitionTeamsCreated;
 use App\Events\EndPeriod;
 use App\Events\GameEnded;
 use App\Events\GoalScored;
@@ -62,6 +63,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CompetitionCreated::class => [
             SetCompetitionTeams::class,
+            CreateCompetitionGames::class,
+        ],
+        CompetitionTeamsCreated::class => [
             CreateCompetitionGames::class,
         ],
         CompetitionStarted::class => [
